@@ -11,25 +11,22 @@
 .panel-div1 {
   height: 510px;
   grid-area: 1 / 1 / 4 / 3;
-  /* background-color: blueviolet; */
+  background-color: var(--bg-video-video-principal);
+  color: var(--text-color-video-principal);
 }
 .panel-div2 {
   height: 250px;
   grid-area: 1 / 3 / 2 / 4;
-  /* background-color: rgb(43, 67, 226); */
 }
 .panel-div3 {
   height: 250px;
   grid-area: 1 / 4 / 2 / 5;
-  /* background-color: rgb(43, 226, 156); */
 }
 .panel-div4 {
   height: 250px;
   grid-area: 2 / 3 / 3 / 4;
-  /* background-color: rgb(147, 226, 43); */
 }
 .panel-div5 {
   height: 250px;
-  /* background-color: rgb(226, 195, 43); */
   grid-area: 2 / 4 / 3 / 5;
 }

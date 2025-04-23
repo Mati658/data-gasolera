@@ -1,25 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
-import Body from './components/notas/Notas'
-import Header from './components/header/Header'
-import Panel from './components/panel/Panel'
+import Home from './pages/home/Home'
+import Login from './pages/login/Login'
+import Header from "./components/header/Header";
 
 function App() {
 
   return (
     <>
-    <Header></Header>
-    <div className='container'>
-      
-      <div className='gap'>
-        <Body></Body>
-      </div>
+      <Header></Header>
 
-      <div className='gap'>
-        <Panel></Panel>
-      </div>
-
-    </div>
-
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </>
   )
 }

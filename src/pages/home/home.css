@@ -1,0 +1,23 @@
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* margin: 0 auto; */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 95%;
+  margin-top: 50px;
+  /* background-color: black; */
+  /* margin: 0 auto; */
+  /* text-align: center; */
+}
+
+.gap {
+  display: flex;
+  margin-top: 50px;
+}

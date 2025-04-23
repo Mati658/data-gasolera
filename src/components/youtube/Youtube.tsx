@@ -4,9 +4,10 @@ import { environment } from '../../../env/environment.prod'
 import { useEffect, useState } from 'react';
 type Props = {
     videoId : string,
+    className : any,
 }
 
-export default function Youtube({videoId}: Props) {
+export default function Youtube({videoId, className = ""}: Props) {
     const [title, setTitle] = useState('');
 
     useEffect(() => {
@@ -15,7 +16,6 @@ export default function Youtube({videoId}: Props) {
 
         try {
         const response = await axios.get(url);
-        console.log(response);
         const videoTitle = response.data.items[0].snippet.title;
         setTitle(videoTitle);
         } catch (error) {
@@ -29,8 +29,8 @@ export default function Youtube({videoId}: Props) {
 
     return (
         <>  
-            <iframe className='video' src={`https://www.youtube.com/embed/${videoId}`} frameBorder={0}></iframe>
-            <div className='titulo-video righteous-regular'>
+            <iframe className='video' src={`https://www.youtube.com/embed/${videoId}`} frameBorder={0} allowFullScreen></iframe>
+            <div className={'righteous-regular titulo-video' + className}>
                 <h2>{title}</h2>
             </div>
         </>

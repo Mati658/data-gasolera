@@ -1,3 +1,35 @@
 :root {
-  background-color: #24bcec;
+  /* lt = light
+    dk = dark
+  */
+  --bg-color-lt: #ffffff;
+  --bg-color-dk: #121212;
+
+  --header-color-lt: #24bcec;
+  --header-color-dk: rgb(46, 46, 46);
+
+  --text-color-lt: white;
+  --text-color-dk: rgb(46, 46, 46);
+
+  --text-color-videos-lt: rgb(46, 46, 46);
+  --text-color-videos-dk: white;
+
+  --text-color-video-pr-lt: white;
+  --text-color-video-pr-dk: #24bcec;
+
+  --bg-video-pr-lt: #24bcec;
+  --bg-video-pr-dk: rgb(46, 46, 46);
+
+  --text-bg-effect-lt: rgb(46, 46, 46);
+  --text-bg-effect-dk: white;
+
+  /* variables activas */
+  --bg-color: var(--bg-color-lt);
+  --header-color: var(--header-color-lt);
+  --text-color: var(--text-color-lt);
+  --text-color-videos: var(--text-color-videos-lt);
+  --text-color-video-principal: var(--text-color-video-pr-lt);
+  --bg-video-video-principal: var(--bg-video-pr-lt);
+  --text-effect: var(--text-bg-effect-lt);
+  background-color: var(--bg-color);
 }
