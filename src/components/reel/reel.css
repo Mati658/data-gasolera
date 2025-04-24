@@ -1,0 +1,10 @@
+.video-reel {
+  /* width: 1%; */
+  height: 100%;
+  background-color: black;
+}
+
+.instagram-media iframe {
+  filter: brightness(0.8);
+  border-radius: 10px;
+}

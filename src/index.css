@@ -11,14 +11,11 @@
   --text-color-lt: white;
   --text-color-dk: rgb(46, 46, 46);
 
-  --text-color-videos-lt: rgb(46, 46, 46);
-  --text-color-videos-dk: white;
+  --text-color-videos-lt: white;
+  --text-color-videos-dk: #24bcec;
 
-  --text-color-video-pr-lt: white;
-  --text-color-video-pr-dk: #24bcec;
-
-  --bg-video-pr-lt: #24bcec;
-  --bg-video-pr-dk: rgb(46, 46, 46);
+  --bg-video-lt: #24bcec;
+  --bg-video-dk: rgba(46, 46, 46, 0);
 
   --text-bg-effect-lt: rgb(46, 46, 46);
   --text-bg-effect-dk: white;
@@ -28,8 +25,18 @@
   --header-color: var(--header-color-lt);
   --text-color: var(--text-color-lt);
   --text-color-videos: var(--text-color-videos-lt);
-  --text-color-video-principal: var(--text-color-video-pr-lt);
-  --bg-video-video-principal: var(--bg-video-pr-lt);
+  --bg-video: var(--bg-video-lt);
   --text-effect: var(--text-bg-effect-lt);
   background-color: var(--bg-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--bg-color-dk);
+    --header-color: var(--header-color-dk);
+    --text-color: var(--text-color-dk);
+    --text-color-videos: var(--text-color-videos-dk);
+    --bg-video: var(--bg-video-dk);
+    --text-effect: var(--text-bg-effect-dk);
+  }
 }

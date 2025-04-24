@@ -1,3 +1,5 @@
+import Reel from '../reel/Reel'
+import Twitch from '../twitch/Twitch'
 import Youtube from '../youtube/Youtube'
 import './panel.css'
 
@@ -6,19 +8,19 @@ export default function Panel() {
   return (
     <div className="parent-panel">
         <div className="panel-div1">
-            <Youtube className='pr' videoId='Hcs7a9y1w4Y'></Youtube>
+            <Youtube videoId='PLDg6alCCoFu4z6NSkhhrwWxHgJHPLtOao' playlist={true}></Youtube>
         </div>
         <div className="panel-div2">
-            <Youtube className='' videoId='ZHqDE9TM8kE'></Youtube>
+            <Twitch></Twitch>  
         </div>
         <div className="panel-div3">
-            <Youtube  className='' videoId='2EpHLQYcqOM'></Youtube>
+            <Reel link='https://www.instagram.com/reel/DHzP_fdq8fI/'></Reel>
         </div>
         <div className="panel-div4">
-            <Youtube className='' videoId='THoyU07y9UA'></Youtube>
+            <Reel link='https://www.instagram.com/reel/DGtm1dkKDG7/'></Reel>
         </div>
         <div className="panel-div5">
-            <Youtube className='' videoId='t7a_gUMvP4g'></Youtube>
+            <Reel link='https://www.instagram.com/reel/DIaK1ScuvYf/'></Reel>
         </div>
     </div>
   )

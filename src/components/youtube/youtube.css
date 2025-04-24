@@ -8,6 +8,7 @@
   margin-top: -20px;
   width: 100%;
   word-wrap: break-word;
+  padding: 5px;
 
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -17,5 +18,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  line-height: 1.2;
+  line-height: 1;
 }
