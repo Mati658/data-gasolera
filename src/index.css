@@ -20,6 +20,17 @@
   --text-bg-effect-lt: rgb(46, 46, 46);
   --text-bg-effect-dk: white;
 
+  --text-th-lt: rgba(46, 46, 46);
+  --text-th-dk: #24bcec;
+
+  /* === fondo de las tablas de ligas === */
+  --bg-fila-lt-dk: #32acfe;
+  --bg-fila-lt-lt: #24bcec;
+
+  --bg-fila-dk-dk: rgb(0, 48, 76);
+  --bg-fila-dk-lt: rgb(36, 77, 112);
+  /* === ============================ === */
+
   /* variables activas */
   --bg-color: var(--bg-color-lt);
   --header-color: var(--header-color-lt);
@@ -27,6 +38,9 @@
   --text-color-videos: var(--text-color-videos-lt);
   --bg-video: var(--bg-video-lt);
   --text-effect: var(--text-bg-effect-lt);
+  --text-th: var(--text-th-lt);
+  --bg-fila-liga: var(--bg-fila-lt-dk);
+  --bg-fila-liga2: var(--bg-fila-lt-lt);
   background-color: var(--bg-color);
 }
 
@@ -38,5 +52,45 @@
     --text-color-videos: var(--text-color-videos-dk);
     --bg-video: var(--bg-video-dk);
     --text-effect: var(--text-bg-effect-dk);
+    --text-th: var(--text-th-dk);
+    --bg-fila-liga: var(--bg-fila-dk-dk);
+    --bg-fila-liga2: var(--bg-fila-dk-lt);
   }
 }
+
+@font-face {
+  font-family: "lucidity";
+  src: url("/src/assets/fonts/lucidity-condensed.ttf");
+}
+
+.lucidity {
+  font-family: "lucidity", serif;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------Scroll------------------------------------------------------------------ */
+.scroll-1::-webkit-scrollbar {
+  width: 4px;
+  height: 8px;
+}
+
+.scroll-1::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #24bcec;
+}
+
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: rgba(46, 46, 46);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #24bcec;
+}
+/*-----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------- */

@@ -9,11 +9,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-self: center;
   width: 95%;
-  /* background-color: black; */
-  /* margin: 0 auto; */
-  /* text-align: center; */
+  margin-top: 100px;
+  justify-self: center;
 }
 
 .gap {

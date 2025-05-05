@@ -2,7 +2,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { environment } from '../../env/environment.prod';
-import { useNavigate } from 'react-router-dom';
 
 const supabase = createClient(environment.SUPABASE_URL, environment.SUPABASE_KEY);
 

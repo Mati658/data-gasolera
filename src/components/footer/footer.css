@@ -2,7 +2,7 @@
   position: absolute;
   width: 300px;
   height: 150px;
-  z-index: 2;
+  z-index: 10;
 }
 
 .footer {
@@ -11,6 +11,7 @@
   min-height: 200px;
   background-color: var(--header-color-lt);
   justify-content: center;
+  z-index: 10;
 }
 
 .container-footer {
@@ -26,6 +27,7 @@
   flex-direction: column;
   display: flex;
   width: 100%;
+  z-index: 10;
 
   p {
     margin-left: 10px;

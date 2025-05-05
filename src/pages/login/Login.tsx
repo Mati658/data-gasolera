@@ -9,7 +9,6 @@ export default function Login() {
     const [mensaje, setMensaje] = useState('');
 
     const { usuario, login } = useAuth();
-    const [logueado, setLogueado] = useState(false);
     const navigate = useNavigate();
     
     const dialogRef = useRef<HTMLDialogElement>(null);
@@ -45,7 +44,7 @@ export default function Login() {
     })
 
     return (
-        <div className="container">
+        <div className="container-login">
 
             <dialog ref={dialogRef} className='msj-error'>
                 <p>{mensaje}</p>

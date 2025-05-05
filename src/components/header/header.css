@@ -5,14 +5,14 @@
   font-style: normal;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Annie+Use+Your+Telescope&family=Dhurjati&family=Honk&family=Jost:ital,wght@0,100..900;1,100..900&family=Knewave&family=Lugrasimo&family=Modak&family=Permanent+Marker&family=Rampart+One&family=Righteous&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rouge+Script&family=Rubik+Doodle+Shadow&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Annie+Use+Your+Telescope&family=Dhurjati&family=Honk&family=Jost:ital,wght@0,100..900;1,100..900&family=Knewave&family=Lugrasimo&family=Modak&family=Permanent+Marker&family=Rampart+One&family=Righteous&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rouge+Script&family=Rubik+Doodle+Shadow&display=swap");
 .roboto-slab {
   font-family: "Roboto Slab", serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
   font-size: larger;
-}
+} */
 
 .header {
   display: flex;
@@ -55,6 +55,7 @@
   position: relative;
   width: 400px;
   height: 70px;
+  cursor: pointer;
   /* left: 2%; */
 }
 
@@ -84,6 +85,7 @@
   padding: 3px 5px;
   border-color: transparent;
   transition: 100ms ease;
+  cursor: pointer;
 }
 
 .btn-header:active {
