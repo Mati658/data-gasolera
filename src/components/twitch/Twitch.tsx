@@ -1,14 +1,17 @@
 import './twitch.css'
 
-export default function Twitch() {
+type Props = {
+  url: string;
+}
+
+export default function Twitch({url}:Props) {
   return (
-    <iframe src={"https://player.twitch.tv/?video=2366292630&parent=localhost&autoplay=false"}  
+    <iframe src={url}  
     frameBorder={0} 
     allowFullScreen={true} 
     height="378"
     width="620"
     className='twitch'
     ></iframe>
-
   )
 }

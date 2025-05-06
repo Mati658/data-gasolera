@@ -8,7 +8,9 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [mensaje, setMensaje] = useState('');
 
-    const { usuario, login } = useAuth();
+    const { login } = useAuth();
+    const usuario = localStorage.getItem('usuario')
+
     const navigate = useNavigate();
     
     const dialogRef = useRef<HTMLDialogElement>(null);

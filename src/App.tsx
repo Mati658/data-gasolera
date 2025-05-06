@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import './App.css';
 import Login from './pages/login/Login';
 import Header from "./components/header/Header";
@@ -6,10 +6,10 @@ import { lazy, useEffect, Suspense } from "react";
 import { useAuth } from "./context/AuthContext";
 import Footer from "./components/footer/Footer";
 import Fixture from "./pages/fixture/Fixture";
+import AltaJugador from "./pages/alta-jugador/AltaJugador";
 
 function App() {
-  const { usuario } = useAuth();
-
+  const usuario = localStorage.getItem('usuario')
   console.log(usuario)
 
   const Home = lazy(()=>import('./pages/home/Home'));
@@ -24,6 +24,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/admin" element={<Login />} />
             <Route path="/fixture" element={<Fixture />} />
+            <Route path="/alta-jugador" element={<AltaJugador />} />
+
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Router>
       </Suspense>
@@ -35,14 +38,15 @@ function App() {
 
 function KeyComboListener() {
   const navigate = useNavigate();
-  const { signOut, flagLogin } = useAuth();
+  const usuario = localStorage.getItem('usuario')
+  const { signOut } = useAuth();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') && !flagLogin) {
+      if ((e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') && !usuario) {
         navigate('/admin');
       }
-      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 's') {
+      if ((e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 's') && usuario) {
         signOut();
       }
     };

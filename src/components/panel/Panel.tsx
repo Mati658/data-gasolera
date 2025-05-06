@@ -11,7 +11,7 @@ export default function Panel() {
             <Youtube videoId='PLDg6alCCoFu4z6NSkhhrwWxHgJHPLtOao' playlist={true}></Youtube>
         </div>
         <div className="panel-div2">
-            <Twitch></Twitch>  
+            <Twitch url='https://player.twitch.tv/?video=2366292630&parent=localhost&autoplay=false'></Twitch>  
         </div>
         <div className="panel-div3">
             <Reel link='https://www.instagram.com/reel/DHzP_fdq8fI/'></Reel>

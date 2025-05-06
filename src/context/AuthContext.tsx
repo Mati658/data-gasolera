@@ -27,17 +27,16 @@ export const AuthProvider = ({ children }: Props) => {
     const identity : any = data?.identities?.[0];
 
     if (identity) {
+      localStorage.setItem('usuario', identity.email);
       setUsuario(identity);
       setFlagLogin(true);
+      console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
       return;
     }
     setFlagLogin(false);
   };
 
   const login = async (email:string, password:string) =>{    
-    console.log(email);
-    console.log(password);
-    console.log("hola")
     let { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password
@@ -45,18 +44,24 @@ export const AuthProvider = ({ children }: Props) => {
     if (error) {
       return false;
     }
-
-    console.log(data)
+    
+    console.log(data.user?.email)
+    if (data.user?.email) {
+      localStorage.setItem('usuario', data.user.email);
+    }
     return true;
   }
 
   const signOut = async () => {
     await supabase.auth.signOut();
+    localStorage.removeItem('usuario');
     window.location.reload();
   };
 
   useEffect(() => {
-    getState();
+    if (!localStorage.getItem('usuario')) {
+      getState();
+    }
   }, []);
 
   return (

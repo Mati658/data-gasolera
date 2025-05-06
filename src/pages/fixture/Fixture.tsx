@@ -30,6 +30,8 @@ export default function Fixture() {
     }
   return (
     <>
+    <div className='fondo-img'></div>
+    <div className='filtro'></div>
       <div className='container-fix'>
         <div className='container-tables'>
           <TablaNacional data={tablaZonaA} titulo='ZONA A'></TablaNacional>
@@ -46,8 +48,7 @@ export default function Fixture() {
           <TablaPartidos data={tablaResultados} columna='Res'></TablaPartidos>
           <div className='gap'></div>
         </div>
-        <div className='fondo-img'></div>
-        <div className='filtro'></div>
+        
 
       </div>
     </>
