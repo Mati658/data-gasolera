@@ -1,5 +1,6 @@
 import Body from '../../components/notas/Notas'
 import Panel from '../../components/panel/Panel'
+import Plantel from '../../components/plantel/Plantel'
 import './home.css'
 
 export default function Home() {
@@ -9,10 +10,11 @@ export default function Home() {
           
           <Body></Body>
     
-          <div className='gap'>
-            <Panel></Panel>
-          </div>
-    
+          <div className='gap'></div>
+          <Panel></Panel>
+          
+          <div className='gap'></div>
+          <Plantel></Plantel>
           <div className='gap'></div>
 
         </div>

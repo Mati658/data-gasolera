@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './altaJugador.css'
 import { useNavigate } from 'react-router-dom';
+import FormJugador from '../../components/form-jugador/FormJugador';
 
 export default function AltaJugador() {
     const navigate = useNavigate();
@@ -15,6 +16,9 @@ export default function AltaJugador() {
         })
 
     return (
-        <div>AltaJugador</div>
+        <div className='container-alta'>
+            <FormJugador jugadorEdit={null}></FormJugador>
+            <div className='gap'></div>
+        </div>
     )
 }

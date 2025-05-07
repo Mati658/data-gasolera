@@ -4,12 +4,15 @@ import App from './App.tsx'
 import './index.css'
 import { AuthProvider } from "./context/AuthContext.tsx";
 import { DatabaseProvider } from "./context/DatabaseContext.tsx";
+import StorageProvider from './context/StorageContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthProvider>
       <DatabaseProvider>
-        <App />
+        <StorageProvider>
+          <App />
+        </StorageProvider>
       </DatabaseProvider>
     </AuthProvider>
   </React.StrictMode>,
