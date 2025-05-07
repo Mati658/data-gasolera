@@ -4,12 +4,21 @@
   max-height: 370px;
   max-width: 220px;
   background-color: #24bcec;
+  transition: 100ms ease;
 }
 
 .container-btns {
-  display: flex;
-  position: absolute;
-  transform: translateX(140px);
+  display: none;
+}
+
+.card-jugador:hover {
+  transform: scale(1.1);
+
+  .container-btns {
+    display: flex;
+    position: absolute;
+    transform: translateX(140px);
+  }
 }
 
 .img-jugador {
@@ -18,16 +27,35 @@
   object-fit: cover;
 }
 
-.card-jugador p {
+.text-p {
+  max-width: 140px;
   font-size: x-large;
-  line-height: 0;
-
-  word-wrap: break-word;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  line-clamp: 0;
-  -webkit-line-clamp: 0;
-
-  /* overflow: hidden; */
+  line-height: 1;
+  padding-left: 5px;
+  overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.numero-jugador {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  background-color: rgba(46, 46, 46);
+  transform: translate(-10px, -50px);
+  width: auto;
+  height: 100px;
+  text-align: center;
+}
+
+.num-p {
+  text-align: center;
+  margin-top: 40%;
+  margin-bottom: 40%;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: #24bcec;
+  font-size: 3rem;
+  transform: scale(1, 1.5);
 }

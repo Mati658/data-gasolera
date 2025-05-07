@@ -13,6 +13,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit}: Props) {
 
   const { bajaDB } = useDatabase()
   const { deleteFoto } = useStorage()
+  const usuario : string | null = localStorage.getItem('usuario')
 
 
   const eliminarJugador = async() =>{
@@ -23,15 +24,24 @@ export default function JugadorComp({jugador, onEliminar, onEdit}: Props) {
 
   return (
     <div className='card-jugador'>
-      <div className='container-btns'>
-        <div onClick={eliminarJugador}> <BtnIcon icon='delete'/> </div>
-        <div onClick={onEdit}> <BtnIcon icon='edit'/> </div>
-      </div>
+      {usuario ? (
+        <div className='container-btns'>
+          <div onClick={eliminarJugador}> <BtnIcon icon='delete'/> </div>
+          <div onClick={onEdit}> <BtnIcon icon='edit'/> </div>
+        </div>
+      ) : ( <></> )}
+      
 
         <img src={jugador.imagen} className='img-jugador' />
 
-        <p className='lucidity'>{`${jugador.nombre}`}</p>
-        <p className='lucidity'>{`${jugador.apellido}`}</p>
+        <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
+          <div className='numero-jugador'>
+            <p className='num-p lucidity'>{jugador.numero}</p>
+          </div>
+        </div>
+
+        <p className='text-p lucidity'>{`${jugador.nombre} aaaaa`}</p>
+        <p className='text-p lucidity'>{`${jugador.apellido}`}</p>
     </div>
   )
 }
