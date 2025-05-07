@@ -14,6 +14,7 @@ export default function Plantel() {
     useEffect(() => {
         getTabla('plantel').then((res:any)=>{
             SetJugadores(res);
+            localStorage.setItem('listaJugadores', JSON.stringify(jugadores))
         })
     }, [jugadores]);
 
@@ -23,12 +24,11 @@ export default function Plantel() {
 
     return (
         <div className='parent-plantel'>
-
                 {
                     jugador ? ( 
                         <div className='form-edit'>
                             <button className='cerrar-form' onClick={()=>setJugador(null)}>X</button>
-                            <FormJugador jugadorEdit={jugador} onSubmit={()=>setJugador(null)}></FormJugador>
+                            <FormJugador jugadorEdit={jugador} onSubmit={()=>setJugador(null)} sendJugador={()=>{}}></FormJugador>
                         </div>
                 ) : ( <></> )
                 }
@@ -36,7 +36,7 @@ export default function Plantel() {
 
             {
                 jugadores.map((item:Jugador)=>(
-                    <JugadorComp key={item.id} jugador={item} onEliminar={eliminarJugador} onEdit={()=>{setJugador(item)}}></JugadorComp>
+                    <JugadorComp key={item.id} jugador={item} onEliminar={eliminarJugador} onEdit={()=>{setJugador(item)}} read={false}></JugadorComp>
                 )
             )}
            

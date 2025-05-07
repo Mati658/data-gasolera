@@ -6,10 +6,11 @@ import { useDatabase } from '../../context/DatabaseContext';
 
 type Props = {
     jugadorEdit:any | null;
-    onSubmit:()=>void
+    onSubmit:()=>void;
+    sendJugador:(jugador:Jugador)=>void
 }
 
-export default function FormJugador({jugadorEdit = null, onSubmit}:Props) {
+export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:Props) {
     // console.log(jugadorEdit)
     const { uploadFoto } = useStorage()
     const { altaDB, update } = useDatabase()
@@ -124,7 +125,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit}:Props) {
             url = await uploadFoto(imagen, nombre+apellido);
         }
         if (url) {
-            const jugador = new Jugador(nombre, apellido, String(puesto), Number(numero), nacimiento, lugarNacimiento, `${altura} Mts`, `${peso} Kgs`, nacionalidad, url)
+            const jugador = new Jugador(nombre, apellido, String(puesto), Number(numero), nacimiento, lugarNacimiento, `${altura}`, `${peso}`, nacionalidad, url)
             
             if(await update('plantel', jugador.toJson(), jugadorEdit.id)){
                 limpiar();
@@ -143,6 +144,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit}:Props) {
                 setTimeout(() => {
                     SetFlagModal(false)
                 }, 3100);
+                sendJugador(jugador)
                 onSubmit();
                 return;
             }

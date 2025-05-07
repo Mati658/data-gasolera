@@ -11,6 +11,7 @@ type Props = {
 }
 
 interface DatabaseContextType {
+    getUno : (tabla:string, columna:string, id:number) => Promise<false | any[]>;
     getData : (columna:string) => Promise<false | any[]>;
     getTabla : (columna:string) => Promise<false | any[]>;
     altaDB : (tabla:string, datos : any) => Promise<boolean>;
@@ -21,6 +22,22 @@ interface DatabaseContextType {
 const DatabaseContext = createContext<DatabaseContextType | null>(null);
 
 export const DatabaseProvider = ({ children }: Props) => {
+
+    const getUno = async (tabla:string, columna:string, id:number)=>{
+        console.log(id)
+        const data = (await supabase
+        .from(tabla)
+        .select(columna)
+        .eq('id', id)).data
+
+        if (data) {
+            return data;
+        }
+        
+        console.log(data);
+
+        return false;
+    }
   
     const getData = async (columna:string) => {
 
@@ -81,7 +98,6 @@ export const DatabaseProvider = ({ children }: Props) => {
     }
 
     const update = async(tabla:string, datos:any, id:number)=>{
-        console.log(typeof(datos))
         let data = (await supabase
         .from(tabla)
         .update([datos])
@@ -99,6 +115,7 @@ export const DatabaseProvider = ({ children }: Props) => {
     return (
         <DatabaseContext.Provider
         value={{
+            getUno,
             getData,
             getTabla,
             altaDB,

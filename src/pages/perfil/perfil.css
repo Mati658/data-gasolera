@@ -1,0 +1,45 @@
+.container-perfil {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 95%;
+  margin-top: 100px;
+
+  h1 {
+    color: var(--text-th);
+  }
+}
+
+.jugador-perfil {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-edit-perfil {
+  position: fixed;
+  left: 60%;
+  bottom: 2%;
+  width: auto;
+  height: auto;
+  z-index: 100;
+}
+
+.cerrar-form {
+  position: absolute;
+  z-index: 101;
+  right: 0;
+  background-color: #24bcec;
+  width: 20%;
+  height: 5%;
+  border-top-right-radius: 5px;
+  border-color: none;
+  outline: none;
+}
+
+.perfil-item {
+  margin-left: 20px;
+  p {
+    color: var(--text-th);
+    margin: 0;
+  }
+}

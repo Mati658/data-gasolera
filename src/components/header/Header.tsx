@@ -43,7 +43,7 @@ export default function Header() {
     <div className="header">
         <div className="container-header">
             <div className="logo" onClick={() => navegar('/')}>
-                <img src="logo.png" className="img" />
+                <img src="/logo.png" className="img" />
                 
             </div>
         </div>
