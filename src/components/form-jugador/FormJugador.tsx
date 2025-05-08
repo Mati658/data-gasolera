@@ -27,7 +27,6 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     const [nombre, SetNombre] = useState(jugadorEdit != null ? jugadorEdit.nombre : '')
     const [apellido, SetApellido] = useState(jugadorEdit != null ? jugadorEdit.apellido : '')
     const [puesto, SetPuesto] = useState<string|number>(jugadorEdit != null ? jugadorEdit.puesto : 0)
-    const [numero, SetNumero] = useState<number | string>(jugadorEdit != null ? jugadorEdit.numero : '')
     const [nacimiento, SetNacimiento] = useState('')
     const [nacionalidad, SetNacionalidad] = useState(jugadorEdit != null ? jugadorEdit.nacionalidad : '')
     const [lugarNacimiento, SetLugarNacimiento] = useState(jugadorEdit != null ? jugadorEdit.lugarNacimiento : '')
@@ -56,7 +55,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
 
     const verificar = () =>{
         if (imagen != "" && (
-            nombre && apellido && puesto != 0 && numero != 0 && nacimiento && nacionalidad && lugarNacimiento && altura && peso)) {
+            nombre && apellido && puesto != 0 && nacimiento && nacionalidad && lugarNacimiento && altura && peso)) {
             return jugadorEdit != null ? updateJugador() : crearJugador()
         }
         SetClaseMOdal('warning')
@@ -80,7 +79,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     const crearJugador = async() =>{
         let url : string | false = await uploadFoto(imagen, nombre+apellido);
         if (url) {
-            const jugador = new Jugador(nombre, apellido, String(puesto), Number(numero), nacimiento, lugarNacimiento, `${altura} Mts`, `${peso} Kgs`, nacionalidad, url)
+            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura} Mts`, `${peso} Kgs`, nacionalidad, url)
             
             if(await altaDB('plantel', jugador.toJson())){
                 limpiar();
@@ -125,7 +124,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
             url = await uploadFoto(imagen, nombre+apellido);
         }
         if (url) {
-            const jugador = new Jugador(nombre, apellido, String(puesto), Number(numero), nacimiento, lugarNacimiento, `${altura}`, `${peso}`, nacionalidad, url)
+            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura}`, `${peso} Kgs`, nacionalidad, url)
             
             if(await update('plantel', jugador.toJson(), jugadorEdit.id)){
                 limpiar();
@@ -173,7 +172,6 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
         SetNombre('');
         SetApellido('');
         SetPuesto(0);
-        SetNumero('');
         SetNacimiento('');
         SetNacionalidad('');
         SetLugarNacimiento('');
@@ -218,36 +216,32 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
             </div>  
 
             <div className="flex-alta">
-            <label>
-                <select value={puesto} className='input-alta' name="" onChange={(e) => SetPuesto(e.target.value)}>
-                    <option value="0">Elegir puesto</option>
-                    <option value="Arquero">Arquero</option>
-                    <option value="Defensor">Defensor</option>
-                    <option value="Mediocampista">Mediocampista</option>
-                    <option value="Delantero">Delantero</option>
-                    <option value="Cuerpo Técnico">Cuerpo Técnico</option>
-                </select>
-                <span>Puesto</span>
-            </label>
-            <label>
-                <input value={numero} className="input-alta" type="number"  placeholder='' required onChange={(e) => SetNumero(Number(e.target.value))} />
-                <span>Número</span>
-            </label>
+                <label>
+                    <select value={puesto} className='input-alta' name="" onChange={(e) => SetPuesto(e.target.value)}>
+                        <option value="0">Elegir puesto</option>
+                        <option value="Arquero">Arquero</option>
+                        <option value="Defensor">Defensor</option>
+                        <option value="Mediocampista">Mediocampista</option>
+                        <option value="Delantero">Delantero</option>
+                        <option value="Cuerpo Técnico">Cuerpo Técnico</option>
+                    </select>
+                    <span>Puesto</span>
+                </label>
+                <label>
+                    <input value={nacimiento} className="input-alta" type="date" placeholder='' required onChange={(e) => SetNacimiento(e.target.value)} />
+                    <span>Nacimiento</span>
+                </label>
             </div>  
         
-            <div className="flex-alta">
-            <label>
-                <input value={nacimiento} className="input-alta" type="date" placeholder='' required onChange={(e) => SetNacimiento(e.target.value)} />
-                <span>Nacimiento</span>
-            </label>
-            <label>
-                <input value={nacionalidad} className="input-alta" type="text"  placeholder='' required onChange={(e) => SetNacionalidad(e.target.value)} />
-                <span>Nacionalidad</span>
-            </label>
-            <label>
-                <input value={lugarNacimiento} className="input-alta" type="text"  placeholder='' required onChange={(e) => SetLugarNacimiento(e.target.value)} />
-                <span>Lugar De Nacimiento</span>
-            </label>
+            <div className="flex-alta">   
+                <label>
+                    <input value={nacionalidad} className="input-alta" type="text"  placeholder='' required onChange={(e) => SetNacionalidad(e.target.value)} />
+                    <span>Nacionalidad</span>
+                </label>
+                <label>
+                    <input value={lugarNacimiento} className="input-alta" type="text"  placeholder='' required onChange={(e) => SetLugarNacimiento(e.target.value)} />
+                    <span>Lugar De Nacimiento</span>
+                </label>
             </div> 
 
             <div className="flex-alta">

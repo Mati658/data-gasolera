@@ -40,7 +40,7 @@
 }
 
 .text-p {
-  max-width: 150px;
+  width: 90%;
   font-size: x-large;
   line-height: 1;
   padding-left: 5px;

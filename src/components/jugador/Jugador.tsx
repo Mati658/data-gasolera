@@ -50,11 +50,11 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
             state={{jugador}}>
             <img src={jugador.imagen} className='img-jugador' />
   
-            <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
+            {/* <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
               <div className='numero-jugador'>
                 <p className='num-p lucidity'>{jugador.numero}</p>
               </div>
-            </div>
+            </div> */}
         </Link>
   
             <p className='text-p lucidity'>{`${jugador.nombre}`}</p>
@@ -72,14 +72,14 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
             state={{jugador}}>
             <img src={jugador.imagen} className='img-jugador'  style={{height:'180px'}}/>
   
-            <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
+            {/* <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
             <div className='numero-jugador' style={{transform: 'translate(-5px, -54px)'}}>
                 <p className='num-p lucidity'>{jugador.numero}</p>
               </div>
-            </div>
+            </div> */}
         </Link>
      
-        <p className='text-p lucidity' style={{maxWidth:'100px'}}>{`${jugador.nombre}`}</p>
+        <p className='text-p lucidity' style={{maxWidth:'90%'}}>{`${jugador.nombre}`}</p>
         <p className='text-p lucidity'>{`${jugador.apellido}`}</p>   
       </div>
     )
@@ -95,11 +95,11 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
       
       <img src={jugador.imagen} className='img-jugador' style={{height:'500px'}}/>
 
-      <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
+      {/* <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
         <div className='numero-jugador' style={{transform: 'translate(-5px, -54px)'}}>
           <p className='num-p lucidity'>{jugador.numero}</p>
         </div>
-      </div>      
+      </div>       */}
     </div>
   )
 

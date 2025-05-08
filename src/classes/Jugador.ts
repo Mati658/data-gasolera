@@ -3,7 +3,6 @@ export class Jugador {
   nombre: string;
   apellido: string;
   puesto: string;
-  numero: number;
   nacimiento: string;
   edad: number;
   lugarNacimiento: string;
@@ -16,7 +15,6 @@ export class Jugador {
     nombre: string,
     apellido: string,
     puesto: string,
-    numero: number,
     nacimiento: string,
     lugarNacimiento: string,
     altura: string,
@@ -27,7 +25,6 @@ export class Jugador {
     this.nombre = nombre;
     this.apellido = apellido;
     this.puesto = puesto;
-    this.numero = numero;
     this.nacimiento = nacimiento;
     this.edad = this.CalcularEdad();
     this.lugarNacimiento = lugarNacimiento;
@@ -68,7 +65,6 @@ export class Jugador {
       nombre: this.nombre,
       apellido: this.apellido,
       puesto: this.puesto,
-      numero: this.numero,
       nacimiento: this.nacimiento,
       edad: this.edad,
       lugarNacimiento: this.lugarNacimiento,

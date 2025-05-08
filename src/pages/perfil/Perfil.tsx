@@ -62,7 +62,7 @@ export default function Perfil() {
                     
                     {keys.map((item)=>(
                         <div key={item} className='perfil-item'>
-                            <p className='lucidity' style={{color:'white'}}>{item}</p>
+                            <p className='lucidity' style={{color:'white'}}>{item == 'lugarNacimiento' ? 'Lugar de Nacimiento' : item}</p>
                             <p className='lucidity' style={{fontSize:'1.7rem'}}>{jugador[item]}</p>
                         </div>
                     ))}

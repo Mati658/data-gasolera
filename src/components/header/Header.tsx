@@ -4,6 +4,7 @@ import { useNavigate} from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
+  const usuario : string | null = localStorage.getItem('usuario')
 
   const [temaOscuro, setTemaOscuro] = useState(
     window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -60,6 +61,7 @@ export default function Header() {
           <button className="btn-header lucidity">Historia</button>
           <button className="btn-header lucidity">+ Noticias</button>
           <button className="btn-header lucidity">Quienes Somos</button>
+          <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/alta-jugador')}>Alta Jugador</button>
         </div>
     </div>
   )
