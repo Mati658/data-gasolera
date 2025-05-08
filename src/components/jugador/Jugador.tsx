@@ -15,7 +15,7 @@ type Props = {
 export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) {
 
   const location = useLocation();
-  const [locationAnterior, setLocationAnterior] = useState(location)
+  const [locationAnterior] = useState(location)
   const { bajaDB } = useDatabase()
   const { deleteFoto } = useStorage()
   const usuario : string | null = localStorage.getItem('usuario')

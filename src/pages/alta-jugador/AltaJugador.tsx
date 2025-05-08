@@ -17,7 +17,7 @@ export default function AltaJugador() {
 
     return (
         <div className='container-alta'>
-            <FormJugador jugadorEdit={null}></FormJugador>
+            <FormJugador jugadorEdit={null} onSubmit={()=>{}} sendJugador={()=>{}}></FormJugador>
             <div className='gap'></div>
         </div>
     )
