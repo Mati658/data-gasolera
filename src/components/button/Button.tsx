@@ -6,7 +6,7 @@ type Props = {
     backgroundColor : string,
 }
 
-export default function Button({text, textColor, backgroundColor}: Props) {
+export default function Button({text}: Props) {
   return (
     <button className="btn">{text}</button>
   )

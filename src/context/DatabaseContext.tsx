@@ -2,7 +2,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { createContext, ReactNode, useContext } from 'react';
 import { environment } from '../../env/environment.prod';
-import { Jugador } from '../classes/Jugador';
 
 const supabase = createClient(environment.SUPABASE_URL, environment.SUPABASE_KEY);
 
