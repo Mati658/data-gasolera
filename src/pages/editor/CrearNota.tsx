@@ -8,7 +8,7 @@ export default function CrearNota() {
   const navigate = useNavigate();
   const usuario = localStorage.getItem('usuario')
   const editorRef:any = useRef(null);
-  const { altaDB, update } = useDatabase()
+  const { altaDB } = useDatabase()
   const [flagVistPrevia, setFlagVistaPrevia] = useState(true)
   const [nota, setNota] = useState<any>(localStorage.getItem('nota') != null ? localStorage.getItem('nota') : localStorage.getItem('notaBackUp'));
 // console.log(localStorage.getItem('nota'))
