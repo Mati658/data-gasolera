@@ -34,6 +34,7 @@
   background-color: royalblue;
   /* outline-color: 0px none; */
   border-color: royalblue;
+  cursor: pointer;
 }
 
 .abs {

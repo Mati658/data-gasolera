@@ -2,25 +2,32 @@ import './crearNota.css'
 import { Editor } from '@tinymce/tinymce-react';
 import { useEffect, useRef, useState } from 'react';
 import { useDatabase } from '../../context/DatabaseContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function CrearNota() {
+  const intervalRef = useRef<any>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [notaEditar, setNotaEditar] = useState(location.state?.nota || null)
   const usuario = localStorage.getItem('usuario')
   const editorRef:any = useRef(null);
-  const { altaDB } = useDatabase()
+  const { altaDB, update } = useDatabase()
   const [flagVistPrevia, setFlagVistaPrevia] = useState(true)
   const [nota, setNota] = useState<any>(localStorage.getItem('nota') != null ? localStorage.getItem('nota') : localStorage.getItem('notaBackUp'));
-// console.log(localStorage.getItem('nota'))
+// console.log(notaEditar)
   const log = () => {
     if (editorRef.current) {
       setNota(editorRef.current.getContent())
+      setNotaEditar(null)
     }
   };
 
   const guardadoAutomatico = () =>{
-    setInterval(() => {
-      localStorage.setItem('notaBackUp', editorRef.current.getContent());
+     intervalRef.current = setInterval(() => {
+      if (editorRef.current) {
+        localStorage.setItem('notaBackUp', editorRef.current.getContent());
+        console.log('Guardado...');
+      }
     }, 30000);
   }
 
@@ -29,6 +36,11 @@ export default function CrearNota() {
       navigate('/');
     }
     guardadoAutomatico();
+
+    return () => {
+      clearInterval(intervalRef.current);
+      console.log('Intervalo limpiado');
+    };
   },[])
 
   if (flagVistPrevia) {
@@ -39,7 +51,7 @@ export default function CrearNota() {
         <Editor
           tinymceScriptSrc='/tinymce/tinymce.min.js'
           onInit={(_evt:any, editor:any) => editorRef.current = editor}
-          initialValue={nota}
+          initialValue={notaEditar ? notaEditar.texto : nota}
           init={{
             skin: (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'oxide-dark' : 'oxide'),
             height:'100%',
@@ -109,17 +121,65 @@ export default function CrearNota() {
                 icon: 'Upload',
                 tooltip: 'Publicar',
                 onAction: async function () {
-                  if (!editorRef.current.getContent()) {
-                    return;
-                  }
-                  const notaJson = {
-                    texto:editorRef.current.getContent(),
-                    time: new Date()
-                  }
-                  if (await altaDB('notas', notaJson)) {
-                    localStorage.removeItem('nota');
-                    localStorage.removeItem('notaBackUp');
-                  }
+                  editor.windowManager.open({
+                    title: 'Publicar nota',
+                    body: {
+                      type: 'panel',
+                      items: [
+                        {
+                          type: 'input',
+                          name: 'titulo',
+                          label: 'Título de la nota',
+                          value: 'prueba'
+                        }
+                      ]
+                    },
+                    initialData: {
+                      titulo: notaEditar ? notaEditar.titulo : ''
+                    },
+                    buttons: [
+                      {
+                        type: 'cancel',
+                        text: 'Cancelar'
+                      },
+                      {
+                        type: 'submit',
+                        text: 'Publicar',
+                        primary: true
+                      }
+                    ],
+                    onSubmit: async function (res:any) {
+                      const data = res.getData();
+                      console.log(data)
+                      const titulo = data.titulo;
+
+                      if (!editorRef.current.getContent()) {
+                        res.close();
+                        return;
+                      }
+
+                      const notaJson = {
+                        titulo,
+                        texto: editorRef.current.getContent(),
+                        time: new Date()
+                      };
+                      // console.log(notaJson)
+                      if (notaEditar) {
+                        if (await update('notas', notaJson, notaEditar.id)) {
+                          localStorage.removeItem('nota');
+                          localStorage.removeItem('notaBackUp');
+                        }
+                        res.close();
+                        return;
+                      }
+                      if (await altaDB('notas', notaJson)) {
+                        localStorage.removeItem('nota');
+                        localStorage.removeItem('notaBackUp');
+                      }
+
+                      res.close();
+                    }
+                  });
                 },
               });
             },

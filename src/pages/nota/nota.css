@@ -22,3 +22,24 @@
 .vista-previa {
   color: var(--text-effect);
 }
+
+.btn-editor {
+  width: fit-content;
+  height: 40px;
+  border-radius: 10px;
+  background-color: royalblue;
+  /* outline-color: 0px none; */
+  border-color: royalblue;
+  cursor: pointer;
+}
+
+.abs {
+  position: fixed;
+  z-index: 10000;
+  top: 11%;
+  right: 2%;
+}
+
+.hidden {
+  display: none;
+}

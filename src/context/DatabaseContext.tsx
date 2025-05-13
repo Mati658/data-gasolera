@@ -10,9 +10,10 @@ type Props = {
 }
 
 interface DatabaseContextType {
-    getUno : (tabla:string, columna:string, id:number) => Promise<false | any[]>;
+    getUno : (tabla:string, select:string, id:number) => Promise<false | any[]>;
     getData : (columna:string) => Promise<false | any[]>;
-    getTabla : (tabla:string) => Promise<false | any[]>;
+    getNotas : (limite:number) => Promise<false | any[]>;
+    getTabla : (tabla:string, select:string, limite:number) => Promise<false | any[]>;
     altaDB : (tabla:string, datos : any) => Promise<boolean>;
     bajaDB : (tabla:string, id : number) => Promise<boolean>;
     update : (tabla:string, datos : any, id:number) => Promise<false | any[]>
@@ -22,11 +23,11 @@ const DatabaseContext = createContext<DatabaseContextType | null>(null);
 
 export const DatabaseProvider = ({ children }: Props) => {
 
-    const getUno = async (tabla:string, columna:string, id:number)=>{
+    const getUno = async (tabla:string, select:string, id:number)=>{
         console.log(id)
         const data = (await supabase
         .from(tabla)
-        .select(columna)
+        .select(select)
         .eq('id', id)).data
 
         if (data) {
@@ -54,11 +55,57 @@ export const DatabaseProvider = ({ children }: Props) => {
 
     } 
 
-    const getTabla = async (tabla:string) => {
+    const getNotas = async(limite:number) =>{
+        if (limite == -1) {
+            const { data, error } = await supabase
+            .from('notas')
+            .select('*')
+            .order('time', {ascending:false})
+
+            if (data) {
+                return data;
+            }
+            
+            console.log(error);
+
+            return false;
+        }
 
         const { data, error } = await supabase
-        .from(tabla)
+        .from('notas')
         .select('*')
+        .limit(limite)
+        .order('time', {ascending:false})
+
+        if (data) {
+            return data;
+        }
+        
+        console.log(error);
+
+        return false;
+    }
+
+    const getTabla = async (tabla:string, select:string = '*', limite:number) => {
+
+        if (limite == -1) {
+            const { data, error } = await supabase
+            .from(tabla)
+            .select(select)
+
+            if (data) {
+                return data;
+            }
+            
+            console.log(error);
+
+            return false;
+        }
+        
+        const { data, error } = await supabase
+        .from(tabla)
+        .select(select)
+        .limit(limite)
 
         if (data) {
             return data;
@@ -73,13 +120,16 @@ export const DatabaseProvider = ({ children }: Props) => {
     
     const altaDB = async(tabla:string, datos : any) =>{
         console.log(datos)
-        let {data} = (await supabase
+        let {data, error} = (await supabase
         .from(tabla)
         .insert([datos])
         .select())
 
         if (data != null)  
             return true;
+
+        console.log(data)
+        console.log(error)
 
         return false;
     }
@@ -116,6 +166,7 @@ export const DatabaseProvider = ({ children }: Props) => {
         value={{
             getUno,
             getData,
+            getNotas,
             getTabla,
             altaDB,
             bajaDB,

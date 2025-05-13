@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  /* width: 100%; */
   /* margin: 0 auto; */
 }
 
@@ -17,4 +17,14 @@
 .gap {
   display: flex;
   margin-top: 50px;
+}
+
+@media (max-width: 430px) {
+  .container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 100%;
+    margin-top: 100px;
+    /* justify-self: center; */
+  }
 }

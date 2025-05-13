@@ -13,7 +13,6 @@ export default function Home() {
           <div className='gap'></div>
           <Panel></Panel>
           
-          <div className='gap'></div>
           <h1 className='lucidity' style={{color: 'var(--text-th)',}}>Plantel</h1>
           <Plantel></Plantel>
           <div className='gap'></div>

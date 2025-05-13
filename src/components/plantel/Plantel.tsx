@@ -12,7 +12,7 @@ export default function Plantel() {
     const [ jugador, setJugador ] = useState<Jugador | null>(null);
 
     useEffect(() => {
-        getTabla('plantel').then((res:any)=>{
+        getTabla('plantel', '*', -1).then((res:any)=>{
             SetJugadores(res);
             localStorage.setItem('listaJugadores', JSON.stringify(jugadores))
         })

@@ -22,7 +22,7 @@ export default function TablaPartidos({data, columna}: Props) {
 
                 <tbody>
                     {data?.map((item:any, i=0) => (
-                    <tr className={`bg-fila-${flag == false ? "lg" : "dk"}`}>
+                    <tr key={i++} className={`bg-fila-${flag == false ? "lg" : "dk"}`}>
                         <td className='td-liga' key={i+=1}>{item.dia}</td>
                         <td className='td-liga' key={i+=1}>{item['L/V']}</td>
                         <td className='td-liga' key={i+=1}>{item.vs}</td>

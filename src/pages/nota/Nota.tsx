@@ -1,20 +1,38 @@
+import'./nota.css';
 import { useEffect, useState } from 'react';
 import { useDatabase } from '../../context/DatabaseContext';
-import'./nota.css';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Nota() {
-    const { getTabla } = useDatabase()
-    const [nota, setNota] = useState('')
+    const location = useLocation();
+    const [notas, setNotas] = useState([])
+    const { getUno } = useDatabase()
+    const [nota, setNota] = useState<any>('')
+    const usuario : string | null = localStorage.getItem('usuario')
+
     useEffect(()=>{
-        getTabla('notas').then((res:any)=>{
+        const id = Number(location.pathname.split('/')[2])
+        getUno('notas', '*', id).then((res:any)=>{
+            setNota(res[0])
             console.log(res[0])
-            setNota(res[0].texto)
         })
+        let temp = localStorage.getItem('listaNotas')
+        if (temp) {
+            setNotas(JSON.parse(temp))
+            console.log(notas)
+        }
+        window.scrollTo(0, 0);
     },[])
 
   return (
         <div className='container-nota'>
-            <div className='vista-previa' dangerouslySetInnerHTML={{ __html: nota || '' }}></div>
+            <Link
+                key={nota?.id} 
+                to={`/editor`} 
+                state={{nota}}>
+                <button className={`btn-editor abs ${usuario ? '' : 'hidden'}`}>Editar</button>
+            </Link>
+            <div className='vista-previa' dangerouslySetInnerHTML={{ __html: nota.texto || '' }}></div>
         </div>
 
 

@@ -23,7 +23,6 @@ export default function Reel({link}:Props) {
                 className="instagram-media video-reel"
                 data-instgrm-permalink={link}
                 data-instgrm-version="14"
-                style={{background:'black'}}
             ></blockquote>
         </>
     );
