@@ -1,0 +1,24 @@
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+.container-nota {
+  /* background-color: aliceblue; */
+  /* display: flex; */
+  flex-direction: row;
+  /* align-items: center; */
+  justify-self: center;
+  justify-content: center;
+  width: 90%;
+  margin-top: 90px;
+  gap: 2%;
+  z-index: 10;
+}
+
+.vista-previa {
+  color: var(--text-effect);
+}

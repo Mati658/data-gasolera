@@ -7,13 +7,11 @@ export default function AltaJugador() {
     const navigate = useNavigate();
     const usuario = localStorage.getItem('usuario')
 
-    useEffect(()=>{
-            
-            console.log(usuario)
-            if (!usuario) {
-                navigate('/');
-            }
-        })
+    useEffect(()=>{      
+        if (!usuario) {
+            navigate('/');
+        }
+    },[])
 
     return (
         <div className='container-alta'>

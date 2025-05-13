@@ -1,0 +1,58 @@
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  /* margin: 0 auto; */
+}
+
+.container-editor {
+  /* background-color: aliceblue; */
+  /* display: flex; */
+  flex-direction: row;
+  /* align-items: center; */
+  justify-self: center;
+  justify-content: center;
+  width: 90%;
+  margin-top: 90px;
+  height: 700px;
+  gap: 2%;
+  z-index: 10;
+}
+
+.container-vista-prev {
+  justify-self: center;
+  margin-top: 100px;
+  width: 95%;
+}
+
+.btn-editor {
+  width: fit-content;
+  height: 40px;
+  border-radius: 10px;
+  background-color: royalblue;
+  /* outline-color: 0px none; */
+  border-color: royalblue;
+}
+
+.abs {
+  position: fixed;
+  z-index: 10000;
+  top: 11%;
+  right: 2%;
+}
+
+@media (max-width: 460px) {
+  .container-editor {
+    width: 100%;
+  }
+}
+
+.vista-previa {
+  color: var(--text-effect);
+}
+
+.content {
+  font-size: 100px;
+}

@@ -62,6 +62,7 @@ export default function Header() {
           <button className="btn-header lucidity">+ Noticias</button>
           <button className="btn-header lucidity">Quienes Somos</button>
           <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/alta-jugador')}>Alta Jugador</button>
+          <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/editor')}>Crear Nota</button>
         </div>
     </div>
   )

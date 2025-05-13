@@ -12,7 +12,7 @@ type Props = {
 interface DatabaseContextType {
     getUno : (tabla:string, columna:string, id:number) => Promise<false | any[]>;
     getData : (columna:string) => Promise<false | any[]>;
-    getTabla : (columna:string) => Promise<false | any[]>;
+    getTabla : (tabla:string) => Promise<false | any[]>;
     altaDB : (tabla:string, datos : any) => Promise<boolean>;
     bajaDB : (tabla:string, id : number) => Promise<boolean>;
     update : (tabla:string, datos : any, id:number) => Promise<false | any[]>
