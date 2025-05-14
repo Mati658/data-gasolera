@@ -10,6 +10,7 @@ import AltaJugador from "./pages/alta-jugador/AltaJugador";
 import Perfil from "./pages/perfil/Perfil";
 import Nota from "./pages/nota/Nota";
 import ControlNotas from "./pages/control_notas/ControlNotas";
+import Noticas from "./pages/noticias/Noticas";
 
 function App() {
   const usuario = localStorage.getItem('usuario')
@@ -35,6 +36,7 @@ function App() {
             <Route path="/editor" element={<CrearNota />} />
             <Route path="/nota" element={<Nota />} />
             <Route path="/control-notas" element={<ControlNotas />} />
+            <Route path="/noticias" element={<Noticas />} />
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

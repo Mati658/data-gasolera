@@ -10,9 +10,10 @@ export default function Body() {
     useEffect(() => {
         getNotas(3).then((res:any)=>{
             SetNotas(res);
+            console.log("a")
             localStorage.setItem('listaNotas', JSON.stringify(notas))
         })
-    }, [notas]);
+    }, []);
 
   return (
         <div className="parent">

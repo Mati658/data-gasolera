@@ -16,7 +16,7 @@ export default function Plantel() {
             SetJugadores(res);
             localStorage.setItem('listaJugadores', JSON.stringify(jugadores))
         })
-    }, [jugadores]);
+    }, []);
 
     const eliminarJugador = (id: number) => {
         SetJugadores(jugadores.filter((j:Jugador) => j.id !== id));
