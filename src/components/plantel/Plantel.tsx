@@ -14,7 +14,8 @@ export default function Plantel() {
     useEffect(() => {
         getTabla('plantel', '*', -1).then((res:any)=>{
             SetJugadores(res);
-            localStorage.setItem('listaJugadores', JSON.stringify(jugadores))
+            localStorage.setItem('listaJugadores', JSON.stringify(res))
+            // console.log(localStorage.getItem('listaJugadores'))
         })
     }, []);
 

@@ -23,7 +23,12 @@ export default function NotaCaratula({nota, onEliminar}: Props) {
 
   const getImagen = () =>{
     if (nota?.texto) {   
-        setImagen(((nota?.texto.split('src="')[1]).split('"')[0]));
+        try {
+          setImagen(((nota?.texto.split('src="')[1]).split('"')[0]));
+          
+        } catch (error) {
+          console.log('No hay imagen')
+        }
     }
   }
 
