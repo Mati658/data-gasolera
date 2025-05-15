@@ -7,7 +7,7 @@ import NotaCaratula from '../../components/nota_caratula/NotaCaratula';
 export default function ControlNotas() {
     const navigate = useNavigate();
     const usuario = localStorage.getItem('usuario')
-    const { getTabla } = useDatabase()
+    const { getNotas } = useDatabase()
     const [ notas, SetNotas ] = useState([]);
 
     useEffect(()=>{
@@ -16,7 +16,7 @@ export default function ControlNotas() {
             return;
         }
 
-        getTabla('notas', '*', -1).then((res:any)=>{
+        getNotas(-1).then((res:any)=>{
             SetNotas(res);
         })
     },[])

@@ -92,7 +92,7 @@ export const DatabaseProvider = ({ children }: Props) => {
             const { data, error } = await supabase
             .from(tabla)
             .select(select)
-
+            .order('puesto', {ascending:true})
             if (data) {
                 return data;
             }

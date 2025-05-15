@@ -223,7 +223,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
                         <option value="Defensor">Defensor</option>
                         <option value="Mediocampista">Mediocampista</option>
                         <option value="Delantero">Delantero</option>
-                        <option value="Cuerpo Técnico">Cuerpo Técnico</option>
+                        <option value="AA Cuerpo Técnico">Cuerpo Técnico</option>
                     </select>
                     <span>Puesto</span>
                 </label>

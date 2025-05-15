@@ -22,26 +22,7 @@ export default function Body() {
                 <div key={item.id} className={'div'+i}> 
                     <NotaCaratula nota={item} onEliminar={()=>{}}></NotaCaratula>
                 </div>
-            ))}
-
-            {/* <div className="div2">
-                <div className="img-wrapper">
-                    <img className="img-grid" src="/Screenshot_8.png" /> 
-                    <h1 className="titulo-nota lucidity">
-                        <span className="text-effect">BRR BRR PATAPIM </span> 
-                    </h1>
-                </div>
-            </div>
-
-            <div className="div3"> 
-                <div className="img-wrapper">
-                    <img className="img-grid" src="/Screenshot_7.png" /> 
-                    <h1 className="titulo-nota lucidity">
-                        <span className="text-effect2">VACA SATURNO SATURNITA</span>
-                    </h1>
-                </div>
-            </div> */}
-            
+            ))}            
         </div>
   )
 }

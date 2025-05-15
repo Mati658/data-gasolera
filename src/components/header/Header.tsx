@@ -18,7 +18,7 @@ export default function Header() {
     const handleResize = () => {
         const width = window.innerWidth;
         setScreenWidth(width);
-        setFlagWidth(width <= 730);
+        setFlagWidth(width <= 800);
 
         if (width > 560) {
             setFlagMenu(false);
@@ -107,7 +107,7 @@ export default function Header() {
                   <button className="btn-header lucidity">Plantel</button>
                   <button className="btn-header lucidity" onClick={() => {navegar('/fixture'); toggleMenu()}}>Fixture</button>
                   <button className="btn-header lucidity">Historia</button>
-                  <button className="btn-header lucidity">+ Noticias</button>
+                  <button className="btn-header lucidity" onClick={() => {navegar('/noticas'); toggleMenu()}}>+ Noticias</button>
                   <button className="btn-header lucidity">Quienes Somos</button>
                   <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/alta-jugador'); toggleMenu()}}>Alta Jugador</button>
                   <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/editor'); toggleMenu()}}>Crear Nota</button>
@@ -126,7 +126,7 @@ export default function Header() {
               <button className="btn-header lucidity">Plantel</button>
               <button className="btn-header lucidity" onClick={() => navegar('/fixture')}>Fixture</button>
               <button className="btn-header lucidity">Historia</button>
-              <button className="btn-header lucidity">+ Noticias</button>
+              <button className="btn-header lucidity" onClick={() => {navegar('/noticias'); toggleMenu()}}>+ Noticias</button>
               <button className="btn-header lucidity">Quienes Somos</button>
               <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/alta-jugador')}>Alta Jugador</button>
               <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/editor')}>Crear Nota</button>

@@ -31,9 +31,7 @@ export default function Footer() {
           </div>
 
         </div>
-        <div className='footer-columna'>
-          
-        </div>
+
         <div className='footer-columna'>
           <div className='footer-item-column right'>
               <p className='lucidity'>© 2025</p>

@@ -27,7 +27,7 @@ export default function TablaNacional({data, titulo}: Props) {
 
         <tbody>
             {data?.map((item:any, i=0) => (
-              <tr className={`bg-fila-${flag == false ? "lg" : "dk"}`}>
+              <tr key={item.num} className={`bg-fila-${flag == false ? "lg" : "dk"}`}>
                 <td className='td-liga' key={i+=1}>{item.num}</td>
                 <td className='td-liga' key={i+=1}>{item.entity.object.name}</td>
                 <td className='td-liga' key={i+=1}>{item.values[3].value}</td>

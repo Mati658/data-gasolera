@@ -7,7 +7,7 @@ type Props = {
 
 export default function PlantelFooter({jugadores}: Props){
 
-    const keys : string[] = ['Arquero', 'Defensor', 'Mediocampista', 'Delantero', 'Cuerpo Técnico'];
+    const keys : string[] = ['Arquero', 'Defensor', 'Mediocampista', 'Delantero', 'AA Cuerpo Técnico'];
 
     const filtrar = (filtro:string)=>{
         return (jugadores.filter((item)=>item.puesto == filtro))
@@ -17,7 +17,7 @@ export default function PlantelFooter({jugadores}: Props){
     <div className='container-jugadores'>
         {keys.map((key)=>(
             <div key={key} className='container-puesto'>
-                <div><h1 className='lucidity'>{key}</h1></div>
+                <div><h1 className='lucidity'>{key == 'AA Cuerpo Técnico' ? 'Cuerpo Técnico' : key}</h1></div>
                 <div className='puestos'>
                 {filtrar(key).map((item)=>(
                         <JugadorComp key={item.id} jugador={item} onEliminar={()=>{}} onEdit={()=>{}} read={true}></JugadorComp>
