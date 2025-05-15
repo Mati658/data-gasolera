@@ -52,7 +52,7 @@ export default function NotaCaratula({nota, onEliminar}: Props) {
             state={{nota}}>
             <img className="img-grid" src={imagen} />
             <h1 className="titulo-nota lucidity">
-                <span className="text-effect2">{nota?.titulo}</span> 
+                <span className="text-effect2 caratula">{nota?.titulo}</span> 
             </h1>
         </Link>
       </div>

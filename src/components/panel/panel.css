@@ -1,3 +1,50 @@
+.container-btns-reel {
+  display: flex;
+  position: absolute;
+  transform: translate(0px, 50px);
+}
+
+.msj-error {
+  position: fixed;
+  background: #1e1e1e;
+  color: #f0f0f0;
+  border: none;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  z-index: 100000;
+}
+
+.msj-error::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.msj-error p {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.msj-error button {
+  margin: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 20px;
+  background: #2d89ef;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.msj-error button:hover {
+  background: #1c6fc2;
+}
+
 .parent-panel {
   width: 100%;
   height: 100%;

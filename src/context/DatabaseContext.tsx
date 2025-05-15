@@ -147,6 +147,7 @@ export const DatabaseProvider = ({ children }: Props) => {
     }
 
     const update = async(tabla:string, datos:any, id:number)=>{
+        console.log(datos)
         let data = (await supabase
         .from(tabla)
         .update([datos])
@@ -155,7 +156,7 @@ export const DatabaseProvider = ({ children }: Props) => {
     
         console.log(data)
     
-        if (data != null)  
+        if (data)  
           return data;
     
         return false;
