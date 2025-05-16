@@ -9,6 +9,7 @@
   max-width: 100vw;
   min-width: 100%;
   overflow-x: hidden;
+  overflow-y: hidden;
   box-sizing: border-box;
 }
 
