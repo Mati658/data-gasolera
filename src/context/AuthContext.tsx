@@ -1,9 +1,9 @@
 // src/context/AuthContext.jsx
 import { createClient } from '@supabase/supabase-js';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import { environment } from '../../env/environment.prod';
+// import { environment } from '../../env/environment.prod';
 
-const supabase = createClient(environment.SUPABASE_URL, environment.SUPABASE_KEY);
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 
 type Props = {
     children:ReactNode,

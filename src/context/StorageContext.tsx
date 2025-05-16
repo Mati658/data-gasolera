@@ -1,8 +1,8 @@
 import { createContext, ReactNode, useContext } from "react"
-import { environment } from "../../env/environment.prod";
+// import { environment } from "../../env/environment.prod";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(environment.SUPABASE_URL, environment.SUPABASE_KEY);
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 
 type Props = {
     children:ReactNode,

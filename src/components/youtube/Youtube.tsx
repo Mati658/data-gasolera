@@ -1,6 +1,6 @@
 import "./youtube.css"
 import axios from 'axios';
-import { environment } from '../../../env/environment.prod'
+// import { environment } from '../../../env/environment.prod'
 import { useEffect, useState } from 'react';
 type Props = {
     videoId : string,
@@ -13,7 +13,7 @@ export default function Youtube({videoId, playlist}: Props) {
     useEffect(() => {
         const fetchVideoTitle = async () => {
             let url : string = "";
-            url = playlist ? `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${videoId}&key=${environment.YOUTUBE_API}` : `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${environment.YOUTUBE_API}`; 
+            url = playlist ? `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${videoId}&key=${import.meta.env.VITE_YOUTUBE_API}` : `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${import.meta.env.VITE_YOUTUBE_API}`; 
 
             try {
             const response = await axios.get(url);
