@@ -107,7 +107,7 @@ export default function Header() {
                   <button className="btn-header lucidity">Plantel</button>
                   <button className="btn-header lucidity" onClick={() => {navegar('/fixture'); toggleMenu()}}>Fixture</button>
                   <button className="btn-header lucidity">Historia</button>
-                  <button className="btn-header lucidity" onClick={() => {navegar('/noticas'); toggleMenu()}}>+ Noticias</button>
+                  <button className="btn-header lucidity" onClick={() => {navegar('/noticias'); toggleMenu()}}>+ Noticias</button>
                   <button className="btn-header lucidity">Quienes Somos</button>
                   <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/alta-jugador'); toggleMenu()}}>Alta Jugador</button>
                   <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/editor'); toggleMenu()}}>Crear Nota</button>
