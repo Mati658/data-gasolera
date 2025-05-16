@@ -1,6 +1,5 @@
 import "./youtube.css"
 import axios from 'axios';
-// import { environment } from '../../../env/environment.prod'
 import { useEffect, useState } from 'react';
 type Props = {
     videoId : string,

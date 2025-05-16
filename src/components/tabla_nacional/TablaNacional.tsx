@@ -2,14 +2,12 @@ import './tablaNacional.css';
 
 type Props = {
     data:any | undefined
-    titulo : string
 }
 
-export default function TablaNacional({data, titulo}: Props) {
+export default function TablaNacional({data}: Props) {
   let flag = false
   return (
-    <div>
-      <div className='table-titulo lucidity'>{titulo}</div>
+    <div className='container-liga-scroll'>
       <table className='tabla-liga'>
         <thead>
           <tr className='bg-fila-dk'>

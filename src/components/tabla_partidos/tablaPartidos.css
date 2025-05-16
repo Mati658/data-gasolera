@@ -22,3 +22,11 @@
 .bg-fila-lg {
   background-color: var(--bg-fila-liga2);
 }
+
+.th-liga,
+.td-liga {
+  padding: 4px 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

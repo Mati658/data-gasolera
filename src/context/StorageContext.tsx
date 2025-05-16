@@ -1,9 +1,11 @@
 import { createContext, ReactNode, useContext } from "react"
-// import { environment } from "../../env/environment.prod";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
-
+// =================================================PROD==============================================
+// const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
+// ==================================================DEV==============================================
+import { environment } from '../../env/environment.prod';
+const supabase = createClient(environment.VITE_SUPABASE_URL, environment.VITE_SUPABASE_KEY);
 type Props = {
     children:ReactNode,
 }

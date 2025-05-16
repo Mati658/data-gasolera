@@ -3,13 +3,9 @@
   width: 100%;
 }
 
-.table-titulo {
-  /* background-color: antiquewhite; */
-  color: var(--text-th);
-  width: 100%;
-  height: 40px;
-  font-size: xx-large;
-  text-align: center;
+.container-liga-scroll {
+  max-height: 420px;
+  overflow-y: auto;
 }
 
 .th-liga {

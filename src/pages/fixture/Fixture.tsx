@@ -34,9 +34,11 @@ export default function Fixture() {
     <div className='filtro'></div>
       <div className='container-fix'>
         <div className='container-tables'>
-          <TablaNacional data={tablaZonaA} titulo='ZONA A'></TablaNacional>
+          <div className='table-titulo lucidity'>ZONA A</div>
+          <TablaNacional data={tablaZonaA}></TablaNacional>
           <div className='gap'></div>
-          <TablaNacional data={tablaZonaB} titulo='ZONA B'></TablaNacional>
+          <div className='table-titulo lucidity'>ZONA B</div>
+          <TablaNacional data={tablaZonaB}></TablaNacional>
           <div className='gap'></div>
         </div>
 
