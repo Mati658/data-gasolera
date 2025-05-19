@@ -6,8 +6,8 @@
 }
 
 .footer {
-  position: absolute;
-  bottom: -210px;
+  position: relative;
+  bottom: 0;
   display: flex;
   width: 100%;
   min-height: 200px;
@@ -70,4 +70,51 @@
 
 .no-margin {
   margin: 0;
+}
+
+@media (max-width: 850px) {
+  .logo-footer {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    z-index: 10;
+  }
+
+  .footer {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    min-height: 350px;
+    background-color: var(--header-color-lt);
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .container-footer {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    z-index: 10;
+  }
+
+  .footer-columna {
+    /* text-align: center; */
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    z-index: 10;
+
+    p {
+      margin-left: 10px;
+    }
+  }
+
+  .dev {
+    background-color: white;
+    border-radius: 50px;
+    padding: 10px;
+    text-align: center;
+  }
 }

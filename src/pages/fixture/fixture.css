@@ -24,9 +24,10 @@
   justify-self: center;
   justify-content: center;
   width: 95%;
-  margin-top: 8%;
+  margin-top: 15vh;
   gap: 10%;
   z-index: 10;
+  min-height: 100vh;
 }
 
 @media (max-width: 1070px) {
