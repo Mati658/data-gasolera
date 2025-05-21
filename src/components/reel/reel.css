@@ -1,9 +1,24 @@
 .video-reel {
+  display: flex;
   width: 100%;
-  height: 470px;
+  height: 100%;
+}
+
+.prueba {
+  height: 84%;
+}
+
+.pintado {
+  position: absolute;
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 54px;
 }
 
 @media (min-width: 1200px) {
+  .prueba {
+    height: 84%;
+  }
   .video-reel {
     width: 100%;
     height: 100%;
@@ -14,5 +29,8 @@
   .video-reel {
     width: 100%;
     height: 100%;
+  }
+  .prueba {
+    max-height: 94%;
   }
 }

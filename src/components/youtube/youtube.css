@@ -1,18 +1,32 @@
+.container-youtube {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 .video {
   width: 100%;
-  height: 90%;
+  height: 100%;
 }
+
+/* @media (max-width: 510px) {
+  .video {
+    width: 100%;
+    height: 40%;
+  }
+} */
 
 @media (min-width: 1200px) {
   .video {
     width: 100%;
-    height: 80%;
+    height: 100%;
   }
 }
 
 .titulo-video {
   color: var(--text-color-videos);
-  margin-top: -20px;
+  margin-top: -74px;
   width: 100%;
   word-wrap: break-word;
   padding: 5px;

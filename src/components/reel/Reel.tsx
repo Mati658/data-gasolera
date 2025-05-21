@@ -19,11 +19,15 @@ export default function Reel({link}:Props) {
     
     return (
         <>
-            <blockquote
+            <div className='pintado'></div>
+            <div className='prueba'>
+                <blockquote
+                
                 className="instagram-media video-reel"
                 data-instgrm-permalink={link}
                 data-instgrm-version="14"
-            ></blockquote>
+                ></blockquote>
+            </div>
         </>
     );
 }

@@ -36,16 +36,22 @@ export default function Panel() {
     }
 
     return (
-        <div className="parent-panel">
+        <div className="container-panel">
+            <div className='gap'></div>
             <div className="panel-div1">
-                <Youtube videoId='PLDg6alCCoFu4z6NSkhhrwWxHgJHPLtOao' playlist={true}></Youtube>
+                <div style={{width:'100%', height:'100%'}}>
+                    <div className={'righteous-regular titulo-video'}>
+                        <h2>Streams Entrevistas</h2>
+                    </div>
+                    <Youtube videoId='PLDg6alCCoFu4z6NSkhhrwWxHgJHPLtOao' playlist={true}></Youtube>
+                </div>
+                    <Twitch url='https://player.twitch.tv/?video=2366292630&parent=data-gasolera.netlify.app&autoplay=false'></Twitch>  
+                    {/* <div style={{width:'100%', height:'100%'}}>
+                    </div> */}
             </div>
-            <div className="panel-div2">
-                <Twitch url='https://player.twitch.tv/?video=2366292630&parent=data-gasolera.netlify.app&autoplay=false'></Twitch>  
-            </div>
-
+            
             {urls ? (
-                <>
+                <div className='parent-panel'>
                     <div className="panel-div3">
                         {usuario ? (
                             <div className='container-btns-reel'>
@@ -70,7 +76,7 @@ export default function Panel() {
                         ) : ( <></> )}
                         <Reel link={urls[2] ? `https://www.instagram.com/reel/${urls[2].url}/` : 'https://www.instagram.com/reel/DJkQ8Obyynn/'}></Reel>
                     </div> 
-                </>
+                </div>
             ) : (<></>)}
             <dialog ref={dialogRef} className='msj-error'>
                 <label >ID del Reel. ¡¡LINK NO!!</label><br />
