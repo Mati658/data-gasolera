@@ -1,5 +1,5 @@
 .parent-plantel {
-  width: 100%;
+  min-width: 100vh;
   height: 100%;
   padding: 20px 0px 20px 0px;
   display: flex;

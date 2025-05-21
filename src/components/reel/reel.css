@@ -1,29 +1,24 @@
 .video-reel {
-  display: flex;
   width: 100%;
   height: 100%;
 }
 
-.prueba {
-  height: 84%;
-}
-
-.pintado {
+/* .pintado {
   position: absolute;
   background-color: var(--bg-color);
   width: 100%;
   height: 54px;
-}
+} */
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .prueba {
-    height: 84%;
+    height: 100%;
   }
   .video-reel {
     width: 100%;
     height: 100%;
   }
-}
+} */
 
 @media (max-width: 1030px) {
   .video-reel {

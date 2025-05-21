@@ -21,7 +21,7 @@
 
 .titulo-nota {
   position: absolute;
-  max-width: 60%;
+  max-width: 36vh;
   top: 40%;
   left: 0;
   display: inline-block;
