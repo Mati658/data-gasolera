@@ -28,7 +28,7 @@
 
 .container-header {
   /* left: 2%; */
-  width: 100%;
+  width: fit-content;
   display: flex;
   position: relative;
   padding-inline-start: 1.5%;

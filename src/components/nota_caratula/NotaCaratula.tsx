@@ -45,7 +45,7 @@ export default function NotaCaratula({nota, onEliminar}: Props) {
 
   if (location.pathname == '/') {
     return (
-      <div className='img-wrapper'>       
+      <div className='img-wrapper-nota'>       
         <Link 
             key={nota?.id} 
             to={`/nota/${nota?.id}/${nota?.titulo}`} 

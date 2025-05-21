@@ -21,8 +21,8 @@
 
 .titulo-nota {
   position: absolute;
-  max-width: 90%;
-  top: 50%;
+  max-width: 60%;
+  top: 40%;
   left: 0;
   display: inline-block;
   color: var(--text-color);
@@ -51,6 +51,7 @@
 .text-effect2 {
   background-color: #24bcec;
   padding: 2px 6px;
+  font-size: 1.5rem;
   border-end-end-radius: 0.2rem;
   border-top-right-radius: 0.5rem;
 }
