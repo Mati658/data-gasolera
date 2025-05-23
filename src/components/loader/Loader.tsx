@@ -10,7 +10,7 @@ export default function Loader() {
     return (
       <div className={flagLoader ? 'loader-home background-loader' : 'hidden'}>
           <div className='conatiner-loader'>
-              <img src="/icon.png" className="img-loader" />
+              <img src="/loader.png" className="img-loader" />
               <p className='pulse-loader'></p>
           </div>
       </div>
@@ -19,7 +19,7 @@ export default function Loader() {
   return (
     <div className={flagLoader ? 'loader' : 'hidden'}>
         <div className='conatiner-loader'>
-            <img src="/icon.png" className="img-loader" />
+            <img src="/loader.png" className="img-loader" />
             <p className='pulse-loader'></p>
         </div>
     </div>
