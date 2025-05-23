@@ -10,6 +10,7 @@ export class Jugador {
   peso: string;
   nacionalidad: string;
   imagen: string;
+  datos: {};
 
   constructor(
     nombre: string,
@@ -20,7 +21,8 @@ export class Jugador {
     altura: string,
     peso: string,
     nacionalidad: string,
-    imagen: string
+    imagen: string,
+    datos: {}
   ) {
     this.nombre = nombre;
     this.apellido = apellido;
@@ -32,6 +34,7 @@ export class Jugador {
     this.peso = peso;
     this.nacionalidad = nacionalidad;
     this.imagen = imagen;
+    this.datos = datos;
   }
 
   CalcularEdad() {
@@ -72,6 +75,7 @@ export class Jugador {
       peso: this.peso,
       nacionalidad: this.nacionalidad,
       imagen: this.imagen,
+      datos: this.datos,
     };
   }
 }

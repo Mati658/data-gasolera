@@ -2,14 +2,20 @@ import { Fragment, useEffect, useState } from 'react';
 import './noticias.css';
 import { useDatabase } from '../../context/DatabaseContext';
 import NotaCaratula from '../../components/nota_caratula/NotaCaratula';
+import { useLoader } from '../../context/LoaderContext';
 
 export default function Noticas() {
     const { getNotas } = useDatabase()
+    const { setLoader } = useLoader();
     const [ notas, SetNotas ] = useState([]);
 
     useEffect(()=>{
+        setLoader(true)
+
         getNotas(-1).then((res:any)=>{
+            setLoader(false)
             SetNotas(res);
+
         })
     },[])
 

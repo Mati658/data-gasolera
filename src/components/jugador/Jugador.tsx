@@ -4,6 +4,7 @@ import { useStorage } from '../../context/StorageContext';
 import BtnIcon from '../btn_icon/BtnIcon';
 import './jugador.css';
 import { useEffect, useState } from 'react';
+import { useLoader } from '../../context/LoaderContext';
 
 type Props = {
     jugador : any,
@@ -16,6 +17,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
 
   const location = useLocation();
   const [locationAnterior] = useState(location)
+  const { setLoader } = useLoader();
   const { bajaDB } = useDatabase()
   const { deleteFoto } = useStorage()
   const usuario : string | null = localStorage.getItem('usuario')
@@ -29,6 +31,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
 
   useEffect(()=>{
     if (locationAnterior != location) {
+      setLoader(true);
       window.location.reload();
       window.scrollTo(0, 0);
     }
@@ -48,7 +51,27 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
             key={jugador.id} 
             to={`/perfil/${jugador.nombre}-${jugador.apellido}`} 
             state={{jugador}}>
+            {jugador.puesto != 'AA Cuerpo Técnico' && (
+              <div className='background-datos'>
+                <div className='container-datos slide-in-left'>
+                  <label className='label-datos'>
+                    <h1 className='lucidity'>{jugador.datos.dato1}</h1>
+                    <span className='lucidity'>{jugador.puesto == 'Arquero' ? 'Atajadas' : 'Goles'}</span>
+                  </label>
+                  <label className='label-datos'>
+                    <h1 className='lucidity'>{jugador.datos.dato2}</h1>
+                    <span className='lucidity'>{jugador.puesto == 'Arquero' ? 'Arcos en Cero' : 'Asistencias'}</span>
+                  </label>
+                  <label className='label-datos'>
+                    <h1 className='lucidity'>{jugador.datos.dato3}</h1>
+                    <span className='lucidity'>Partidos Jugados</span>
+                  </label>
+                </div>
+              </div>
+            )}
             <img src={jugador.imagen} className='img-jugador' />
+
+
   
             {/* <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
               <div className='numero-jugador'>
@@ -62,6 +85,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
       </div>
     )
   }
+
   if (read) {
     return (
       <div className='card-jugador' style={{minHeight:'250px', maxHeight:'250px', minWidth:'150px', maxWidth:'150px'}}>
@@ -70,7 +94,26 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
             key={jugador.id} 
             to={`/perfil/${jugador.nombre}-${jugador.apellido}`} 
             state={{jugador}}>
+            {jugador.puesto != 'AA Cuerpo Técnico' && (
+              <div className='background-datos2'>
+                <div className='container-datos2 slide-in-left'>
+                  <label className='label-datos2'>
+                    <h1 className='lucidity'>{jugador.datos.dato1}</h1>
+                    <span className='lucidity'>{jugador.puesto == 'Arquero' ? 'Atajadas' : 'Goles'}</span>
+                  </label>
+                  <label className='label-datos2'>
+                    <h1 className='lucidity'>{jugador.datos.dato2}</h1>
+                    <span className='lucidity'>{jugador.puesto == 'Arquero' ? 'Arcos en Cero' : 'Asistencias'}</span>
+                  </label>
+                  <label className='label-datos2'>
+                    <h1 className='lucidity'>{jugador.datos.dato3}</h1>
+                    <span className='lucidity'>Partidos Jugados</span>
+                  </label>
+                </div>
+              </div>
+            )}
             <img src={jugador.imagen} className='img-jugador'  style={{height:'180px'}}/>
+
   
             {/* <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
             <div className='numero-jugador' style={{transform: 'translate(-5px, -54px)'}}>
@@ -85,7 +128,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
     )
   }
   return (
-    <div className='card-jugador2' style={{minHeight:'550px', maxHeight:'550px', minWidth:'400px', maxWidth:'400px'}}>
+    <div className='card-jugador2' style={{minHeight:'100%', maxHeight:'100%', minWidth:'100%', maxWidth:'100%'}}>
       {usuario ? (
         <div className='container-btns'>
           <div onClick={onEdit}> <BtnIcon icon='edit'/> </div>

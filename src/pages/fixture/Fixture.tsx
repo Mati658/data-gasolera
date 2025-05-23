@@ -1,11 +1,14 @@
 import TablaNacional from '../../components/tabla_nacional/TablaNacional';
 import TablaPartidos from '../../components/tabla_partidos/TablaPartidos';
 import { useDatabase } from '../../context/DatabaseContext';
+import { useLoader } from '../../context/LoaderContext';
 import './fixture.css';
 import { useEffect, useState } from 'react';
 
 export default function Fixture() {
     const {getData} = useDatabase()
+    const { setLoader } = useLoader();
+
     const [tablaZonaA, setZonaA] = useState<any[]>([])
     const [tablaZonaB, setZonaB] = useState<any[]>([])
     const [tablaResultados, setResultados] = useState<any[]>([])
@@ -18,13 +21,18 @@ export default function Fixture() {
     },[])
 
     const getTabla = async (columna:string) =>{
+      setLoader(true)
       const data : any = await getData(columna)
+      setLoader(false)
       setZonaA(data[0].tabla_nacional.zona_a)        
-      setZonaB(data[0].tabla_nacional.zona_b)        
+      setZonaB(data[0].tabla_nacional.zona_b)      
+        
     }
 
     const getPartidos = async (columna:string) =>{
+      setLoader(true)
       const data : any = await getData(columna)
+      setLoader(false)
       setPartidos(data[0].partidos.prox_partidos)        
       setResultados(data[0].partidos.resultados)        
     }

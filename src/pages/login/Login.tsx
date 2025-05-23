@@ -2,6 +2,7 @@ import './login.css'
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
+import { useLoader } from '../../context/LoaderContext';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -9,6 +10,8 @@ export default function Login() {
     const [mensaje, setMensaje] = useState('');
 
     const { login } = useAuth();
+    const { setLoader } = useLoader();
+
     const usuario = localStorage.getItem('usuario')
 
     const navigate = useNavigate();
@@ -27,13 +30,16 @@ export default function Login() {
     const loguear = async(e: React.FormEvent) => {
         e.preventDefault();
         if (!usuario ) {
+            setLoader(true)
             console.log("===logeandose===");
             let flag = await login(email, password);
             if (!flag) {
                 setMensaje('Mail o Contraseña incorrectos');
                 abrirModal();
+                setLoader(false)
                 return;
             }
+            setLoader(false)
             navigate('/');
 
         }

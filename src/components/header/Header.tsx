@@ -104,7 +104,7 @@ export default function Header() {
                 </div>
 
                 <div className="menu" id="menu">
-                  <button className="btn-header lucidity">Plantel</button>
+                  <button className="btn-header lucidity" onClick={() => {navegar('/plantel'); toggleMenu()}}>Plantel</button>
                   <button className="btn-header lucidity" onClick={() => {navegar('/fixture'); toggleMenu()}}>Fixture</button>
                   <button className="btn-header lucidity">Historia</button>
                   <button className="btn-header lucidity" onClick={() => {navegar('/noticias'); toggleMenu()}}>Más Noticias</button>
@@ -123,10 +123,10 @@ export default function Header() {
                     <span className="slider"></span>
                 </label>
               </div>
-              <button className="btn-header lucidity">Plantel</button>
+              <button className="btn-header lucidity" onClick={() => navegar('/plantel')}>Plantel</button>
               <button className="btn-header lucidity" onClick={() => navegar('/fixture')}>Fixture</button>
               <button className="btn-header lucidity">Historia</button>
-              <button className="btn-header lucidity" onClick={() => {navegar('/noticias'); toggleMenu()}}>Más Noticias</button>
+              <button className="btn-header lucidity" onClick={() => {navegar('/noticias')}}>Más Noticias</button>
               <button className="btn-header lucidity">Quienes Somos</button>
               <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/alta-jugador')}>Alta Jugador</button>
               <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/editor')}>Crear Nota</button>

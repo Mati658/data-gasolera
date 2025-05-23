@@ -6,7 +6,6 @@ type Props = {
 }
 
 export default function TablaPartidos({data, columna}: Props) {
-    console.log(data)
     let flag = false
     return (
         <div className='container-table-scroll scroll-1'>

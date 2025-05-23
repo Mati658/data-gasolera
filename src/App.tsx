@@ -11,6 +11,10 @@ import Perfil from "./pages/perfil/Perfil";
 import Nota from "./pages/nota/Nota";
 import ControlNotas from "./pages/control_notas/ControlNotas";
 import Noticas from "./pages/noticias/Noticas";
+import PlantelPage from "./pages/plantel/PlantelPage";
+import Loader from "./components/loader/Loader";
+// import LoaderInit from "./components/loader_init/LoaderInit";
+// import { useLoader } from "./context/LoaderContext";
 
 function App() {
   const usuario = localStorage.getItem('usuario')
@@ -22,8 +26,10 @@ function App() {
   return (
     <>
     <div className="app">
-      <Suspense fallback={<div>Cargando...</div>}>
+      {/* <LoaderInit></LoaderInit> */}
+      <Suspense fallback={<></>}>
         <Router>
+          <Loader></Loader>
           <Header/>
           <KeyComboListener />
           <Routes>
@@ -37,6 +43,7 @@ function App() {
             <Route path="/nota" element={<Nota />} />
             <Route path="/control-notas" element={<ControlNotas />} />
             <Route path="/noticias" element={<Noticas />} />
+            <Route path="/plantel" element={<PlantelPage />} />
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

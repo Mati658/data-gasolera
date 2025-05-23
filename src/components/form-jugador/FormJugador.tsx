@@ -3,6 +3,7 @@ import './formJugador.css'
 import { Jugador } from '../../classes/Jugador';
 import { useStorage } from '../../context/StorageContext';
 import { useDatabase } from '../../context/DatabaseContext';
+import { useLoader } from '../../context/LoaderContext';
 
 type Props = {
     jugadorEdit:any | null;
@@ -14,6 +15,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     // console.log(jugadorEdit)
     const { uploadFoto } = useStorage()
     const { altaDB, update } = useDatabase()
+    const { setLoader } = useLoader();
 
     const [flagModal, SetFlagModal] = useState(false)
     const [flagImagenEdit, SetFlagImagenEdit] = useState(false)
@@ -32,6 +34,9 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     const [lugarNacimiento, SetLugarNacimiento] = useState(jugadorEdit != null ? jugadorEdit.lugarNacimiento : '')
     const [altura, SetAltura] = useState(jugadorEdit != null ? jugadorEdit.altura : '')
     const [peso, SetPeso] = useState(jugadorEdit != null ? jugadorEdit.peso.split(" ")[0] : '')
+    const [dato1, SetDato1] = useState(jugadorEdit != null ? jugadorEdit.datos['dato1'] : '')
+    const [dato2, SetDato2] = useState(jugadorEdit != null ? jugadorEdit.datos['dato2'] : '')
+    const [dato3, SetDato3] = useState(jugadorEdit != null ? jugadorEdit.datos['dato3'] : '')
 
 
     const obtenerImagen = ($event : any) => {
@@ -54,10 +59,17 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     }
 
     const verificar = () =>{
+        setLoader(true)
         if (imagen != "" && (
             nombre && apellido && puesto != 0 && nacimiento && nacionalidad && lugarNacimiento && altura && peso)) {
+                if (puesto != 'AA Cuerpo Técnico') {
+                    if (dato1 && dato2 && dato3) {
+                        return jugadorEdit != null ? updateJugador() : crearJugador()
+                    }
+                }
             return jugadorEdit != null ? updateJugador() : crearJugador()
         }
+        setLoader(false)
         SetClaseMOdal('warning')
         setSvgModal(<svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
             <path
@@ -79,9 +91,17 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     const crearJugador = async() =>{
         let url : string | false = await uploadFoto(imagen, nombre+apellido);
         if (url) {
-            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura} Mts`, `${peso} Kgs`, nacionalidad, url)
+
+            const datos = {
+                dato1:dato1,
+                dato2:dato2,
+                dato3:dato3,
+            }
+
+            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura} Mts`, `${peso} Kgs`, nacionalidad, url, datos)
             
             if(await altaDB('plantel', jugador.toJson())){
+                setLoader(false)
                 limpiar();
                 SetMensaje('¡Jugador Agregado!')
                 SetClaseMOdal('success')
@@ -99,6 +119,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
                     SetFlagModal(false)
                 }, 3100);
             }
+            setLoader(false)
             limpiar();
             SetClaseMOdal('error')
             setSvgModal(<svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
@@ -121,12 +142,19 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     const updateJugador = async() =>{
         let url : string | false = imagenURL
         if (flagImagenEdit) {
+            setLoader(true)
             url = await uploadFoto(imagen, nombre+apellido);
         }
         if (url) {
-            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura}`, `${peso} Kgs`, nacionalidad, url)
+            const datos = {
+                dato1:dato1,
+                dato2:dato2,
+                dato3:dato3,
+            }
+            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura}`, `${peso} Kgs`, nacionalidad, url,datos)
             
             if(await update('plantel', jugador.toJson(), jugadorEdit.id)){
+                setLoader(false)
                 limpiar();
                 SetMensaje('¡Jugador Modificado!')
                 SetClaseMOdal('success')
@@ -147,6 +175,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
                 onSubmit();
                 return;
             }
+            setLoader(false)
             limpiar();
             SetClaseMOdal('error')
             setSvgModal(<svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
@@ -166,6 +195,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
             onSubmit();
             return;
         }   
+        setLoader(false)
     }
 
     const limpiar = () =>{
@@ -184,7 +214,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     }
 
   return (
-    <div>   
+    <div>  
         {flagModal ? ( 
             <div className='modal'>
                 <ul className="notification-container">
@@ -245,15 +275,32 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
             </div> 
 
             <div className="flex-alta">
-            <label>
-                <input value={altura} className="input-alta" type="text" placeholder='' required onChange={(e) => SetAltura(e.target.value)} />
-                <span>Altura</span>
-            </label>
-            <label>
-                <input value={peso} className="input-alta" type="number"  placeholder='' required onChange={(e) => SetPeso(e.target.value)} />
-                <span>Peso</span>
-            </label>
+                <label>
+                    <input value={altura} className="input-alta" type="text" placeholder='' required onChange={(e) => SetAltura(e.target.value)} />
+                    <span>Altura</span>
+                </label>
+                <label>
+                    <input value={peso} className="input-alta" type="number"  placeholder='' required onChange={(e) => SetPeso(e.target.value)} />
+                    <span>Peso</span>
+                </label>
             </div> 
+
+            {puesto != 'AA Cuerpo Técnico' ? (
+                <div className="flex-alta">
+                    <label>
+                        <input value={dato1} className="input-alta" type="text" placeholder='' required onChange={(e) => SetDato1(e.target.value)} />
+                        <span>{puesto == 'Arquero' ? 'Atajadas' : 'Goles'}</span>
+                    </label>
+                    <label>
+                        <input value={dato2} className="input-alta" type="number"  placeholder='' required onChange={(e) => SetDato2(e.target.value)} />
+                        <span>{puesto == 'Arquero' ? 'Arcos en Cero' : 'Asistencias'}</span>
+                    </label>
+                    <label>
+                        <input value={dato3} className="input-alta" type="number"  placeholder='' required onChange={(e) => SetDato3(e.target.value)} />
+                        <span>Partidos Jugados</span>
+                    </label>
+                </div> 
+            ) : (<></>)}
 
             <label htmlFor="file" className="custum-file-upload">
                 <div >

@@ -3,6 +3,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useEffect, useRef, useState } from 'react';
 import { useDatabase } from '../../context/DatabaseContext';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useLoader } from '../../context/LoaderContext';
 
 export default function CrearNota() {
   const intervalRef = useRef<any>(null);
@@ -12,6 +13,7 @@ export default function CrearNota() {
   const usuario = localStorage.getItem('usuario')
   const editorRef:any = useRef(null);
   const { altaDB, update } = useDatabase()
+  const { setLoader } = useLoader();
   const [flagVistPrevia, setFlagVistaPrevia] = useState(true)
   const [nota, setNota] = useState<any>(localStorage.getItem('nota') != null ? localStorage.getItem('nota') : localStorage.getItem('notaBackUp'));
 // console.log(notaEditar)
@@ -54,6 +56,9 @@ export default function CrearNota() {
           initialValue={notaEditar ? notaEditar.texto : nota}
           init={{
             skin: (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'oxide-dark' : 'oxide'),
+            selector: '#editor',
+            browser_spellcheck: true,
+            contextmenu: 'link image inserttable | cell row column deletetable',
             height:'100%',
             menubar: false,
             branding: false,
@@ -165,18 +170,21 @@ export default function CrearNota() {
                       };
                       // console.log(notaJson)
                       if (notaEditar) {
+                        setLoader(true)
                         if (await update('notas', notaJson, notaEditar.id)) {
                           localStorage.removeItem('nota');
                           localStorage.removeItem('notaBackUp');
                         }
+                        setLoader(false)
                         res.close();
                         return;
                       }
                       if (await altaDB('notas', notaJson)) {
+                        setLoader(true)
                         localStorage.removeItem('nota');
                         localStorage.removeItem('notaBackUp');
                       }
-
+                      setLoader(false)
                       res.close();
                     }
                   });

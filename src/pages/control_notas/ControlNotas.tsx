@@ -3,21 +3,26 @@ import './controlNotas.css'
 import { useNavigate } from 'react-router-dom';
 import { useDatabase } from '../../context/DatabaseContext';
 import NotaCaratula from '../../components/nota_caratula/NotaCaratula';
+import { useLoader } from '../../context/LoaderContext';
 
 export default function ControlNotas() {
     const navigate = useNavigate();
     const usuario = localStorage.getItem('usuario')
     const { getNotas } = useDatabase()
     const [ notas, SetNotas ] = useState([]);
+    const { setLoader } = useLoader();
 
     useEffect(()=>{
         if (!usuario) {
             navigate('/');
             return;
         }
+        setLoader(true)
 
         getNotas(-1).then((res:any)=>{
+            setLoader(false)
             SetNotas(res);
+
         })
     },[])
 

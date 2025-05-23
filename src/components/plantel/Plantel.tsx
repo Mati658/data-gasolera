@@ -4,15 +4,20 @@ import JugadorComp from '../jugador/Jugador';
 import './plantel.css';
 import { Jugador } from '../../classes/Jugador';
 import FormJugador from '../form-jugador/FormJugador';
+// import { useLoader } from '../../context/LoaderContext';
 
 export default function Plantel() {
 
     const { getTabla } = useDatabase()
+    // const { setLoader } = useLoader();
     const [ jugadores, SetJugadores ] = useState([]);
     const [ jugador, setJugador ] = useState<Jugador | null>(null);
 
     useEffect(() => {
+        // setLoader(true)
+
         getTabla('plantel', '*', -1).then((res:any)=>{
+            // setLoader(false)
             SetJugadores(res);
             localStorage.setItem('listaJugadores', JSON.stringify(res))
             // console.log(localStorage.getItem('listaJugadores'))

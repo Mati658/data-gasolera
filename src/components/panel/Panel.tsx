@@ -5,9 +5,11 @@ import Twitch from '../twitch/Twitch'
 import Youtube from '../youtube/Youtube'
 import './panel.css'
 import BtnIcon from '../btn_icon/BtnIcon'
+import { useLoader } from '../../context/LoaderContext'
 
 export default function Panel() {
     const {getTabla, update} = useDatabase();
+    const { setLoader } = useLoader();
     const [urls, setUrls] = useState<any>();
     const [url, setUrl] = useState<any>('');
     const [urlNueva, setUrlNueva] = useState('');
@@ -15,7 +17,9 @@ export default function Panel() {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(()=>{
+        // setLoader(true)
         getTabla('links', '*', 3).then((res:any)=>{
+            // setLoader(false)            
             setUrls(res)
         })
     },[])
@@ -29,8 +33,11 @@ export default function Panel() {
     };
 
     const updateUrl=async (link:string)=>{
-        await update('links', {url:link}, url.id);
+        setLoader(true)
 
+        await update('links', {url:link}, url.id);
+        
+        setLoader(false)
         cerrarModal();
         setUrlNueva('')
     }

@@ -5,10 +5,12 @@ import JugadorComp from '../../components/jugador/Jugador';
 import FormJugador from '../../components/form-jugador/FormJugador';
 import { Jugador } from '../../classes/Jugador';
 import PlantelFooter from '../../components/plantel_footer/PlantelFooter';
+import { useLoader } from '../../context/LoaderContext';
 
 export default function Perfil() {
 
     const location = useLocation();
+    const { setLoader } = useLoader();
     const [jugadores, setJugadores] = useState([])
     const [jugador, setJugador] = useState(location.state.jugador || {})
     const keys : string[] = ['puesto', 'nacimiento', 'edad', 'lugarNacimiento', 'altura', 'peso', 'nacionalidad'];
@@ -20,6 +22,7 @@ export default function Perfil() {
             setJugadores(JSON.parse(temp))
             console.log(JSON.parse(temp))
         }
+        setLoader(false);
         window.scrollTo(0, 0);
     },[])
 
@@ -30,12 +33,6 @@ export default function Perfil() {
             setJugador(jugadorEdit)
         }
     }
-
-    useEffect(()=>{
-
-    },[jugador])
-
-
 
     return (
         <div className='container-perfil'>
@@ -66,6 +63,24 @@ export default function Perfil() {
                             <p className='lucidity' style={{fontSize:'1.7rem'}}>{jugador[item] == 'AA Cuerpo Técnico'? 'Cuerpo Técnico' : jugador[item]}</p>
                         </div>
                     ))}
+                </div>
+                
+
+            </div>
+            <div className='container-perfil-datos'>
+                <div className='perfil-item'>
+                    <p className='lucidity' style={{color:'white'}}>{jugador.puesto != 'AA Cuerpo Técnico' ? (jugador.puesto == 'Arquero' ? 'Atajadas' : 'Goles') : ''}</p>
+                    <p className='lucidity' style={{fontSize:'1.7rem'}}>{jugador.puesto != 'AA Cuerpo Técnico' ? jugador.datos.dato1 : ''}</p>
+                </div>
+
+                <div className='perfil-item'>
+                    <p className='lucidity' style={{color:'white'}}>{jugador.puesto != 'AA Cuerpo Técnico' ? (jugador.puesto == 'Arquero' ? 'Arcos en Cero' : 'Asistencias') : ''}</p>
+                    <p className='lucidity' style={{fontSize:'1.7rem'}}>{jugador.puesto != 'AA Cuerpo Técnico' ? jugador.datos.dato2 : ''}</p>
+                </div>
+
+                <div className='perfil-item'>
+                    <p className='lucidity' style={{color:'white'}}>{jugador.puesto != 'AA Cuerpo Técnico' ? 'Partidos Jugados' : ''}</p>
+                    <p className='lucidity' style={{fontSize:'1.7rem'}}>{jugador.puesto != 'AA Cuerpo Técnico' ? jugador.datos.dato3 : ''}</p>
                 </div>
 
             </div>

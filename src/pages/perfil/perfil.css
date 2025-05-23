@@ -1,9 +1,20 @@
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
+  /* margin: 0 auto; */
+}
+
 .container-perfil {
   display: flex;
   flex-direction: column;
   justify-self: center;
   width: 95%;
-  margin-top: 100px;
+  margin-top: 15vh;
+  min-height: 100vh;
 
   h1 {
     color: var(--text-th);
@@ -13,6 +24,22 @@
 .jugador-perfil {
   display: flex;
   flex-direction: row;
+}
+
+.container-perfil-datos {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .jugador-perfil {
+    flex-direction: column;
+  }
+
+  .container-perfil-datos {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .form-edit-perfil {
