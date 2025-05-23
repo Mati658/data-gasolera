@@ -1,5 +1,6 @@
 .card-jugador,
 .card-jugador2 {
+  position: relative;
   min-height: 370px;
   min-width: 220px;
   max-height: 370px;
