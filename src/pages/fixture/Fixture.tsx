@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 export default function Fixture() {
     const {getData} = useDatabase()
-    const { setLoader } = useLoader();
+    const { setLoader, getLoader } = useLoader();
 
     const [tablaZonaA, setZonaA] = useState<any[]>([])
     const [tablaZonaB, setZonaB] = useState<any[]>([])
@@ -16,51 +16,55 @@ export default function Fixture() {
 
     
     useEffect(()=>{  
-      getTabla('tabla_nacional')
+      getTabla('tabla_nacional', 'imagenes')
       getPartidos('partidos')
     },[])
 
-    const getTabla = async (columna:string) =>{
+    const getTabla = async (columna:string, columna2:string) =>{
       setLoader(true)
       const data : any = await getData(columna)
-      setLoader(false)
-      setZonaA(data[0].tabla_nacional.zona_a)        
-      setZonaB(data[0].tabla_nacional.zona_b)      
-        
+      const imagenes : any = await getData(columna2)
+      console.log(imagenes)
+      let zona_a = [data[0].tabla_nacional.zona_a, [imagenes[0].imagenes.zona_a]]
+      let zona_b = [data[0].tabla_nacional.zona_b, [imagenes[0].imagenes.zona_b]]
+      setZonaA(zona_a)        
+      setZonaB(zona_b)              
     }
 
     const getPartidos = async (columna:string) =>{
-      setLoader(true)
       const data : any = await getData(columna)
-      setLoader(false)
       setPartidos(data[0].partidos.prox_partidos)        
-      setResultados(data[0].partidos.resultados)        
+      setResultados(data[0].partidos.resultados)  
+      setLoader(false)
     }
+
   return (
     <>
     <div className='fondo-img'></div>
     <div className='filtro'></div>
-      <div className='container-fix'>
-        <div className='container-tables'>
-          <div className='table-titulo lucidity'>ZONA A</div>
-          <TablaNacional data={tablaZonaA}></TablaNacional>
-          <div className='gap'></div>
-          <div className='table-titulo lucidity'>ZONA B</div>
-          <TablaNacional data={tablaZonaB}></TablaNacional>
-          <div className='gap'></div>
-        </div>
+        <div className='container-fix'>
 
-        <div className='container-tables'>
-          <div className='table-titulo lucidity'>PRÓXIMOS PARTIDOS</div>
-          <TablaPartidos data={tablaPartidos} columna='Hora'></TablaPartidos>
-          <div className='gap'></div>
-          <div className='table-titulo lucidity'>RESULTADOS</div>
-          <TablaPartidos data={tablaResultados} columna='Res'></TablaPartidos>
-          <div className='gap'></div>
+          {!getLoader() && (
+            <>
+              <div className='container-tables'>
+                <div className='table-titulo lucidity'>ZONA A</div>
+                <TablaNacional data={tablaZonaA}></TablaNacional>
+                <div className='gap'></div>
+                <div className='table-titulo lucidity'>ZONA B</div>
+                <TablaNacional data={tablaZonaB}></TablaNacional>
+                <div className='gap'></div>
+              </div>
+              <div className='container-tables'>
+                <div className='table-titulo lucidity'>PRÓXIMOS PARTIDOS</div>
+                <TablaPartidos data={tablaPartidos} columna='Hora'></TablaPartidos>
+                <div className='gap'></div>
+                <div className='table-titulo lucidity'>RESULTADOS</div>
+                <TablaPartidos data={tablaResultados} columna='Res'></TablaPartidos>
+                <div className='gap'></div>
+              </div>
+            </>
+          )}
         </div>
-        
-
-      </div>
     </>
 
   )

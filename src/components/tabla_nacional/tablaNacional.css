@@ -3,9 +3,14 @@
   width: 100%;
 }
 
+.img-table-equipo {
+  width: 16px;
+  height: 16px;
+}
+
 .container-liga-scroll {
-  max-height: 420px;
-  overflow-y: auto;
+  max-height: 530px;
+  overflow-y: hidden;
 }
 
 .th-liga {
@@ -14,6 +19,11 @@
 
 .td-liga {
   text-align: center;
+}
+
+.td-liga-e {
+  padding-left: 10px;
+  text-align: left;
 }
 
 .bg-fila-dk {

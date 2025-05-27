@@ -30,7 +30,7 @@ export default function PlantelPage() {
         <div className='container-plantel-page'>
             <PlantelFooter jugadores={jugadores}></PlantelFooter>
 
-            
+            <div className='gap'></div>
             {/* <Loader></Loader> */}
 
         </div>

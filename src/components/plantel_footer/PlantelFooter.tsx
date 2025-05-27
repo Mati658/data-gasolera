@@ -7,7 +7,7 @@ type Props = {
 
 export default function PlantelFooter({jugadores}: Props){
 
-    const keys : string[] = ['Arquero', 'Defensor', 'Mediocampista', 'Delantero', 'AA Cuerpo Técnico'];
+    const keys : string[] = ['AA Cuerpo Técnico', 'Arquero', 'Defensor', 'Mediocampista', 'Delantero', ];
 
     const filtrar = (filtro:string)=>{
         return (jugadores.filter((item)=>item.puesto == filtro))

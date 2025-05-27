@@ -26,10 +26,10 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     const [imagen, SetImagen] = useState(jugadorEdit != null ? jugadorEdit.imagen : '')
     const [imagenURL, SetImagenURL] = useState(jugadorEdit != null ? jugadorEdit.imagen : '')
     
-    const [nombre, SetNombre] = useState(jugadorEdit != null ? jugadorEdit.nombre : '')
+    const [nombre, SetNombre] = useState<string>(jugadorEdit != null ? jugadorEdit.nombre : '')
     const [apellido, SetApellido] = useState(jugadorEdit != null ? jugadorEdit.apellido : '')
     const [puesto, SetPuesto] = useState<string|number>(jugadorEdit != null ? jugadorEdit.puesto : 0)
-    const [nacimiento, SetNacimiento] = useState('')
+    const [nacimiento, SetNacimiento] = useState(jugadorEdit != null ? jugadorEdit.nacimientoSinFormatear : '')
     const [nacionalidad, SetNacionalidad] = useState(jugadorEdit != null ? jugadorEdit.nacionalidad : '')
     const [lugarNacimiento, SetLugarNacimiento] = useState(jugadorEdit != null ? jugadorEdit.lugarNacimiento : '')
     const [altura, SetAltura] = useState(jugadorEdit != null ? jugadorEdit.altura : '')
@@ -89,7 +89,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     }
 
     const crearJugador = async() =>{
-        let url : string | false = await uploadFoto(imagen, nombre+apellido);
+        let url : string | false = await uploadFoto(imagen, nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")+apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
         if (url) {
 
             const datos = {

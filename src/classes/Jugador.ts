@@ -4,6 +4,7 @@ export class Jugador {
   apellido: string;
   puesto: string;
   nacimiento: string;
+  nacimientoSinFormatear: string;
   edad: number;
   lugarNacimiento: string;
   altura: string;
@@ -28,6 +29,7 @@ export class Jugador {
     this.apellido = apellido;
     this.puesto = puesto;
     this.nacimiento = nacimiento;
+    this.nacimientoSinFormatear = nacimiento;
     this.edad = this.CalcularEdad();
     this.lugarNacimiento = lugarNacimiento;
     this.altura = altura;
@@ -69,6 +71,7 @@ export class Jugador {
       apellido: this.apellido,
       puesto: this.puesto,
       nacimiento: this.nacimiento,
+      nacimientoSinFormatear: this.nacimientoSinFormatear,
       edad: this.edad,
       lugarNacimiento: this.lugarNacimiento,
       altura: this.altura,
