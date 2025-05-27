@@ -72,6 +72,7 @@ export default function Header() {
       root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-lt'));
       root.style.setProperty('--text-effect', getComputedStyle(root).getPropertyValue('--text-bg-effect-lt'));
       root.style.setProperty('--text-color-videos', getComputedStyle(root).getPropertyValue('--text-color-videos-lt'));
+      root.style.setProperty('--bg-video', getComputedStyle(root).getPropertyValue('--bg-video-lt'));
       root.style.setProperty('--bg-fila-liga', getComputedStyle(root).getPropertyValue('--bg-fila-lt-dk'));
       root.style.setProperty('--bg-fila-liga2', getComputedStyle(root).getPropertyValue('--bg-fila-lt-lt'));
 

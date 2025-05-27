@@ -69,4 +69,7 @@
     color: var(--text-th);
     margin: 0;
   }
+  .color-text {
+    color: var(--text-effect);
+  }
 }

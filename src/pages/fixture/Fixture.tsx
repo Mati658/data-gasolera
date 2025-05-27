@@ -16,26 +16,26 @@ export default function Fixture() {
 
     
     useEffect(()=>{  
-      getTabla('tabla_nacional', 'imagenes')
       getPartidos('partidos')
+      getTabla('tabla_nacional', 'imagenes')
     },[])
 
     const getTabla = async (columna:string, columna2:string) =>{
-      setLoader(true)
       const data : any = await getData(columna)
       const imagenes : any = await getData(columna2)
       console.log(imagenes)
       let zona_a = [data[0].tabla_nacional.zona_a, [imagenes[0].imagenes.zona_a]]
       let zona_b = [data[0].tabla_nacional.zona_b, [imagenes[0].imagenes.zona_b]]
       setZonaA(zona_a)        
-      setZonaB(zona_b)              
+      setZonaB(zona_b)      
+      setLoader(false)
     }
 
     const getPartidos = async (columna:string) =>{
+      setLoader(true)
       const data : any = await getData(columna)
       setPartidos(data[0].partidos.prox_partidos)        
       setResultados(data[0].partidos.resultados)  
-      setLoader(false)
     }
 
   return (
