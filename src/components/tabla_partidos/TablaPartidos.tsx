@@ -41,19 +41,19 @@ function getResultado(goles:string, cancha: 'V' | 'L') {
     const gol2 : number = Number(item[1]);
 
     if(gol1 == gol2)
-        return 'rgb(175, 175, 43)';
+        return '#afaf2b';
 
     if (cancha == "L") {
         if (gol1 > gol2) {
-            return 'rgb(46, 134, 46)';
+            return '#2e862e';
         }else{
-            return 'rgb(138, 46, 46)';
+            return '#8a2e2e';
         }
     }else{
         if (gol1 < gol2) {
-            return 'rgb(46, 134, 46)';
+            return '#2e862e';
         }else{
-            return 'rgb(138, 46, 46)';
+            return '#8a2e2e';
         }
     }
 }

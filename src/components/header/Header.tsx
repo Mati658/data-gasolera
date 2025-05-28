@@ -10,9 +10,8 @@ export default function Header() {
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
 
 
-  const [temaOscuro, setTemaOscuro] = useState(
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
+  const [temaOscuro, setTemaOscuro] = useState(Boolean(localStorage.getItem('theme')));
+  console.log(Boolean(localStorage.getItem('theme')))
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,7 +54,10 @@ export default function Header() {
 
   const cambiarTema = () => {
     const root = document.documentElement;
+    console.log(!temaOscuro)
     const nuevoTema = !temaOscuro;
+    localStorage.setItem('theme', nuevoTema ? '1' : '')
+    console.log(localStorage.getItem('theme'))
     setTemaOscuro(nuevoTema);
     
     if (nuevoTema) {

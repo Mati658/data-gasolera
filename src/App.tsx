@@ -25,6 +25,25 @@ function App() {
   const Home = lazy(()=>import('./pages/home/Home'));
   const CrearNota = lazy(()=>import('./pages/editor/CrearNota'));
 
+  useEffect(()=>{
+    const root = document.documentElement;
+
+    if (localStorage.getItem('theme') == null) { 
+      localStorage.setItem('theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? '1' : '')
+    }
+
+    if (Boolean(localStorage.getItem('theme'))) { 
+      root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue('--bg-color-dk'));
+      root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-dk'));
+      root.style.setProperty('--text-effect', getComputedStyle(root).getPropertyValue('--text-bg-effect-dk'));
+      root.style.setProperty('--text-color-videos', getComputedStyle(root).getPropertyValue('--text-color-videos-dk'));
+      root.style.setProperty('--bg-video', getComputedStyle(root).getPropertyValue('--bg-video-dk'));
+      root.style.setProperty('--text-th', getComputedStyle(root).getPropertyValue('--text-th-dk'));
+      root.style.setProperty('--bg-fila-liga', getComputedStyle(root).getPropertyValue('--bg-fila-dk-dk'));
+      root.style.setProperty('--bg-fila-liga2', getComputedStyle(root).getPropertyValue('--bg-fila-dk-lt'));
+    }
+  },[])
+
   return (
     <>
     <div className="app">

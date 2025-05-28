@@ -27,7 +27,7 @@ export default function TablaNacional({data}: Props) {
         <tbody>
             {data[0]?.map((item:any, i=0) => (
               <tr key={item.num} className={`bg-fila-${flag == false ? "lg" : "dk"}`}>
-                <td className='td-liga' key={i+=1}>{item.num}</td>
+                <td className='td-liga' key={i+=1} style={item.num == 1 ? {backgroundColor:'#2e862e'} : (item.num >= 2 && item.num <= 8 ? {backgroundColor:'#afaf2b'} : (item.num >= 17 ? {backgroundColor:'#8a2e2e'} : {}))}>{item.num}</td>
                 <td className='td-liga-e' key={i+=1}> <img className='img-table-equipo' src={data[1][0][item.num]}/> {item.entity.object.name}</td>
                 <td className='td-liga' key={i+=1}>{item.values[3].value}</td>
                 <td className='td-liga' key={i+=1}>{item.values[0].value}</td>

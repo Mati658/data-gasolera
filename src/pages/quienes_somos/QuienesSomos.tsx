@@ -1,7 +1,6 @@
 import './quienesSomos.css'
 
 import { useEffect, useRef } from 'react';
-import Canva from '../../components/canva/Canva';
 
 export default function QuienesSomos() {
    const labelRef : any = useRef(null);
@@ -58,7 +57,6 @@ export default function QuienesSomos() {
             </div>
             
             <div ref={canvaRef}>
-                <Canva></Canva>
             </div>
         </>
     )
