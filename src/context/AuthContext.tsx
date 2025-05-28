@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }: Props) => {
       localStorage.setItem('usuario', identity.email);
       setUsuario(identity);
       setFlagLogin(true);
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
+      // console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
       return;
     }
     setFlagLogin(false);
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }: Props) => {
       return false;
     }
     
-    console.log(data.user?.email)
+    // console.log(data.user?.email)
     if (data.user?.email) {
       localStorage.setItem('usuario', data.user.email);
     }

@@ -28,7 +28,7 @@ export default function CrearNota() {
      intervalRef.current = setInterval(() => {
       if (editorRef.current) {
         localStorage.setItem('notaBackUp', editorRef.current.getContent());
-        console.log('Guardado...');
+        // console.log('Guardado...');
       }
     }, 30000);
   }
@@ -41,7 +41,7 @@ export default function CrearNota() {
 
     return () => {
       clearInterval(intervalRef.current);
-      console.log('Intervalo limpiado');
+      // console.log('Intervalo limpiado');
     };
   },[])
 
@@ -104,11 +104,11 @@ export default function CrearNota() {
             save_enablewhendirty: false,
             save_onsavecallback: () => {
               localStorage.setItem('nota', editorRef.current.getContent());
-              console.log('Saved');
-              console.log(localStorage.getItem('nota'));
+              // console.log('Saved');
+              // console.log(localStorage.getItem('nota'));
             },
             save_oncancelcallback: () => {
-                console.log('Save Eliminado');
+                // console.log('Save Eliminado');
                 localStorage.removeItem('nota');
                 localStorage.removeItem('notaBackUp');
             },
@@ -155,7 +155,7 @@ export default function CrearNota() {
                     ],
                     onSubmit: async function (res:any) {
                       const data = res.getData();
-                      console.log(data)
+                      // console.log(data)
                       const titulo = data.titulo;
 
                       if (!editorRef.current.getContent()) {

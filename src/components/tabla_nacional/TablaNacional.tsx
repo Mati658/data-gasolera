@@ -6,7 +6,7 @@ type Props = {
 
 export default function TablaNacional({data}: Props) {
   let flag = false
-  console.log(data)
+  // console.log(data)
   return (
     <div className='container-liga-scroll'>
       <table className='tabla-liga'>

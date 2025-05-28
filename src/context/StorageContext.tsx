@@ -27,7 +27,7 @@ export default function StorageProvider({ children }: Props) {
         .from('storage')
         .getPublicUrl(path);
         
-        console.log(data.publicUrl);
+        // console.log(data.publicUrl);
         return data.publicUrl;
       }
       return false;
@@ -49,14 +49,14 @@ export default function StorageProvider({ children }: Props) {
     }
 
     const deleteFoto = async(path:string) => {
-      console.log(path)
-      const { data, error } = await supabase.storage
+      // console.log(path)
+      const { error } = await supabase.storage
       .from('storage')
       .remove([path])
     
 
-      console.log(data)
-      console.log(error)
+      // console.log(data)
+      console.error(error)
 
       if (error) {
         return false;

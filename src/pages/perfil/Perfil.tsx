@@ -20,14 +20,14 @@ export default function Perfil() {
         let temp = localStorage.getItem('listaJugadores')
         if (temp) {
             setJugadores(JSON.parse(temp))
-            console.log(JSON.parse(temp))
+            // console.log(JSON.parse(temp))
         }
         setLoader(false);
         window.scrollTo(0, 0);
     },[])
 
     const actualizar= async(jugadorEdit:Jugador)=>{
-        console.log(jugadorEdit)
+        // console.log(jugadorEdit)
     
         if (jugadorEdit) {
             setJugador(jugadorEdit)

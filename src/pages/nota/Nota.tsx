@@ -6,7 +6,6 @@ import { useLoader } from '../../context/LoaderContext';
 
 export default function Nota() {
     const location = useLocation();
-    const [notas, setNotas] = useState([])
     const { getUno } = useDatabase()
     const { setLoader } = useLoader();
     const [nota, setNota] = useState<any>('')
@@ -18,13 +17,8 @@ export default function Nota() {
         getUno('notas', '*', id).then((res:any)=>{
             setLoader(false)
             setNota(res[0])
-            console.log(res[0])
+            // console.log(res[0])
         })
-        let temp = localStorage.getItem('listaNotas')
-        if (temp) {
-            setNotas(JSON.parse(temp))
-            console.log(notas)
-        }
         window.scrollTo(0, 0);
     },[])
 

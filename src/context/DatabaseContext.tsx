@@ -26,7 +26,7 @@ const DatabaseContext = createContext<DatabaseContextType | null>(null);
 export const DatabaseProvider = ({ children }: Props) => {
 
     const getUno = async (tabla:string, select:string, id:number)=>{
-        console.log(id)
+        // console.log(id)
         const data = (await supabase
         .from(tabla)
         .select(select)
@@ -36,7 +36,7 @@ export const DatabaseProvider = ({ children }: Props) => {
             return data;
         }
         
-        console.log(data);
+        // console.log(data);
 
         return false;
     }
@@ -51,7 +51,7 @@ export const DatabaseProvider = ({ children }: Props) => {
             return data;
         }
         
-        console.log(error);
+        console.error(error);
 
         return false;
 
@@ -68,7 +68,7 @@ export const DatabaseProvider = ({ children }: Props) => {
                 return data;
             }
             
-            console.log(error);
+            console.error(error);
 
             return false;
         }
@@ -83,7 +83,7 @@ export const DatabaseProvider = ({ children }: Props) => {
             return data;
         }
         
-        console.log(error);
+        console.error(error);
 
         return false;
     }
@@ -99,7 +99,7 @@ export const DatabaseProvider = ({ children }: Props) => {
                 return data;
             }
             
-            console.log(error);
+            console.error(error);
 
             return false;
         }
@@ -113,7 +113,7 @@ export const DatabaseProvider = ({ children }: Props) => {
             return data;
         }
         
-        console.log(error);
+        console.error(error);
 
         return false;
 
@@ -121,7 +121,7 @@ export const DatabaseProvider = ({ children }: Props) => {
 
     
     const altaDB = async(tabla:string, datos : any) =>{
-        console.log(datos)
+        // console.log(datos)
         let {data, error} = (await supabase
         .from(tabla)
         .insert([datos])
@@ -130,8 +130,8 @@ export const DatabaseProvider = ({ children }: Props) => {
         if (data != null)  
             return true;
 
-        console.log(data)
-        console.log(error)
+        // console.log(data)
+        console.error(error)
 
         return false;
     }
@@ -149,14 +149,14 @@ export const DatabaseProvider = ({ children }: Props) => {
     }
 
     const update = async(tabla:string, datos:any, id:number)=>{
-        console.log(datos)
+        // console.log(datos)
         let data = (await supabase
         .from(tabla)
         .update([datos])
         .eq('id', id)
         .select()).data
     
-        console.log(data)
+        // console.log(data)
     
         if (data)  
           return data;

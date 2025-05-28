@@ -23,7 +23,7 @@ export default function Fixture() {
     const getTabla = async (columna:string, columna2:string) =>{
       const data : any = await getData(columna)
       const imagenes : any = await getData(columna2)
-      console.log(imagenes)
+      // console.log(imagenes)
       let zona_a = [data[0].tabla_nacional.zona_a, [imagenes[0].imagenes.zona_a]]
       let zona_b = [data[0].tabla_nacional.zona_b, [imagenes[0].imagenes.zona_b]]
       setZonaA(zona_a)        

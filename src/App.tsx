@@ -19,8 +19,8 @@ import QuienesSomos from "./pages/quienes_somos/QuienesSomos";
 // import { useLoader } from "./context/LoaderContext";
 
 function App() {
-  const usuario = localStorage.getItem('usuario')
-  console.log(usuario)
+  // const usuario = localStorage.getItem('usuario')
+  // console.log(usuario)
 
   const Home = lazy(()=>import('./pages/home/Home'));
   const CrearNota = lazy(()=>import('./pages/editor/CrearNota'));
