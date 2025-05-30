@@ -69,7 +69,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
                 </div>
               </div>
             )}
-            <img src={jugador.imagen} className='img-jugador' />
+            <img src={jugador.imagen +'?v='+ jugador.imagen_version} className='img-jugador' />
 
 
   
@@ -112,7 +112,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
                 </div>
               </div>
             )}
-            <img src={jugador.imagen} className='img-jugador'  style={{height:'180px'}}/>
+            <img src={jugador.imagen +'?v='+ jugador.imagen_version} className='img-jugador'  style={{height:'180px'}}/>
 
   
             {/* <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
@@ -136,7 +136,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
       ) : ( <></> )}
       
       
-      <img src={jugador.imagen} className='img-jugador' style={{height:'500px'}}/>
+      <img src={jugador.imagen +'?v='+ jugador.imagen_version} className='img-jugador' style={{height:'500px'}}/>
 
       {/* <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
         <div className='numero-jugador' style={{transform: 'translate(-5px, -54px)'}}>

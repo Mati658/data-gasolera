@@ -12,6 +12,7 @@ export class Jugador {
   nacionalidad: string;
   imagen: string;
   datos: {};
+  imagen_version: number;
 
   constructor(
     nombre: string,
@@ -37,6 +38,7 @@ export class Jugador {
     this.nacionalidad = nacionalidad;
     this.imagen = imagen;
     this.datos = datos;
+    this.imagen_version = Date.now();
   }
 
   CalcularEdad() {
@@ -79,6 +81,7 @@ export class Jugador {
       nacionalidad: this.nacionalidad,
       imagen: this.imagen,
       datos: this.datos,
+      imagen_version: this.imagen_version,
     };
   }
 }

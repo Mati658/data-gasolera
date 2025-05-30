@@ -12,7 +12,11 @@ export default function Plantel() {
     // const { setLoader } = useLoader();
     const [ jugadores, SetJugadores ] = useState([]);
     const [ jugador, setJugador ] = useState<Jugador | null>(null);
+    const keys : string[] = ['AA Cuerpo Técnico', 'Arquero', 'Defensor', 'Mediocampista', 'Delantero', ];
 
+    const filtrar = (filtro:string)=>{
+        return (jugadores.filter((item:any)=>item.puesto == filtro))
+    }
     useEffect(() => {
         // setLoader(true)
 
@@ -39,12 +43,14 @@ export default function Plantel() {
                 ) : ( <></> )
                 }
             
-
-            {
-                jugadores.map((item:Jugador)=>(
-                    <JugadorComp key={item.id} jugador={item} onEliminar={eliminarJugador} onEdit={()=>{setJugador(item)}} read={false}></JugadorComp>
+        {keys.map((key)=>(  
+            <>
+            {filtrar(key).map((item:any)=>(
+                <JugadorComp key={item.id} jugador={item} onEliminar={eliminarJugador} onEdit={()=>{setJugador(item)}} read={false}></JugadorComp>
                 )
             )}
+            </>
+        ))}
            
         </div>
     )

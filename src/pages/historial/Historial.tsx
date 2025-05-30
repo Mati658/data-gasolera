@@ -1,8 +1,10 @@
+import './historial.css'
+
 export default function Historial() {
 
-  
-
   return (
-    <div>Historial</div>
+    <div className="container-historial">
+    
+    </div>
   )
 }

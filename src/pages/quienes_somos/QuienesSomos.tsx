@@ -42,13 +42,13 @@ export default function QuienesSomos() {
   
     return (
         <>
-            <div className='container-historial' ref={labelRef}>
-                <div className='fondo-historial'></div>
-                <label className='label-historial lucidity' >
+            <div className='container-quienes' ref={labelRef}>
+                <div className='fondo-quienes'></div>
+                <label className='label-quienes lucidity' >
                     <h1 className='preg'>¿</h1>
                     <div>
                         <h1>Qué es</h1>
-                        <img src="/logo-footer.png" className='logo-historial'/>
+                        <img src="/logo-footer.png" className='logo-quienes'/>
                     </div>
                     <h1 className='preg'>?</h1>
                 </label>
@@ -56,7 +56,21 @@ export default function QuienesSomos() {
 
             </div>
             
-            <div ref={canvaRef}>
+            <div ref={canvaRef} className="background">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
         </>
     )

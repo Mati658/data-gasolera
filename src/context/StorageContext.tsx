@@ -4,7 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 // =================================================PROD==============================================
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 // ==================================================DEV==============================================
-// import { environment } from '../../env/environment.prod'; const supabase = createClient(environment.VITE_SUPABASE_URL, environment.VITE_SUPABASE_KEY);
+// import { environment } from '../../env/environment.prod';const supabase = createClient(environment.VITE_SUPABASE_URL, environment.VITE_SUPABASE_KEY);
 type Props = {
     children:ReactNode,
 }
@@ -34,18 +34,50 @@ export default function StorageProvider({ children }: Props) {
     }
 
     const uploadFoto = async(imagen:any, nombre:string) =>{
+      const imagenWebp : any = await convertirWebp(imagen);
       const { data, error } = await supabase.storage
           .from('storage')
-          .upload(`public/${nombre}.png`, imagen, {
+          .upload(`public/${nombre}.webp`, imagenWebp, {
               upsert: true,
-              contentType: 'image/jpeg/jpg/png',
+              contentType: 'image/webp',
+              cacheControl: '2592000'
       })
       
       if (error) 
           return false;
-      
+      console.log(data)
 
       return getFoto(data?.path);
+    }
+
+    const convertirWebp = async(imagen:any) =>{
+      return new Promise((resolve, reject) => {
+      const img = new Image()
+      const reader = new FileReader()
+
+      reader.onload = () => {
+        img.src = reader.result as string
+      }
+
+      img.onload = () => {
+        const canvas = document.createElement('canvas')
+        canvas.width = img.width
+        canvas.height = img.height
+
+        const ctx = canvas.getContext('2d')
+        if (!ctx) return reject('No se pudo crear el contexto')
+
+        ctx.drawImage(img, 0, 0)
+
+        canvas.toBlob((blob) => {
+          if (blob) resolve(blob)
+          else reject('Error al convertir a WebP')
+        }, 'image/webp', 0.8)
+      }
+
+      reader.onerror = reject
+      reader.readAsDataURL(imagen)
+    })
     }
 
     const deleteFoto = async(path:string) => {

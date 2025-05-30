@@ -1,0 +1,23 @@
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* margin: 0 auto; */
+
+  width: 100%;
+  max-width: 100vw;
+  min-width: 100%;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+  box-sizing: border-box;
+}
+
+.container-historial {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-top: 15vh;
+  justify-self: center;
+  min-height: 100vh;
+}

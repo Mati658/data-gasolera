@@ -143,7 +143,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
         let url : string | false = imagenURL
         if (flagImagenEdit) {
             setLoader(true)
-            url = await uploadFoto(imagen, nombre+apellido);
+            url = await uploadFoto(imagen, nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")+apellido.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
         }
         if (url) {
             const datos = {
