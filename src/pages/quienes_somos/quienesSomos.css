@@ -154,14 +154,14 @@
 
   @media (max-width: 1000px) {
     .izquierda {
-      text-align: justify;
+      text-align: start;
       display: flex;
       gap: 10px;
       flex-direction: column;
     }
     .derecha {
       justify-self: end;
-      text-align: justify;
+      text-align: start;
       gap: 10px;
       flex-direction: column-reverse;
     }
@@ -204,14 +204,14 @@
       align-self: center;
     }
     .izquierda {
-      text-align: justify;
+      text-align: start;
       display: flex;
       gap: 10px;
       flex-direction: column;
     }
     .derecha {
       justify-self: end;
-      text-align: justify;
+      text-align: start;
       gap: 10px;
       flex-direction: column-reverse;
     }
