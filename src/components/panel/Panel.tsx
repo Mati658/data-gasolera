@@ -17,9 +17,7 @@ export default function Panel() {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(()=>{
-        // setLoader(true)
         getTabla('links', '*', 3).then((res:any)=>{
-            // setLoader(false)            
             setUrls(res)
         })
     },[])

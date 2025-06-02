@@ -16,6 +16,7 @@ export default function Fixture() {
 
     
     useEffect(()=>{  
+      window.scrollTo(0, 0);
       getPartidos('partidos')
       getTabla('tabla_nacional', 'imagenes')
     },[])

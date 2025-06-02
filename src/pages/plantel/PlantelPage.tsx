@@ -10,6 +10,7 @@ export default function PlantelPage() {
     const { getTabla } = useDatabase()
     const { setLoader } = useLoader();
     useEffect(() => {
+        window.scrollTo(0, 0);
         let temp = localStorage.getItem('listaJugadores')
         if (temp) {
             setJugadores(JSON.parse(temp))

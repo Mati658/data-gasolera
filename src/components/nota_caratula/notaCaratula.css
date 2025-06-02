@@ -29,6 +29,12 @@
   line-height: 1.45;
 }
 
+@media (max-width: 600px) {
+  .titulo-nota {
+    top: 60%;
+  }
+}
+
 .caratula {
   display: -webkit-box;
   -webkit-box-orient: vertical;

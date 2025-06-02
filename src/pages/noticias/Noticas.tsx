@@ -10,6 +10,7 @@ export default function Noticas() {
     const [ notas, SetNotas ] = useState([]);
 
     useEffect(()=>{
+        window.scrollTo(0, 0);
         setLoader(true)
 
         getNotas(-1).then((res:any)=>{

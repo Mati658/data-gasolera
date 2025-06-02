@@ -18,6 +18,7 @@ export default function ControlNotas() {
             return;
         }
         setLoader(true)
+        window.scrollTo(0, 0);
 
         getNotas(-1).then((res:any)=>{
             setLoader(false)

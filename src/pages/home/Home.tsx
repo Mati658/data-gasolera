@@ -18,7 +18,6 @@ export default function Home() {
           
           <Body></Body>
     
-          <div className='gap'></div>
           <Panel></Panel>
           
           <h1 className='lucidity' style={{color: 'var(--text-th)',}}>Plantel</h1>

@@ -11,6 +11,8 @@ export default function AltaJugador() {
         if (!usuario) {
             navigate('/');
         }
+        window.scrollTo(0, 0);
+
     },[])
 
     return (

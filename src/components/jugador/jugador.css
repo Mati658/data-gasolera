@@ -50,7 +50,7 @@
   max-width: 150px;
   backdrop-filter: blur(4px) saturate(10%);
   -webkit-backdrop-filter: blur(4px) saturate(10%);
-  background-color: rgba(199, 199, 199, 0.449);
+  background-color: rgba(80, 80, 80, 0.449);
 }
 
 .card-jugador:hover .background-datos {
@@ -125,7 +125,6 @@
     font-size: 4rem;
     margin: 0;
     color: #24bcec;
-    -webkit-text-stroke: 1px rgb(0, 0, 0);
   }
   span {
     width: 100%;
