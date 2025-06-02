@@ -127,11 +127,11 @@ export default function Header() {
                 </label>
               </div>
               <button className="btn-header lucidity" onClick={() => navegar('/plantel')}>Plantel</button>
-              <button className="btn-header lucidity" onClick={() => navegar('/fixture')}>Fixture</button>
               <button className="btn-header lucidity" onClick={() => navegar('/historial')}>Historial</button>
+              <button className="btn-header lucidity" onClick={() => navegar('/fixture')}>Fixture</button>
               <button className="btn-header lucidity" onClick={() => {navegar('/noticias')}}>Más Noticias</button>
               <button className="btn-header lucidity" onClick={() => navegar('/quienes-somos')}>Quienes Somos</button>
-              <label htmlFor="btns" className="btn-header lucidity">Admin</label>
+              <label htmlFor="btns" className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`}>Admin</label>
               <input type="checkbox" id="btns" hidden />
               <div className="btns-admin">
                 <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/alta-jugador')}>Alta Jugador</button>
