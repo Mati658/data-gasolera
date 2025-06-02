@@ -215,6 +215,9 @@
       gap: 10px;
       flex-direction: column-reverse;
     }
+    h3 {
+      margin-bottom: 10%;
+    }
 
     .centro,
     .izquierda,
