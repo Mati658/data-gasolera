@@ -15,7 +15,7 @@ export default function Header() {
     const handleResize = () => {
         const width = window.innerWidth;
         setScreenWidth(width);
-        setFlagWidth(width <= 800);
+        setFlagWidth(width <= 930);
 
         if (width > 560) {
             setFlagMenu(false);

@@ -126,7 +126,7 @@
   }
 
   .izquierda {
-    text-align: justify;
+    text-align: start;
     display: flex;
     gap: 10px;
     flex-direction: row;
@@ -136,7 +136,7 @@
     flex-direction: row;
     justify-self: end;
     gap: 10px;
-    text-align: justify;
+    text-align: end;
   }
   .centro {
     width: 100%;
@@ -152,7 +152,7 @@
     margin-bottom: 20vh;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1000px) {
     .izquierda {
       text-align: justify;
       display: flex;
@@ -167,6 +167,14 @@
     }
     img {
       width: 100%;
+    }
+    .img-div2 {
+      height: 60vw;
+    }
+    .img-div4 {
+      /* height: 100%; */
+      width: 100%;
+      align-self: center;
     }
   }
 
@@ -183,7 +191,7 @@
     }
 
     .img-div2 {
-      height: 40vw;
+      height: 80vw;
     }
 
     .img-div4 {
