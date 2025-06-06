@@ -68,10 +68,12 @@ export default function Perfil() {
                         ))}
 
                     </div>
-                </div>     
-                <div className='div-cancha'>
-                    <Cancha edit={flagEdit} posPrincipalRecibida={jugador.posicion.pr} posSecundarias={jugador.posicion.sc} onSendData={(data)=>{ setJugador((prev:any) => ({...prev, posicion: data}));}}></Cancha>
-                </div>
+                </div>   
+                {jugador.puesto != 'AA Cuerpo Técnico' && (
+                    <div className='div-cancha'>
+                        <Cancha edit={flagEdit} posPrincipalRecibida={jugador.posicion.pr} posSecundarias={jugador.posicion.sc} onSendData={(data)=>{ setJugador((prev:any) => ({...prev, posicion: data}));}}></Cancha>
+                    </div>
+                )}  
             </div>
             <div className='container-perfil-datos'>
                 <div className='perfil-item'>
