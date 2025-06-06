@@ -1,6 +1,6 @@
 import './cancha.css'
 // import { pos } from '../../ubicaciones.ts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
     edit:boolean,
@@ -15,6 +15,17 @@ export default function Cancha({edit, posPrincipalRecibida, posSecundarias, onSe
     const [posPrincipalAlta, setPosPrincipalAlta] = useState<number>(posPrincipalRecibida ? posPrincipalRecibida : 0);
     const [secunds , setSecunds] = useState<number[]>(posSecundarias ? posSecundarias : [])
     // console.log(posPrincipalRecibida)
+
+    useEffect(()=>{
+        const primaria = document.getElementById('primaria');
+        const secundaria = document.getElementById('secundaria');
+        if (primaria && secundaria) {
+            setFlagposPrimaria(true)
+            primaria.style.transform = 'translateY(-5px)'
+            secundaria.style.transform = 'translateY(5px)'
+            return
+        }
+    },[])
 
     const crearListaSecun = (value:number) =>{
         const posGeted = value;

@@ -1,4 +1,28 @@
 /* From Uiverse.io by ammarsaa */
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
+  /* margin: 0 auto; */
+}
+
+.container-registro {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 5vh;
+  justify-content: center;
+}
+
+@media (max-width: 725px) {
+  .container-registro {
+    align-items: center;
+  }
+}
+
 .form-alta {
   display: flex;
   flex-direction: column;
@@ -106,6 +130,14 @@
 
 .submit-alta:hover {
   background-color: #00bfff96;
+}
+
+.div-cancha-form {
+  display: flex;
+  position: relative;
+  /* width: 100%; */
+  max-height: 525px;
+  /* max-width: fit-content; */
 }
 
 @keyframes pulse {

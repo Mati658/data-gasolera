@@ -245,7 +245,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     }
 
   return (
-    <div style={{display:'flex', flexWrap:'wrap', gap: '5vh'}}>  
+    <div className='container-registro'>  
         {flagModal ? ( 
             <div className='modal'>
                 <ul className="notification-container">
@@ -352,8 +352,8 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
             <button type='button' className="submit-alta" onClick={verificar}>Subir</button>
         </form>
         {(!location.pathname.includes('perfil') && location.pathname != '/') && (
-            <div>
-                {(puesto != 'AA Cuerpo Técnico' && puesto!='Arquero') && (
+            <div className='div-cancha-form'>
+                {(puesto != 'AA Cuerpo Técnico') && (
                     <Cancha edit={true} posPrincipalRecibida={posPrincipal} posSecundarias={posSecundarias} onSendData={getPos}></Cancha>
                 )}
             </div>
