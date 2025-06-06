@@ -45,9 +45,11 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     const [posSecundarias, SetPosSecundarias] = useState<number[]>(jugadorEdit != null ? jugadorEdit.posicion.sc : '')
     
     useEffect(()=>{
-        SetPosPrincipal(jugadorEdit.posicion.pr)
-        SetPosSecundarias(jugadorEdit.posicion.sc)
-    },[jugadorEdit.posicion])
+        if (jugadorEdit) {   
+            SetPosPrincipal(jugadorEdit?.posicion.pr)
+            SetPosSecundarias(jugadorEdit?.posicion.sc)
+        }
+    },[jugadorEdit?.posicion])
 
     const obtenerImagen = ($event : any) => {
         if (jugadorEdit!=null) {
