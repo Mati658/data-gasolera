@@ -76,7 +76,7 @@
   width: 100%;
   max-height: 560px;
   /* width: fit-content; */
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 @media (max-width: 900px) {
