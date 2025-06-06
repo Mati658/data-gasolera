@@ -63,6 +63,7 @@ export default function Header() {
       root.style.setProperty('--text-th', getComputedStyle(root).getPropertyValue('--text-th-dk'));
       root.style.setProperty('--bg-fila-liga', getComputedStyle(root).getPropertyValue('--bg-fila-dk-dk'));
       root.style.setProperty('--bg-fila-liga2', getComputedStyle(root).getPropertyValue('--bg-fila-dk-lt'));
+      root.style.setProperty('--bg-temperley-fila', getComputedStyle(root).getPropertyValue('--bg-temperley-dk'));
     } else {
       root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue('--bg-color-lt'));
       root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-lt'));
@@ -71,6 +72,7 @@ export default function Header() {
       root.style.setProperty('--bg-video', getComputedStyle(root).getPropertyValue('--bg-video-lt'));
       root.style.setProperty('--bg-fila-liga', getComputedStyle(root).getPropertyValue('--bg-fila-lt-dk'));
       root.style.setProperty('--bg-fila-liga2', getComputedStyle(root).getPropertyValue('--bg-fila-lt-lt'));
+      root.style.setProperty('--bg-temperley-fila', getComputedStyle(root).getPropertyValue('--bg-temperley-lt'));
 
     }
   };

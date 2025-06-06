@@ -1,8 +1,18 @@
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
+  /* margin: 0 auto; */
+}
+
 .container-plantel-page {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+  flex-direction: column;
+  justify-self: center;
+  width: 95%;
   margin-top: 15vh;
   gap: 20px;
   z-index: 10;

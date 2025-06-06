@@ -29,6 +29,10 @@
 
   --bg-fila-dk-dk: rgb(0, 48, 76);
   --bg-fila-dk-lt: rgb(36, 77, 112);
+
+  --bg-temperley-dk: #24bcec;
+  --bg-temperley-lt: rgb(36, 77, 112);
+
   /* === ============================ === */
 
   /* variables activas */
@@ -41,6 +45,7 @@
   --text-th: var(--text-th-lt);
   --bg-fila-liga: var(--bg-fila-lt-dk);
   --bg-fila-liga2: var(--bg-fila-lt-lt);
+  --bg-temperley-fila: var(--bg-temperley-lt);
   background-color: var(--bg-color);
 }
 

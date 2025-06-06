@@ -10,7 +10,8 @@
 
 .container-perfil {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   justify-self: center;
   width: 95%;
   margin-top: 15vh;
@@ -24,31 +25,26 @@
 .jugador-perfil {
   display: flex;
   flex-direction: row;
+  width: 100%;
+}
+
+.container-jugador-datos {
+  display: flex;
+  width: fit-content;
+  min-width: 615px;
 }
 
 .container-perfil-datos {
   display: flex;
 }
 
-@media (max-width: 600px) {
-  .jugador-perfil {
-    flex-direction: column;
-  }
-
-  .container-perfil-datos {
-    margin-top: 10px;
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
 .form-edit-perfil {
-  position: fixed;
-  left: 60%;
-  bottom: 2%;
+  position: absolute;
+  /* left: 60%; */
+  /* bottom: 2%; */
   width: auto;
   height: auto;
-  z-index: 100;
+  z-index: 10;
 }
 
 .cerrar-form {
@@ -71,5 +67,38 @@
   }
   .color-text {
     color: var(--text-effect);
+  }
+}
+
+.div-cancha {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-height: 560px;
+  /* width: fit-content; */
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+  .jugador-perfil {
+    flex-direction: column;
+  }
+
+  .container-perfil-datos {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .div-cancha {
+    display: block;
+    justify-items: normal;
+    width: 100%;
+    right: 0;
+  }
+
+  .container-jugador-datos {
+    margin-bottom: 50px;
+    min-width: 0px;
   }
 }

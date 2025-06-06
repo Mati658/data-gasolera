@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './formJugador.css'
 import { Jugador } from '../../classes/Jugador';
 import { useStorage } from '../../context/StorageContext';
 import { useDatabase } from '../../context/DatabaseContext';
 import { useLoader } from '../../context/LoaderContext';
+import Cancha from '../cancha/Cancha';
+import { useLocation } from 'react-router-dom';
 
 type Props = {
     jugadorEdit:any | null;
@@ -13,6 +15,8 @@ type Props = {
 
 export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:Props) {
     // console.log(jugadorEdit)
+    const location = useLocation();
+
     const { uploadFoto } = useStorage()
     const { altaDB, update } = useDatabase()
     const { setLoader } = useLoader();
@@ -37,7 +41,13 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
     const [dato1, SetDato1] = useState(jugadorEdit != null ? jugadorEdit.datos['dato1'] : '')
     const [dato2, SetDato2] = useState(jugadorEdit != null ? jugadorEdit.datos['dato2'] : '')
     const [dato3, SetDato3] = useState(jugadorEdit != null ? jugadorEdit.datos['dato3'] : '')
-
+    const [posPrincipal, SetPosPrincipal] = useState<number>(jugadorEdit != null ? jugadorEdit.posicion.pr : '')
+    const [posSecundarias, SetPosSecundarias] = useState<number[]>(jugadorEdit != null ? jugadorEdit.posicion.sc : '')
+    
+    useEffect(()=>{
+        SetPosPrincipal(jugadorEdit.posicion.pr)
+        SetPosSecundarias(jugadorEdit.posicion.sc)
+    },[jugadorEdit.posicion])
 
     const obtenerImagen = ($event : any) => {
         if (jugadorEdit!=null) {
@@ -63,7 +73,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
         if (imagen != "" && (
             nombre && apellido && puesto != 0 && nacimiento && nacionalidad && lugarNacimiento && altura && peso)) {
                 if (puesto != 'AA Cuerpo Técnico') {
-                    if (dato1 && dato2 && dato3) {
+                    if (dato1 && dato2 && dato3 && posPrincipal) {
                         return jugadorEdit != null ? updateJugador() : crearJugador()
                     }
                 }
@@ -98,7 +108,12 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
                 dato3:dato3,
             }
 
-            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura} Mts`, `${peso} Kgs`, nacionalidad, url, datos)
+            const posicion = {
+                "pr": posPrincipal, 
+                "sc": posSecundarias
+            }
+
+            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura} Mts`, `${peso} Kgs`, nacionalidad, url, datos, posicion)
             
             if(await altaDB('plantel', jugador.toJson())){
                 setLoader(false)
@@ -151,7 +166,13 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
                 dato2:dato2,
                 dato3:dato3,
             }
-            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura}`, `${peso} Kgs`, nacionalidad, url,datos)
+            
+            const posicion = {
+                "pr": posPrincipal, 
+                "sc": posSecundarias
+            }
+
+            const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura}`, `${peso} Kgs`, nacionalidad, url,datos, posicion)
             
             if(await update('plantel', jugador.toJson(), jugadorEdit.id)){
                 setLoader(false)
@@ -171,6 +192,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
                 setTimeout(() => {
                     SetFlagModal(false)
                 }, 3100);
+                jugador.id = jugadorEdit.id
                 sendJugador(jugador)
                 onSubmit();
                 return;
@@ -210,11 +232,18 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
         SetImagen('');
         SetImagenURL('');
         SetFlagImagenEdit(true);
+        SetPosPrincipal(0)
+        SetPosSecundarias([])
+    }
 
+    const getPos = (value:any) =>{
+        SetPosPrincipal(value.pr)
+        SetPosSecundarias(value.sc)
+        return value;
     }
 
   return (
-    <div>  
+    <div style={{display:'flex', flexWrap:'wrap', gap: '5vh'}}>  
         {flagModal ? ( 
             <div className='modal'>
                 <ul className="notification-container">
@@ -285,7 +314,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
                 </label>
             </div> 
 
-            {puesto != 'AA Cuerpo Técnico' ? (
+            {puesto != 'AA Cuerpo Técnico' && (
                 <div className="flex-alta">
                     <label>
                         <input value={dato1} className="input-alta" type="text" placeholder='' required onChange={(e) => SetDato1(e.target.value)} />
@@ -300,7 +329,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
                         <span>Partidos Jugados</span>
                     </label>
                 </div> 
-            ) : (<></>)}
+            )}
 
             <label htmlFor="file" className="custum-file-upload">
                 <div >
@@ -320,6 +349,14 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
             
             <button type='button' className="submit-alta" onClick={verificar}>Subir</button>
         </form>
+        {(!location.pathname.includes('perfil') && location.pathname != '/') && (
+            <div>
+                {(puesto != 'AA Cuerpo Técnico' && puesto!='Arquero') && (
+                    <Cancha edit={true} posPrincipalRecibida={posPrincipal} posSecundarias={posSecundarias} onSendData={getPos}></Cancha>
+                )}
+            </div>
+        )}
+
     </div>
   )
 }

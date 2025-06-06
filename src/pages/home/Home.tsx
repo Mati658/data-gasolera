@@ -17,8 +17,10 @@ export default function Home() {
         <div className='container'>
           
           <Body></Body>
+          <div className='gap'></div>
     
           <Panel></Panel>
+          <div className='gap'></div>
           
           <h1 className='lucidity' style={{color: 'var(--text-th)',}}>Plantel</h1>
           <Plantel></Plantel>

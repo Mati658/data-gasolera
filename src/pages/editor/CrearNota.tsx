@@ -127,6 +127,7 @@ export default function CrearNota() {
                 icon: 'Upload',
                 tooltip: 'Publicar',
                 onAction: async function () {
+                  console.log(notaEditar)
                   editor.windowManager.open({
                     title: 'Publicar nota',
                     body: {
@@ -169,9 +170,19 @@ export default function CrearNota() {
                         texto: editorRef.current.getContent(),
                         time: new Date()
                       };
-                      // console.log(notaJson)
+                      console.log(titulo)
                       if (notaEditar) {
                         setLoader(true)
+
+                        if ((titulo) == 'Historial' && await update('historial', notaJson, notaEditar.id)) {
+                          localStorage.removeItem('nota');
+                          localStorage.removeItem('notaBackUp');
+
+                          setLoader(false)
+                          res.close();
+                          return;
+                        }
+
                         if (await update('notas', notaJson, notaEditar.id)) {
                           localStorage.removeItem('nota');
                           localStorage.removeItem('notaBackUp');
@@ -180,8 +191,17 @@ export default function CrearNota() {
                         res.close();
                         return;
                       }
+
+                      setLoader(true)
+                      if ((titulo) == 'Historial' && await altaDB('historial', notaJson)) {
+                        localStorage.removeItem('nota');
+                        localStorage.removeItem('notaBackUp');
+                        setLoader(false);
+                        res.close();
+                        return;
+                      }
+
                       if (await altaDB('notas', notaJson)) {
-                        setLoader(true)
                         localStorage.removeItem('nota');
                         localStorage.removeItem('notaBackUp');
                       }

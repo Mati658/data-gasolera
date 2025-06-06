@@ -6,6 +6,7 @@ import FormJugador from '../../components/form-jugador/FormJugador';
 import { Jugador } from '../../classes/Jugador';
 import PlantelFooter from '../../components/plantel_footer/PlantelFooter';
 import { useLoader } from '../../context/LoaderContext';
+import Cancha from '../../components/cancha/Cancha';
 
 export default function Perfil() {
 
@@ -24,10 +25,11 @@ export default function Perfil() {
         }
         setLoader(false);
         window.scrollTo(0, 0);
+        console.log(jugador)
     },[])
 
     const actualizar= async(jugadorEdit:Jugador)=>{
-        // console.log(jugadorEdit)
+        console.log(jugadorEdit)
     
         if (jugadorEdit) {
             setJugador(jugadorEdit)
@@ -46,26 +48,30 @@ export default function Perfil() {
                 ) : ( <></> )
             }
 
-            <div className='jugador-perfil'>       
-                <div>
-                    <JugadorComp jugador={jugador} onEliminar={()=>{}} onEdit={()=>setFlagEdit(true)} read={false}></JugadorComp>
-                </div>
-
-                <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
-                    <div className='perfil-item'>
-                        <p className='lucidity' style={{fontSize:'2rem'}}>{jugador.nombre}</p>
-                        <p className='lucidity color-text' style={{fontSize:'3rem'}}>{jugador.apellido}</p>
+            <div className='jugador-perfil'>  
+                <div className='container-jugador-datos'>
+                    <div>
+                        <JugadorComp jugador={jugador} onEliminar={()=>{}} onEdit={()=>setFlagEdit(true)} read={false}></JugadorComp>
                     </div>
-                    
-                    {keys.map((item)=>(
-                        <div key={item} className='perfil-item'>
-                            <p className='lucidity color-text' >{item == 'lugarNacimiento' ? 'Lugar de Nacimiento' : item}</p>
-                            <p className='lucidity' style={{fontSize:'1.7rem'}}>{jugador[item] == 'AA Cuerpo Técnico'? 'Cuerpo Técnico' : jugador[item]}</p>
-                        </div>
-                    ))}
-                </div>
-                
 
+                    <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
+                        <div className='perfil-item'>
+                            <p className='lucidity' style={{fontSize:'2rem'}}>{jugador.nombre}</p>
+                            <p className='lucidity color-text' style={{fontSize:'3rem'}}>{jugador.apellido}</p>
+                        </div>
+                        
+                        {keys.map((item)=>(
+                            <div key={item} className='perfil-item'>
+                                <p className='lucidity color-text' >{item == 'lugarNacimiento' ? 'Lugar de Nacimiento' : item}</p>
+                                <p className='lucidity' style={{fontSize:'1.7rem'}}>{jugador[item] == 'AA Cuerpo Técnico'? 'Cuerpo Técnico' : jugador[item]}</p>
+                            </div>
+                        ))}
+
+                    </div>
+                </div>     
+                <div className='div-cancha'>
+                    <Cancha edit={flagEdit} posPrincipalRecibida={jugador.posicion.pr} posSecundarias={jugador.posicion.sc} onSendData={(data)=>{ setJugador((prev:any) => ({...prev, posicion: data}));}}></Cancha>
+                </div>
             </div>
             <div className='container-perfil-datos'>
                 <div className='perfil-item'>

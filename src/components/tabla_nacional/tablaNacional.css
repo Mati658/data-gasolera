@@ -33,3 +33,7 @@
 .bg-fila-lg {
   background-color: var(--bg-fila-liga2);
 }
+
+.bg-temperley {
+  background-color: var(--bg-temperley-fila);
+}

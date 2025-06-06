@@ -12,6 +12,7 @@ export class Jugador {
   nacionalidad: string;
   imagen: string;
   datos: {};
+  posicion: {};
   imagen_version: number;
 
   constructor(
@@ -24,7 +25,8 @@ export class Jugador {
     peso: string,
     nacionalidad: string,
     imagen: string,
-    datos: {}
+    datos: {},
+    posicion: {}
   ) {
     this.nombre = nombre;
     this.apellido = apellido;
@@ -38,6 +40,7 @@ export class Jugador {
     this.nacionalidad = nacionalidad;
     this.imagen = imagen;
     this.datos = datos;
+    this.posicion = posicion;
     this.imagen_version = Date.now();
   }
 
@@ -81,6 +84,7 @@ export class Jugador {
       nacionalidad: this.nacionalidad,
       imagen: this.imagen,
       datos: this.datos,
+      posicion: this.posicion,
       imagen_version: this.imagen_version,
     };
   }

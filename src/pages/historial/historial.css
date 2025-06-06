@@ -20,4 +20,22 @@
   margin-top: 15vh;
   justify-self: center;
   min-height: 100vh;
+
+  h1 {
+    text-align: center;
+    color: var(--text-th);
+  }
+
+  .vista-previa {
+    color: black;
+  }
+}
+
+@media (max-width: 700px) {
+  .vista-previa {
+    table {
+      /* display: flex; */
+      width: 100% !important;
+    }
+  }
 }
