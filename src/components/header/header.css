@@ -52,8 +52,8 @@
 
 .img {
   display: flex;
-  position: relative;
-  width: 400px;
+  position: absolute;
+  width: fit-content;
   height: 70px;
   cursor: pointer;
   /* left: 2%; */

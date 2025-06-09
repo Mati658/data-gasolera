@@ -37,5 +37,10 @@
       /* display: flex; */
       width: 100% !important;
     }
+    overflow-x: auto;
+    ::-webkit-scrollbar {
+      display: none !important;
+    }
+    scrollbar-width: none;
   }
 }
