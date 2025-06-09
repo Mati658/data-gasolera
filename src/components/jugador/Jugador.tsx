@@ -136,7 +136,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
       ) : ( <></> )}
       
       
-      <img src={jugador.imagen +'?v='+ jugador.imagen_version} className='img-jugador' style={{height:'500px'}}/>
+      <img src={jugador.imagen +'?v='+ jugador.imagen_version} className='img-jugador' style={{minHeight:'500px'}}/>
 
       {/* <div style={{width:'100%', display:'flex', justifyContent:'end'}}>
         <div className='numero-jugador' style={{transform: 'translate(-5px, -54px)'}}>

@@ -87,7 +87,7 @@ export default function Cancha({edit, posPrincipalRecibida, posSecundarias, onSe
                         {divs.map((e, i = 0 )=>(
                             <div key={`${e}${i}`} id={`${i}`} onClick={()=>selectPrimario(i)} className={`div${i+=1} general-grid`}>
                                 {posPrincipalAlta == (i) && (console.log(posPrincipalAlta),
-                                    <div className={`pj-pr-cancha ${(posPrincipalAlta!=3 && 'center')} `} ></div>
+                                    <div className={`pj-pr-cancha ${(posPrincipalAlta!=33 && 'center')} `} ></div>
                                 )}
 
                                 {secunds.includes(i) && (
@@ -103,7 +103,7 @@ export default function Cancha({edit, posPrincipalRecibida, posSecundarias, onSe
                         {divs.map((e, i = 0 )=>(
                             <div key={`${e}${i}`} id={`${i}`} onClick={()=>crearListaSecun(i)} className={`div${i+=1} general-grid`}>
                                 {posPrincipalAlta == (i) && (
-                                    <div className={`pj-pr-cancha ${(posPrincipalAlta!=3 && 'center')} `} ></div>
+                                    <div className={`pj-pr-cancha ${(posPrincipalAlta!=33 && 'center')} `} ></div>
                                 )}
 
                                 {secunds.includes(i) && (
@@ -124,7 +124,7 @@ export default function Cancha({edit, posPrincipalRecibida, posSecundarias, onSe
             {divs.map((e, i = 0 )=>(
                 <div key={`${e}${i}`} className={`div${i+=1} general-grid`}>
                     {posPrincipalRecibida == (i) && (
-                        <div className={`pj-pr-cancha ${(posPrincipalRecibida!=3 && 'center')} `} ></div>
+                        <div className={`pj-pr-cancha ${(posPrincipalRecibida!=33 && 'center')} `} ></div>
                     )}
                     
                     {posSecundarias.includes(i) && (

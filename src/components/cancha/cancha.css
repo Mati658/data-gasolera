@@ -133,9 +133,6 @@
   justify-content: center;
   display: flex;
 }
-.center {
-  align-self: center;
-}
 
 .general-grid:hover {
   cursor: pointer;
@@ -143,17 +140,26 @@
 }
 
 .pj-pr-cancha {
+  background-image: var(--pj-icon-cancha);
+  background-repeat: no-repeat;
+  background-size: cover;
   content: "";
-  position: relative;
-  top: 0;
-  left: 0;
+  position: absolute;
+  bottom: 0;
   width: 40%;
   height: 40%;
   border-radius: 50%;
   background-color: #00bfff;
 }
 
+.center {
+  align-self: center;
+  bottom: auto;
+}
 .pj-sc-cancha {
+  background-image: var(--pj-icon-cancha);
+  background-repeat: no-repeat;
+  background-size: cover;
   content: "";
   position: relative;
   top: 0;

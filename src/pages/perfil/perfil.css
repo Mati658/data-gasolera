@@ -86,7 +86,8 @@
 
   .container-perfil-datos {
     margin-top: 10px;
-    flex-direction: column;
+    margin-bottom: 50px;
+    /* flex-direction: column; */
     gap: 10px;
   }
 
@@ -98,7 +99,20 @@
   }
 
   .container-jugador-datos {
-    margin-bottom: 50px;
     min-width: 0px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container-jugador-datos,
+  .container-perfil-datos {
+    flex-direction: column;
+  }
+  .div-cancha {
+    position: absolute;
+    display: block;
+    justify-items: normal;
+    width: 30%;
+    right: 3%;
   }
 }

@@ -42,6 +42,7 @@ function App() {
       root.style.setProperty('--bg-fila-liga', getComputedStyle(root).getPropertyValue('--bg-fila-dk-dk'));
       root.style.setProperty('--bg-fila-liga2', getComputedStyle(root).getPropertyValue('--bg-fila-dk-lt'));
       root.style.setProperty('--bg-temperley-fila', getComputedStyle(root).getPropertyValue('--bg-temperley-dk'));
+      root.style.setProperty('--pj-icon-cancha', getComputedStyle(root).getPropertyValue('--pj-icon-cancha-dk'));
     }
   },[])
 

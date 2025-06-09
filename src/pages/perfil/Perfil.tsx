@@ -16,6 +16,7 @@ export default function Perfil() {
     const [jugador, setJugador] = useState(location.state.jugador || {})
     const keys : string[] = ['puesto', 'nacimiento', 'edad', 'lugarNacimiento', 'altura', 'peso', 'nacionalidad'];
     const [flagEdit, setFlagEdit] = useState(false)
+    const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(()=>{
         let temp = localStorage.getItem('listaJugadores')
@@ -26,6 +27,16 @@ export default function Perfil() {
         setLoader(false);
         window.scrollTo(0, 0);
         console.log(jugador)
+    },[])
+
+    useEffect(()=>{
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
     },[])
 
     const actualizar= async(jugadorEdit:Jugador)=>{
@@ -69,11 +80,17 @@ export default function Perfil() {
 
                     </div>
                 </div>   
-                {jugador.puesto != 'AA Cuerpo Técnico' && (
+                    {(jugador.puesto != 'AA Cuerpo Técnico' && width > 900) && (
+                        <div className='div-cancha'>
+                            <Cancha edit={flagEdit} posPrincipalRecibida={jugador.posicion.pr} posSecundarias={jugador.posicion.sc} onSendData={(data)=>{ setJugador((prev:any) => ({...prev, posicion: data}));}}></Cancha>
+                        </div>
+                    )} 
+                {(jugador.puesto != 'AA Cuerpo Técnico' && width < 500) && (
                     <div className='div-cancha'>
                         <Cancha edit={flagEdit} posPrincipalRecibida={jugador.posicion.pr} posSecundarias={jugador.posicion.sc} onSendData={(data)=>{ setJugador((prev:any) => ({...prev, posicion: data}));}}></Cancha>
                     </div>
                 )}  
+
             </div>
             <div className='container-perfil-datos'>
                 <div className='perfil-item'>
@@ -90,8 +107,12 @@ export default function Perfil() {
                     <p className='lucidity color-text' >{jugador.puesto != 'AA Cuerpo Técnico' ? 'Partidos Jugados' : ''}</p>
                     <p className='lucidity' style={{fontSize:'1.7rem'}}>{jugador.puesto != 'AA Cuerpo Técnico' ? jugador.datos.dato3 : ''}</p>
                 </div>
-
             </div>
+            {(jugador.puesto != 'AA Cuerpo Técnico' && width > 500 && width < 900) && (
+                    <div className='div-cancha'>
+                        <Cancha edit={flagEdit} posPrincipalRecibida={jugador.posicion.pr} posSecundarias={jugador.posicion.sc} onSendData={(data)=>{ setJugador((prev:any) => ({...prev, posicion: data}));}}></Cancha>
+                    </div>
+                )}  
 
             <div className='gap'></div>
             

@@ -215,6 +215,12 @@
   }
 }
 
+@media (max-width: 500px) {
+  .img-jugador {
+    height: auto;
+  }
+}
+
 .text-p {
   width: 90%;
   font-size: x-large;
