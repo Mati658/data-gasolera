@@ -5,6 +5,7 @@ import { useDatabase } from '../../context/DatabaseContext';
 import InfoPartido from '../../components/infoPartido/InfoPartido';
 
 export default function Equipo() {
+  const usuario : string | null = localStorage.getItem('usuario')
     const location = useLocation()
     const idEquipo = Number(location.pathname.split('historial/')[1]);
     const [equipoNombre, setEquipoNombre] = useState<string>('');
@@ -182,7 +183,9 @@ export default function Equipo() {
                  equipoVisitante={armarObjecto(item, false)} torneo={item.torneo} id={item.id} idContrario={idEquipo} onEliminarPartido={eliminarPartido}></InfoPartido>
             ))}
 
-            <button type='button' className="submit-alta" onClick={agregarPartido}>Agregar Partido</button>
+            {usuario && (
+                <button type='button' className="submit-alta" onClick={agregarPartido}>Agregar Partido</button>
+            )}
 
         </div>
 
