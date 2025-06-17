@@ -27,7 +27,17 @@
   }
 
   .vista-previa {
-    color: black;
+    button {
+      cursor: pointer !important;
+      width: 100%;
+      height: 100%;
+      background: none;
+      border: none;
+      font-size: x-large;
+    }
+    button:hover {
+      background: #00ffcc;
+    }
   }
 }
 

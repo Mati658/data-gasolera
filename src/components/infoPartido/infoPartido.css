@@ -1,0 +1,142 @@
+.container-info-partido {
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+  display: inline-block;
+  border: 2px solid #000;
+
+  .container-btns {
+    display: flex;
+    position: absolute;
+  }
+
+  table {
+    text-align: center;
+    border-collapse: collapse;
+    /* border: 2px solid rgb(0, 0, 0); */
+  }
+  td {
+    border: 1px solid rgb(0, 0, 0);
+  }
+  .td-equipo {
+    position: relative;
+    width: 150px;
+    border-bottom: 0px solid;
+
+    vertical-align: top;
+    background: #d9d9d9;
+
+    h4 {
+      margin: 0;
+    }
+  }
+
+  input,
+  select {
+    border-radius: 50px;
+    border: 2px solid transparent;
+    outline: none;
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  input:focus,
+  select:focus {
+    box-shadow: 0px 0px 0px 4px #00bc61;
+  }
+
+  .input-titulo {
+    width: 30%;
+    padding: 20px 10px;
+  }
+
+  .input-equipo {
+    width: 80%;
+    padding: 5px 10px;
+  }
+
+  .input-goles-num {
+    font-size: 1rem;
+    width: 30px;
+    padding: 10px;
+  }
+
+  .input-jugadores {
+    font-size: 1rem;
+    width: 60%;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+  }
+
+  .btn-delete {
+    position: absolute;
+    right: 0;
+    top: -10%;
+  }
+
+  /* From Uiverse.io by andrew-demchenk0 */
+  .button {
+    --main-focus: #2d8cf0;
+    --font-color: #323232;
+    --bg-color-sub: #dedede;
+    --bg-color: #eee;
+    --main-color: #323232;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .button,
+  .button__icon,
+  .button__text {
+    transition: all 0.3s;
+  }
+
+  .button .button__text {
+    transform: translateX(22px);
+    color: var(--font-color);
+    font-weight: 600;
+  }
+
+  .button .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button .svg {
+    width: 20px;
+    fill: var(--main-color);
+  }
+
+  .button:hover {
+    background: var(--bg-color);
+  }
+
+  .button:hover .button__text {
+    color: transparent;
+  }
+
+  .button:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+  }
+
+  .button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+  }
+}

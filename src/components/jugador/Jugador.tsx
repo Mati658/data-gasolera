@@ -5,6 +5,7 @@ import BtnIcon from '../btn_icon/BtnIcon';
 import './jugador.css';
 import { useEffect, useState } from 'react';
 import { useLoader } from '../../context/LoaderContext';
+import Confirm from '../confirm/Confirm';
 
 type Props = {
     jugador : any,
@@ -21,6 +22,7 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
   const { bajaDB } = useDatabase()
   const { deleteFoto } = useStorage()
   const usuario : string | null = localStorage.getItem('usuario')
+  const [flagDialog, setFlagDialog] = useState<boolean>(false);
 
 
   const eliminarJugador = async() =>{
@@ -40,9 +42,12 @@ export default function JugadorComp({jugador, onEliminar, onEdit, read}: Props) 
   if (location.pathname == '/') {
     return (
       <div className='card-jugador'>
+        {flagDialog && (
+          <Confirm onConfirm={()=>eliminarJugador()} onCancel={()=>setFlagDialog(false)}></Confirm>
+        )}
         {usuario ? (
           <div className='container-btns'>
-            <div onClick={eliminarJugador}> <BtnIcon icon='delete'/> </div>
+            <div onClick={()=>setFlagDialog(true)}> <BtnIcon icon='delete'/> </div>
             <div onClick={onEdit}> <BtnIcon icon='edit'/> </div>
           </div>
         ) : ( <></> )}

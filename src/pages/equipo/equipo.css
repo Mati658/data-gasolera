@@ -1,0 +1,58 @@
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
+  /* margin: 0 auto; */
+}
+
+.container-equipo {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  width: 100%;
+  margin-top: 15vh;
+  min-height: 100vh;
+
+  h1 {
+    color: var(--text-th);
+  }
+}
+
+.historial-data {
+  text-align: center;
+  color: var(--text-effect);
+  strong {
+    color: #24bcec;
+  }
+}
+
+.historial-info-partido {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+
+  .submit-alta {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: 0.3s ease;
+    background-color: #00bfff;
+  }
+
+  .submit-alta:hover {
+    background-color: #00bfff96;
+  }
+}
+/* 
+.titulo-data {
+} */

@@ -15,6 +15,7 @@ import PlantelPage from "./pages/plantel/PlantelPage";
 import Loader from "./components/loader/Loader";
 import Historial from "./pages/historial/Historial";
 import QuienesSomos from "./pages/quienes_somos/QuienesSomos";
+import Equipo from "./pages/equipo/Equipo";
 // import LoaderInit from "./components/loader_init/LoaderInit";
 // import { useLoader } from "./context/LoaderContext";
 
@@ -68,6 +69,7 @@ function App() {
             <Route path="/noticias" element={<Noticas />} />
             <Route path="/plantel" element={<PlantelPage />} />
             <Route path="/historial" element={<Historial />} />
+            <Route path="/historial/:equipo" element={<Equipo />} />
             <Route path="/quienes-somos" element={<QuienesSomos />} />
 
             <Route path="*" element={<Navigate to="/" replace />} />

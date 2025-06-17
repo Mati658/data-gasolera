@@ -74,7 +74,7 @@ export default function CrearNota() {
               'fontfamily fontsize |'+
               'bold italic forecolor backcolor | alignleft aligncenter  ' +
               'alignright alignjustify | bullist numlist outdent indent lineheight | ' +
-              'image table | fullscreen upload preview cancel save | removeformat help ',
+              'image table code | fullscreen upload preview cancel save | removeformat help ',
             font_family_formats: `
                 lucidity=lucidity;
                 Arial=arial,helvetica,sans-serif;
@@ -193,7 +193,7 @@ export default function CrearNota() {
                       }
 
                       setLoader(true)
-                      if ((titulo) == 'Historial' && await altaDB('historial', notaJson)) {
+                      if ((titulo) == 'Historial' && await altaDB('historial', notaJson, null)) {
                         localStorage.removeItem('nota');
                         localStorage.removeItem('notaBackUp');
                         setLoader(false);
@@ -201,7 +201,7 @@ export default function CrearNota() {
                         return;
                       }
 
-                      if (await altaDB('notas', notaJson)) {
+                      if (await altaDB('notas', notaJson, null)) {
                         localStorage.removeItem('nota');
                         localStorage.removeItem('notaBackUp');
                       }

@@ -3,6 +3,7 @@ import './notaCaratula.css';
 import { useEffect, useState } from 'react';
 import { useDatabase } from '../../context/DatabaseContext';
 import BtnIcon from '../btn_icon/BtnIcon';
+import Confirm from '../confirm/Confirm';
 
 type Props = {
     nota : any,
@@ -15,6 +16,7 @@ export default function NotaCaratula({nota, onEliminar}: Props) {
   const { bajaDB } = useDatabase()
   const [imagen, setImagen] = useState('');
   const usuario : string | null = localStorage.getItem('usuario')
+  const [flagDialog, setFlagDialog] = useState<boolean>(false);
 
   const eliminarNota = async() =>{
     await bajaDB('notas', nota.id);
@@ -75,6 +77,9 @@ export default function NotaCaratula({nota, onEliminar}: Props) {
   }
   return (
     <div className='img-wrapper-nota'>
+      {flagDialog && (
+        <Confirm onConfirm={()=>eliminarNota()} onCancel={()=>setFlagDialog(false)}></Confirm>
+      )}
         {usuario ? (
             <div className='container-btns'>
                 <Link
@@ -83,7 +88,7 @@ export default function NotaCaratula({nota, onEliminar}: Props) {
                     state={{nota}}>
                     <div> <BtnIcon icon='edit'/> </div>
                 </Link>
-                <div onClick={eliminarNota}> <BtnIcon icon='delete'/> </div>
+                <div onClick={()=>setFlagDialog(true)}> <BtnIcon icon='delete'/> </div>
             </div>
         ) : ( <></> )}
       

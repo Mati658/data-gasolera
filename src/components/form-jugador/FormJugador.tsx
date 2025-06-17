@@ -117,7 +117,7 @@ export default function FormJugador({jugadorEdit = null, onSubmit, sendJugador}:
 
             const jugador = new Jugador(nombre, apellido, String(puesto), nacimiento, lugarNacimiento, `${altura} Mts`, `${peso} Kgs`, nacionalidad, url, datos, posicion)
             
-            if(await altaDB('plantel', jugador.toJson())){
+            if(await altaDB('plantel', jugador.toJson(), null)){
                 setLoader(false)
                 limpiar();
                 SetMensaje('¡Jugador Agregado!')

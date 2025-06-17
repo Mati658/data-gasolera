@@ -16,7 +16,9 @@ interface DatabaseContextType {
     getData : (columna:string) => Promise<false | any[]>;
     getNotas : (limite:number) => Promise<false | any[]>;
     getTabla : (tabla:string, select:string, limite:number) => Promise<false | any[]>;
-    altaDB : (tabla:string, datos : any) => Promise<boolean>;
+    getInfoEquipo : (equipoId:number) => Promise<false | any[]>;
+    altaDB : (tabla:string, datos : any, goles:any) => Promise<boolean>;
+    altaGolesDB : (goles:any) => Promise<boolean>;
     bajaDB : (tabla:string, id : number) => Promise<boolean>;
     update : (tabla:string, datos : any, id:number) => Promise<false | any[]>
 }
@@ -119,22 +121,73 @@ export const DatabaseProvider = ({ children }: Props) => {
 
     } 
 
+    const getInfoEquipo = async(equipo:number) =>{
+        const temperleyId : number = 77
+
+        const { data, error } = await supabase
+        .from('partidos')
+        .select(`id, fecha, torneo, equipo_local:equipo_local_id ( id, nombre ), equipo_visitante:equipo_visitante_id ( id, nombre ), 
+            goles_local, goles_visitante, goles (id, partido_id, jugador, equipo_id)`)
+        .or(`and(equipo_local_id.eq.${temperleyId},equipo_visitante_id.eq.${equipo}),and(equipo_local_id.eq.${equipo},equipo_visitante_id.eq.${temperleyId})`)
+        .order('fecha', {ascending:true})
+        
+        if (data) {
+            return data;
+        }
+        
+        console.error(error);
+
+        return false;
+    }
+
     
-    const altaDB = async(tabla:string, datos : any) =>{
-        // console.log(datos)
+    const altaDB = async(tabla:string, datos : any, goles:any = null) =>{
+        console.log(datos)
         let {data, error} = (await supabase
         .from(tabla)
         .insert([datos])
         .select())
 
-        if (data != null)  
+        if (data != null){
+            console.log(data)
+            if (goles) {
+                for await (const item of goles) {
+                    item.partido_id = data[0].id
+                }
+                console.log(goles);
+                
+                let {error} = (await supabase
+                .from('goles')
+                .insert(goles))
+    
+                console.error(error)
+    
+            }
+    
+            return false;
+
+        }else{
+            console.error(error)
             return true;
+        }
 
-        // console.log(data)
-        console.error(error)
-
-        return false;
     }
+
+    const altaGolesDB = async(goles:any) =>{
+        console.log(goles)
+        let {data, error} = (await supabase
+        .from('goles')
+        .insert(goles)
+        .select())
+
+        if (data != null)
+            return false;
+
+        console.error(error)
+        return true;
+
+    }
+
 
     const bajaDB = async(tabla:string, id : number) =>{
         let {data} = (await supabase
@@ -171,7 +224,9 @@ export const DatabaseProvider = ({ children }: Props) => {
             getData,
             getNotas,
             getTabla,
+            getInfoEquipo,
             altaDB,
+            altaGolesDB,
             bajaDB,
             update
         }}
