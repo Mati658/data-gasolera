@@ -97,15 +97,15 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
 
     const golesOriginales :any[]= [...equipoLocal.goles, ...equipoVisitante.goles];
 
-    const golesAActualizar = goles.filter(g => g.id); // tienen id
-    const golesANuevos = goles.filter(g => !g.id); // sin id → nuevos
+    const golesAActualizar = goles.filter(g => g.id); 
+    const golesANuevos = goles.filter(g => !g.id);
 
     const idsNuevos = goles.filter(g => g.id).map(g => g.id);
     const golesAEliminar = golesOriginales.filter(g => !idsNuevos.includes(g.id));
 
     await Promise.all([
       ...golesAActualizar.map(gol =>
-        update('goles', {jugador: gol.jugador, equipo_id: gol.equipo_id }, gol.id)
+        update('goles', {jugador: gol.jugador, equipo_id: gol.equipo_id, roja:gol.roja}, gol.id)
       ),
       ...golesAEliminar.map(gol =>
         bajaDB('goles', gol.id)
@@ -175,9 +175,9 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
           </tr>
           <tr>
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{textAlign:'left', padding:'15px 10px'}}>
-              {inputsLocal && inputsLocal.map((item:any, i=0)=>(console.log(item),
+              {inputsLocal && inputsLocal.map((item:any, i=0)=>(
                 <>
-                  <div style={{position:'relative'}} >
+                  <div key={i} style={{position:'relative'}} >
                     <input key={i} className='input-jugadores' type="text" 
                     onChange={(e) => {
                       const updated = [...inputsLocal];
@@ -212,9 +212,9 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
             </td>
 
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{textAlign:'left', padding:'15px 10px'}}>
-              {inputsVisitante && inputsVisitante.map((item:any, i=0)=>(
+              {inputsVisitante && inputsVisitante.map((item:any, i=0)=>(console.log(item),
                 <>
-                  <div style={{position:'relative'}}>
+                  <div key={i} style={{position:'relative'}}>
                     <input key={i} className='input-jugadores' type="text"  
                     onChange={(e) => {
                       const updated = [...inputsVisitante];
@@ -223,7 +223,10 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
                     }} 
                     value={item.jugador}/>
                     <div className='btn-delete'>
-                      <button className="Btn-chiquito">
+                      <button className="Btn-chiquito" onClick={()=>{
+                        const updated = [...inputsVisitante];
+                        updated[i++] = { ...item, roja: !item.roja };
+                        setInputsVisitante(updated);}}>
                         {item.roja ? (
                           <svg viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="color"> <rect x="5" y="17" width="62" height="38" fill="#D22F27"></rect> </g> <g id="line"> <rect x="5" y="17" width="62" height="38" fill="none" stroke="#D22F27" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></rect> </g> </g></svg>
                         ) : <>⚽</> }

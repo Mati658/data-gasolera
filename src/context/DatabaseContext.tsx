@@ -127,7 +127,7 @@ export const DatabaseProvider = ({ children }: Props) => {
         const { data, error } = await supabase
         .from('partidos')
         .select(`id, fecha, torneo, equipo_local:equipo_local_id ( id, nombre ), equipo_visitante:equipo_visitante_id ( id, nombre ), 
-            goles_local, goles_visitante, goles (id, partido_id, jugador, equipo_id)`)
+            goles_local, goles_visitante, goles (id, partido_id, jugador, equipo_id, roja)`)
         .or(`and(equipo_local_id.eq.${temperleyId},equipo_visitante_id.eq.${equipo}),and(equipo_local_id.eq.${equipo},equipo_visitante_id.eq.${temperleyId})`)
         .order('fecha', {ascending:true})
         
