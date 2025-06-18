@@ -55,20 +55,22 @@ export default function Equipo() {
 
         for await (const item of info) {
             if (item.equipo_local.nombre == 'Temperley') {    
-                if (Number(item.fecha.split('/')[0]) <= 1931) { //amateur
+                console.log((item.fecha.split('/')[0]).split(' ').pop())
+                
+                if (Number((item.fecha.split('/')[0]).split(' ').pop()) <= 1931) { //amateur
                     amateur = calcularDatosLocales(item, amateur)
                 }
 
-                if (Number(item.fecha.split('/')[0]) > 1931) { //profesional
+                if (Number((item.fecha.split('/')[0]).split(' ').pop()) > 1931) { //profesional
                     profesional = calcularDatosLocales(item, profesional)
                 }
             }
             else{
-                if (Number(item.fecha.split('/')[0]) <= 1931) { //amateur
+                if (Number((item.fecha.split('/')[0]).split(' ').pop()) <= 1931) { //amateur
                     amateur = calcularDatosVisitante(item, amateur)
                 }
 
-                if (Number(item.fecha.split('/')[0]) > 1931) { //profesional
+                if (Number((item.fecha.split('/')[0]).split(' ').pop()) > 1931) { //profesional
                     profesional = calcularDatosVisitante(item, profesional)
                 }
             }

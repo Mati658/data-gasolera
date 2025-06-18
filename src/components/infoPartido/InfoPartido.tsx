@@ -114,20 +114,22 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
     ]);
   }
 
-  const agregarInputLocal = async() =>{
+  const agregarInputLocal = async(flagRoja:boolean) =>{
     let data = {
       equipo_id:equipoLocalNombre == 'Temperley' ? 77 : idContrario,
       jugador:'',
-      partido_id:id
+      partido_id:id,
+      roja:flagRoja
     }
     setInputsLocal([...inputsLocal, data]);
   }
 
-  const agregarInputVisitante = async() =>{
+  const agregarInputVisitante = async(flagRoja:boolean) =>{
     let data = {
       equipo_id:equipoVisitanteNombre == 'Temperley' ? 77 : idContrario,
       jugador:'',
-      partido_id:id
+      partido_id:id,
+      roja:flagRoja
     }
     setInputsVisitante([...inputsVisitante, data]);
   }
@@ -183,17 +185,30 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
                       setInputsLocal(updated);
                     }} 
                     value={item.jugador}/>
-                    <div className='btn-delete' onClick={()=>eliminarJugador(i, true)}>
+                    <div className='btn-delete'>
+                      <button className="Btn-chiquito" onClick={()=>{
+                        const updated = [...inputsLocal];
+                        updated[i++] = { ...item, roja: !item.roja };
+                        setInputsLocal(updated);}}>
+                        {item.roja ? (
+                          <svg viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="color"> <rect x="5" y="17" width="62" height="38" fill="#D22F27"></rect> </g> <g id="line"> <rect x="5" y="17" width="62" height="38" fill="none" stroke="#D22F27" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></rect> </g> </g></svg>
+                        ) : <>⚽</> }
+                      </button>
+                      <div onClick={()=>eliminarJugador(i, true)}>
                       <BtnIcon icon='delete'/> 
+                      </div>
                     </div>
+
                   </div>
                 </>
               ))}
 
-              <button className="button" type="button" onClick={agregarInputLocal}>
-                <span className="button__text">Agregar</span>
-                <span className="button__icon"><svg className="svg" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
-              </button>
+              <div style={{gap:'10px', display:'flex'}}>
+                <button className="Btn" onClick={()=>agregarInputLocal(false)}>⚽</button>
+                <button className="Btn" onClick={()=>agregarInputLocal(true)}>
+                  <svg viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="color"> <rect x="5" y="17" width="62" height="38" fill="#D22F27"></rect> </g> <g id="line"> <rect x="5" y="17" width="62" height="38" fill="none" stroke="#D22F27" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></rect> </g> </g></svg>
+                </button>
+              </div>
             </td>
 
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{textAlign:'left', padding:'15px 10px'}}>
@@ -207,17 +222,26 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
                       setInputsVisitante(updated);
                     }} 
                     value={item.jugador}/>
-                    <div className='btn-delete' onClick={()=>eliminarJugador(i, false)}>
-                      <BtnIcon icon='delete'/> 
+                    <div className='btn-delete'>
+                      <button className="Btn-chiquito">
+                        {item.roja ? (
+                          <svg viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="color"> <rect x="5" y="17" width="62" height="38" fill="#D22F27"></rect> </g> <g id="line"> <rect x="5" y="17" width="62" height="38" fill="none" stroke="#D22F27" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></rect> </g> </g></svg>
+                        ) : <>⚽</> }
+                      </button>
+                      <div onClick={()=>eliminarJugador(i, false)}>
+                        <BtnIcon icon='delete'/>
+                      </div>
                     </div>
                   </div>
                 </>
               ))}
 
-              <button className="button" type="button" onClick={agregarInputVisitante}>
-                <span className="button__text">Agregar</span>
-                <span className="button__icon"><svg className="svg" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
-              </button>
+              <div className='container-btns' style={{gap:'10px', display:'flex'}}>
+                <button className="Btn" onClick={()=>agregarInputVisitante(false)}>⚽</button>
+                <button className="Btn" onClick={()=>agregarInputVisitante(true)}>
+                  <svg viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="color"> <rect x="5" y="17" width="62" height="38" fill="#D22F27"></rect> </g> <g id="line"> <rect x="5" y="17" width="62" height="38" fill="none" stroke="#D22F27" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></rect> </g> </g></svg>
+                </button>
+              </div>
             </td>
 
           </tr>
@@ -254,13 +278,17 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
           <tr>
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{borderBottomLeftRadius:'50px'}}>
               {inputsLocal && inputsLocal.map((item:any, i=0)=>(
-                <h4 key={i++}>{item.jugador}</h4>
+                <h4 key={i++}>{item.roja ? (
+                  <svg className='historial-roja' viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="color"> <rect x="5" y="17" width="62" height="38" fill="#D22F27"></rect> </g> <g id="line"> <rect x="5" y="17" width="62" height="38" fill="none" stroke="#D22F27" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></rect> </g> </g></svg>
+                ) : <>⚽</> } {item.jugador}</h4>
               ))}
             </td>
 
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{borderBottomRightRadius:'50px'}}>
               {inputsVisitante && inputsVisitante.map((item:any, i=0)=>(
-                <h4 key={i++}>{item.jugador}</h4>
+                <h4 key={i++}>{item.roja ? (
+                  <svg className='historial-roja' viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="color"> <rect x="5" y="17" width="62" height="38" fill="#D22F27"></rect> </g> <g id="line"> <rect x="5" y="17" width="62" height="38" fill="none" stroke="#D22F27" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></rect> </g> </g></svg>
+                ) : <>⚽</> } {item.jugador}</h4>
               ))}
             </td>
 
