@@ -172,7 +172,12 @@ export default function Equipo() {
                     <h4>Temperley ganó <strong>{item.ganados}</strong> veces</h4>
                     <h4>{equipoNombre} ganó <strong>{item.perdidos}</strong> veces</h4>
                     <h4>Empataron <strong>{item.empates}</strong> veces</h4>
-                    <h4>Temperley lleva una diferencia de <strong>{item.diferencia}</strong> partidos</h4>
+                    <h4>{item.diferencia > 0 ? (
+                        <>Temperley lleva una diferencia de <strong>{item.diferencia}</strong> partidos</>
+                    ): (item.diferencia == 0 ? (
+                        <>El historial esta empatado</>
+                    ) : <>{equipoNombre} lleva una diferencia de <strong>{Math.abs(item.diferencia)}</strong> partidos</>)
+                    }</h4>
                 </div>
             ))}
         </div>
