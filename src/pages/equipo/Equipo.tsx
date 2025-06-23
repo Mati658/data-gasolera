@@ -131,6 +131,7 @@ export default function Equipo() {
             console.log(partido)
             return {
                 equipo:partido.equipo_local.nombre,
+                url: partido.equipo_local.url,
                 goles_num:partido.goles_local,
                 goles:partido.goles.filter((item:any) => item.equipo_id == partido.equipo_local.id),
                 id:partido.equipo_local.id,
@@ -139,6 +140,7 @@ export default function Equipo() {
         }
         return {
                 equipo:partido.equipo_visitante.nombre,
+                url: partido.equipo_visitante.url,
                 goles_num:partido.goles_visitante,
                 goles:partido.goles.filter((item:any) => item.equipo_id == partido.equipo_visitante.id),
                 id:partido.goles_visitante.id,

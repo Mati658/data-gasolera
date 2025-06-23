@@ -273,10 +273,10 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
         </thead>
         <tbody>
           <tr>
-            <td style={{padding:'5px 10px', width:'150px', background:'#0b65ff'}}>{equipoLocalNombre}</td>
+            <td style={{padding:'5px 10px', width:'150px', background:'#0b65ff'}}>{equipoLocalNombre} <br /> <img src={equipoLocal.url} style={{height:'3vh'}} /> </td>
             <td style={{fontSize:'2rem', width:'50px', background:'#d9d9d9'}}>{equipoLocalGoles}</td>
             <td style={{fontSize:'2rem', width:'50px', background:'#d9d9d9'}}>{equipoVisitanteGoles}</td>
-            <td style={{padding:'5px 10px', width:'150px', background:'#0b65ff'}}>{equipoVisitanteNombre}</td>
+            <td style={{padding:'5px 10px', width:'150px', background:'#0b65ff'}}>{equipoVisitanteNombre}  <br /> <img src={equipoVisitante.url} style={{height:'3vh'}} /></td>
           </tr>
           <tr>
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{borderBottomLeftRadius:'50px'}}>
