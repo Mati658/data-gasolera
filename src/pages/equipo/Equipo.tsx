@@ -13,14 +13,31 @@ export default function Equipo() {
     const [equipoDatos, setEquipoDatos] = useState<any>();
     const titulos : string[] = ['TOTAL (AMAT+PROF)', 'PROFESIONAL', 'AMATEURISMO'];
     const {getInfoEquipo, getUno} = useDatabase()
-
+    const meses : any= {
+    enero: 0,
+    febrero: 1,
+    marzo: 2,
+    abril: 3,
+    mayo: 4,
+    junio: 5,
+    julio: 6,
+    agosto: 7,
+    septiembre: 8,
+    octubre: 9,
+    noviembre: 10,
+    diciembre: 11
+    };
     useEffect(()=>{
         window.scrollTo(0, 0);
 
         getInfoEquipo(idEquipo).then((res:any)=>{
             console.log(res);
-            setEquipoInfo(res)
-            getDatos(res)
+            const partidosOrdenados = res.sort((a:any, b:any) => {
+                return parseFecha(a.fecha).getTime() - parseFecha(b.fecha).getTime();
+            });
+
+            setEquipoInfo(partidosOrdenados)
+            getDatos(partidosOrdenados)
         })
         getUno('equipos', 'nombre', idEquipo).then((res:any)=>{
             setEquipoNombre(res[0].nombre)
@@ -35,6 +52,12 @@ export default function Equipo() {
         // console.log(equipoNombre)
         // getDatos(temp)
     },[])
+
+    const parseFecha = (fechaStr:string) => {
+        const [dia, , mesStr, , anio] = fechaStr.toLowerCase().split(" ");
+        const mes = meses[mesStr];
+        return new Date(Number(anio), mes, Number(dia));
+    }
 
     const getDatos = async(info:any) => {
         console.log(info)
@@ -189,8 +212,8 @@ export default function Equipo() {
 
         <div className='historial-info-partido'>
             <h1 className='titulo-data'>PARTIDOS</h1>
-            {equipoInfo && equipoInfo.map((item:any)=>(
-                <InfoPartido key={item.id} fecha={item.fecha} equipoLocal={armarObjecto(item, true)} equipoContrario={equipoNombre}
+            {equipoInfo && equipoInfo.map((item:any, i=0)=>(
+                <InfoPartido key={i++} fecha={item.fecha} equipoLocal={armarObjecto(item, true)} equipoContrario={equipoNombre}
                  equipoVisitante={armarObjecto(item, false)} torneo={item.torneo} id={item.id} idContrario={idEquipo} onEliminarPartido={eliminarPartido}></InfoPartido>
             ))}
 

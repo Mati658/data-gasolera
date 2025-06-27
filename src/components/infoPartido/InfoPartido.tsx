@@ -51,17 +51,13 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
     setLoader(true)
     await bajaDB('partidos', id)
 
-    const goles :any[]= [...inputsLocal, ...inputsVisitante];
+    // const goles :any[]= [...inputsLocal, ...inputsVisitante];
 
-    goles.map(gol =>
-      bajaDB('goles', gol.id)
-    ),
+    // goles.map(gol =>
+    //   bajaDB('goles', gol.id)
+    // ),
 
     setLoader(false)
-
-    // await bajaDB('plantel', jugador.id);
-    // await deleteFoto(jugador.imagen.split('public/storage/')[1]);
-    // onEliminar(jugador.id);
   }
 
   const editarPartido = async() =>{
@@ -134,6 +130,19 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
     setInputsVisitante([...inputsVisitante, data]);
   }
 
+  const cambiarEquipo = (idEquipo:number, local:boolean) =>{
+    if (local) {
+      let temp = inputsLocal;
+      temp.map((item:any)=>item.equipo_id = idEquipo)
+      setInputsLocal(temp)
+      return
+    }
+      let temp = inputsVisitante;
+      temp.map((item:any)=>item.equipo_id = idEquipo)
+      setInputsVisitante(temp)
+      return    
+  }
+
   if (flagEdit) {
     return(
       <div className='container-info-partido'>
@@ -153,7 +162,7 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
         <tbody>
           <tr>
             <td style={{padding:'5px 10px', width:'150px', background:'#0b65ff'}}>
-              <select className='select-equipo' value={equipoLocalNombre != '' ? (equipoLocalNombre == 'Temperley' ? '77' : idContrario) : ''} onChange={(e) => {setLocalNombre(e.target.value == '77' ? 'Temperley' : equipoContrario);}}>
+              <select className='select-equipo' value={equipoLocalNombre != '' ? (equipoLocalNombre == 'Temperley' ? '77' : idContrario) : ''} onChange={(e) => {setLocalNombre(e.target.value == '77' ? 'Temperley' : equipoContrario); cambiarEquipo(Number(e.target.value),true)}}>
                 <option value="-1">Equipo</option>
                 <option value="77">Temperley</option>
                 <option value={idContrario}>{equipoContrario}</option>
@@ -166,7 +175,7 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
               <input className='input-goles-num' type="number" onChange={(e) => {setVisitanteGoles(e.target.value);}} value={equipoVisitanteGoles} />
             </td>
             <td style={{padding:'5px 10px', width:'150px', background:'#0b65ff'}}>
-              <select className='select-equipo' value={equipoVisitanteNombre != '' ? (equipoVisitanteNombre == 'Temperley' ? '77' : idContrario) : ''} onChange={(e) => {setVisitanteNombre(e.target.value == '77' ? 'Temperley' : equipoContrario);}}>
+              <select className='select-equipo' value={equipoVisitanteNombre != '' ? (equipoVisitanteNombre == 'Temperley' ? '77' : idContrario) : ''} onChange={(e) => {setVisitanteNombre(e.target.value == '77' ? 'Temperley' : equipoContrario); cambiarEquipo(Number(e.target.value),false)}}>
                 <option value="-1">Equipo</option>
                 <option value="77">Temperley</option>
                 <option value={idContrario}>{equipoContrario}</option>
@@ -175,10 +184,10 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
           </tr>
           <tr>
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{textAlign:'left', padding:'15px 10px'}}>
-              {inputsLocal && inputsLocal.map((item:any, i=0)=>(
+              {inputsLocal && inputsLocal.map((item:any, i=0)=>(console.log(item),
                 <>
-                  <div key={i} style={{position:'relative'}} >
-                    <input key={i} className='input-jugadores' type="text" 
+                  <div key={"a"+i} style={{position:'relative'}} >
+                    <input className='input-jugadores' type="text" 
                     onChange={(e) => {
                       const updated = [...inputsLocal];
                       updated[i++] = { ...item, jugador: e.target.value };
@@ -214,8 +223,8 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{textAlign:'left', padding:'15px 10px'}}>
               {inputsVisitante && inputsVisitante.map((item:any, i=0)=>(console.log(item),
                 <>
-                  <div key={i} style={{position:'relative'}}>
-                    <input key={i} className='input-jugadores' type="text"  
+                  <div key={"b"+i} style={{position:'relative'}}>
+                    <input className='input-jugadores' type="text"  
                     onChange={(e) => {
                       const updated = [...inputsVisitante];
                       updated[i++] = { ...item, jugador: e.target.value };
@@ -239,7 +248,7 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
                 </>
               ))}
 
-              <div className='container-btns' style={{gap:'10px', display:'flex'}}>
+              <div style={{gap:'10px', display:'flex', zIndex:'1'}}>
                 <button className="Btn" onClick={()=>agregarInputVisitante(false)}>⚽</button>
                 <button className="Btn" onClick={()=>agregarInputVisitante(true)}>
                   <svg viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="color"> <rect x="5" y="17" width="62" height="38" fill="#D22F27"></rect> </g> <g id="line"> <rect x="5" y="17" width="62" height="38" fill="none" stroke="#D22F27" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></rect> </g> </g></svg>
