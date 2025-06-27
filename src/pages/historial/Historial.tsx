@@ -19,9 +19,10 @@ export default function Historial() {
       setLoader(false)
     })
 
-    document.addEventListener('click', getEvent)
-    return ()=> {
-      removeEventListener('click', getEvent)
+    const handler = (e: MouseEvent) => getEvent(e)
+    document.addEventListener('click', handler)
+    return () => {
+      document.removeEventListener('click', handler)
     }
   },[])
 
