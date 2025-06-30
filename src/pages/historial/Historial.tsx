@@ -28,9 +28,9 @@ export default function Historial() {
 
   const getEvent=(e:any)=>{
     if (e.target.tagName == 'BUTTON') {
-      console.log(e.target.id)
+      // console.log(e.target.id)
       if (Number(e.target.id) > 0) { 
-        console.log(e.target.id)
+        // console.log(e.target.id)
         navigate(`/historial/${e.target.id}`)
       }
     }

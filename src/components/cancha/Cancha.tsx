@@ -86,7 +86,7 @@ export default function Cancha({edit, posPrincipalRecibida, posSecundarias, onSe
                     <div className='container-cancha'>
                         {divs.map((e, i = 0 )=>(
                             <div key={`${e}${i}`} id={`${i}`} onClick={()=>selectPrimario(i)} className={`div${i+=1} general-grid-edit`}>
-                                {posPrincipalAlta == (i) && (console.log(posPrincipalAlta),
+                                {posPrincipalAlta == (i) && (
                                     <div className={`pj-pr-cancha ${(posPrincipalAlta!=33 && 'center')} `} ></div>
                                 )}
 

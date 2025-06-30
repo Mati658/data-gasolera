@@ -45,7 +45,7 @@ export default function StorageProvider({ children }: Props) {
       
       if (error) 
           return false;
-      console.log(data)
+      // console.log(data)
 
       return getFoto(data?.path);
     }

@@ -26,7 +26,7 @@ export default function Perfil() {
         }
         setLoader(false);
         window.scrollTo(0, 0);
-        console.log(jugador)
+        // console.log(jugador)
     },[])
 
     useEffect(()=>{
@@ -40,7 +40,7 @@ export default function Perfil() {
     },[])
 
     const actualizar= async(jugadorEdit:Jugador)=>{
-        console.log(jugadorEdit)
+        // console.log(jugadorEdit)
     
         if (jugadorEdit) {
             setJugador(jugadorEdit)

@@ -35,7 +35,7 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
   const [torneoActualizado, setTorneoActualizado] = useState<string>(torneo);
   
   const eliminarJugador = async(i:number, local:boolean) =>{
-    console.log(i)
+    // console.log(i)
     if (local) {       
       setInputsLocal(prev => prev.filter((_, index) => index !== i));
       return
@@ -45,7 +45,7 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
 
 
   const eliminarPartido = async() =>{
-    console.log("lol")
+    // console.log("lol")
     setFlagDialog(false);
     onEliminarPartido(id);
     setLoader(true)
@@ -71,7 +71,7 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
       goles_visitante:Number(equipoVisitanteGoles),
     }
     const goles :any[]= [...inputsLocal, ...inputsVisitante];
-    console.log(partido)
+    // console.log(partido)
 
     if (id == 0) {
       await subirPartido(partido, goles);
@@ -184,7 +184,7 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
           </tr>
           <tr>
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{textAlign:'left', padding:'15px 10px'}}>
-              {inputsLocal && inputsLocal.map((item:any, i=0)=>(console.log(item),
+              {inputsLocal && inputsLocal.map((item:any, i=0)=>(
                 <>
                   <div key={"a"+i} style={{position:'relative'}} >
                     <input className='input-jugadores' type="text" 
@@ -221,7 +221,7 @@ export default function InfoPartido({fecha, equipoLocal, equipoVisitante, torneo
             </td>
 
             <td colSpan={2} rowSpan={1} className='td-equipo' style={{textAlign:'left', padding:'15px 10px'}}>
-              {inputsVisitante && inputsVisitante.map((item:any, i=0)=>(console.log(item),
+              {inputsVisitante && inputsVisitante.map((item:any, i=0)=>(
                 <>
                   <div key={"b"+i} style={{position:'relative'}}>
                     <input className='input-jugadores' type="text"  

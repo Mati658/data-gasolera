@@ -142,19 +142,19 @@ export const DatabaseProvider = ({ children }: Props) => {
 
     
     const altaDB = async(tabla:string, datos : any, goles:any = null) =>{
-        console.log(datos)
+        // console.log(datos)
         let {data, error} = (await supabase
         .from(tabla)
         .insert([datos])
         .select())
 
         if (data != null){
-            console.log(data)
+            // console.log(data)
             if (goles) {
                 for await (const item of goles) {
                     item.partido_id = data[0].id
                 }
-                console.log(goles);
+                // console.log(goles);
                 
                 let {error} = (await supabase
                 .from('goles')
@@ -174,7 +174,7 @@ export const DatabaseProvider = ({ children }: Props) => {
     }
 
     const altaGolesDB = async(goles:any) =>{
-        console.log(goles)
+        // console.log(goles)
         let {data, error} = (await supabase
         .from('goles')
         .insert(goles)

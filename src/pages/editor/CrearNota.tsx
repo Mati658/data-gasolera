@@ -127,7 +127,7 @@ export default function CrearNota() {
                 icon: 'Upload',
                 tooltip: 'Publicar',
                 onAction: async function () {
-                  console.log(notaEditar)
+                  // console.log(notaEditar)
                   editor.windowManager.open({
                     title: 'Publicar nota',
                     body: {
@@ -170,7 +170,7 @@ export default function CrearNota() {
                         texto: editorRef.current.getContent(),
                         time: new Date()
                       };
-                      console.log(titulo)
+                      // console.log(titulo)
                       if (notaEditar) {
                         setLoader(true)
 
