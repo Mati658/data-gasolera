@@ -35,6 +35,8 @@ function App() {
 
     if (Boolean(localStorage.getItem('theme'))) { 
       root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue('--bg-color-dk'));
+      root.style.setProperty('--bg-color-loader', getComputedStyle(root).getPropertyValue('--bg-color-loader-dk'));
+      root.style.setProperty('--pulse-loader', getComputedStyle(root).getPropertyValue('--pulse-loader-dk'));
       root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-dk'));
       root.style.setProperty('--text-effect', getComputedStyle(root).getPropertyValue('--text-bg-effect-dk'));
       root.style.setProperty('--text-color-videos', getComputedStyle(root).getPropertyValue('--text-color-videos-dk'));

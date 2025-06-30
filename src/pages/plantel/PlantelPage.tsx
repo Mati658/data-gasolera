@@ -28,6 +28,9 @@ export default function PlantelPage() {
 
 
     return (
+        <>  
+        <div className='fondo-img-plantel'></div>
+        <div className='filtro'></div>
         <div className='container-plantel-page'>
             <PlantelFooter jugadores={jugadores}></PlantelFooter>
 
@@ -35,5 +38,6 @@ export default function PlantelPage() {
             {/* <Loader></Loader> */}
 
         </div>
+        </>
     )
 }

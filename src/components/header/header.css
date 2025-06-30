@@ -54,23 +54,12 @@
   display: flex;
   position: absolute;
   width: fit-content;
-  height: 70px;
+  height: 7vh;
   cursor: pointer;
   /* left: 2%; */
 }
 
-@media (max-width: 475px) {
-  .img {
-    display: flex;
-    position: relative;
-    width: 150%;
-    height: 70px;
-    cursor: pointer;
-    /* left: 2%; */
-  }
-}
-
-/* .container-right {
+.container-right {
   display: flex;
   width: 100%;
   gap: 10px;
@@ -78,16 +67,16 @@
   padding-inline-end: 2.5%;
   flex-direction: row-reverse;
   align-items: center;
-} */
+}
 
-.container-right {
+/* .container-right {
   display: flex;
   width: 100%;
   gap: 10px;
   justify-content: center;
   flex-direction: row-reverse;
   align-items: center;
-}
+} */
 
 .btn-theme {
   display: flex;
@@ -110,6 +99,7 @@
 
 .btn-header {
   background-color: white;
+  color: rgb(46, 46, 46);
   border-radius: 50px;
   font-size: 1.2rem;
   padding: 0px 3px;

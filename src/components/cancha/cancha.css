@@ -125,7 +125,8 @@
   }
 }
 
-.general-grid {
+.general-grid,
+.general-grid-edit {
   max-width: 77px;
   max-height: 77px;
   text-align: center;
@@ -134,7 +135,7 @@
   display: flex;
 }
 
-.general-grid:hover {
+.general-grid-edit:hover {
   cursor: pointer;
   outline: 3px red solid;
 }

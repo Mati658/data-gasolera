@@ -5,6 +5,12 @@
   --bg-color-lt: #ffffff;
   --bg-color-dk: #121212;
 
+  --bg-color-loader-lt: #24bcec;
+  --bg-color-loader-dk: #121212;
+
+  --pulse-loader-lt: #00496258;
+  --pulse-loader-dk: #00bfff58;
+
   --header-color-lt: #24bcec;
   --header-color-dk: rgb(46, 46, 46);
 
@@ -42,6 +48,8 @@
 
   /* variables activas */
   --bg-color: var(--bg-color-lt);
+  --bg-color-loader: var(--bg-color-loader-lt);
+  --pulse-loader: var(--pulse-loader-lt);
   --header-color: var(--header-color-lt);
   --text-color: var(--text-color-lt);
   --text-color-videos: var(--text-color-videos-lt);
@@ -60,8 +68,34 @@
   src: url("/src/assets/fonts/lucidity-condensed.ttf");
 }
 
+@font-face {
+  font-family: "poppins-black";
+  src: url("/src/assets/fonts/poppins.black.ttf");
+}
+
+@font-face {
+  font-family: "poppins-semibold";
+  src: url("/src/assets/fonts/poppins.semibold.ttf");
+}
+
 .lucidity {
   font-family: "lucidity", serif;
+}
+
+.poppins-black {
+  font-family: "poppins-black", serif;
+}
+
+.poppins-semibold {
+  font-family: "poppins-semibold", serif;
+}
+
+.capital {
+  text-transform: capitalize;
+}
+
+.upper-case {
+  text-transform: uppercase;
 }
 
 .hidden {

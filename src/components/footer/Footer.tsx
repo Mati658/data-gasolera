@@ -39,7 +39,7 @@ export default function Footer() {
               <p className='lucidity no-margin'>Barrios Luca</p>
               <p className='lucidity no-margin'>Blanco Franco</p>
               <p className='lucidity no-margin'>Damoni Ciro</p>
-              <p className='lucidity dev'>Desarrolado por: <a href="https://portfolio-matias-altamira.netlify.app" target='_blank' className='no-decorate'>Matías Altamira</a></p>
+              <p className='lucidity dev'>Desarrollado por: <a href="https://portfolio-matias-altamira.netlify.app" target='_blank' className='no-decorate'>Matías Altamira</a></p>
           </div>
         </div>
       </div>

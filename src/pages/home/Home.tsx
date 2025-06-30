@@ -22,7 +22,7 @@ export default function Home() {
           <Panel></Panel>
           <div className='gap'></div>
           
-          <h1 className='lucidity' style={{color: 'var(--text-th)',}}>Plantel</h1>
+          <h1 className='poppins-black upper-case' style={{color: 'var(--text-th)',}}>Plantel</h1>
           <Plantel></Plantel>
           <div className='gap'></div>
 

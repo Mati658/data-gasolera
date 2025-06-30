@@ -37,8 +37,11 @@ export default function Historial() {
   }
 
   return (
+    <>
+    <div className='fondo-img-historial'></div>
+    <div className='filtro'></div>
     <div className="container-historial">
-      <h1>Historial</h1>
+      <h1 className='upper-case poppins-black'>Historial</h1>
       <Link
         key={nota?.id} 
         to={`/editor`} 
@@ -47,6 +50,15 @@ export default function Historial() {
       </Link>
       <div className='vista-previa' dangerouslySetInnerHTML={{ __html: nota.texto || '' }}></div>
       <div className='gap'></div>
+      <div className='gap'></div>
+
+      <label className='label-agradecimiento poppins-semibold'>
+        <h4>
+          ℹ Se agradece la información dada para la realización de estos historiales: Daniel Remolina, Marcelo Ventieri en su Blogspot 
+          sobre el club y al Departamento Histórico.
+        </h4>
+      </label>
     </div>
+    </>
   )
 }

@@ -56,6 +56,8 @@ export default function Header() {
     
     if (nuevoTema) {
       root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue('--bg-color-dk'));
+      root.style.setProperty('--bg-color-loader', getComputedStyle(root).getPropertyValue('--bg-color-loader-dk'));
+      root.style.setProperty('--pulse-loader', getComputedStyle(root).getPropertyValue('--pulse-loader-dk'));
       root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-dk'));
       root.style.setProperty('--text-effect', getComputedStyle(root).getPropertyValue('--text-bg-effect-dk'));
       root.style.setProperty('--text-color-videos', getComputedStyle(root).getPropertyValue('--text-color-videos-dk'));
@@ -67,6 +69,8 @@ export default function Header() {
       root.style.setProperty('--pj-icon-cancha', getComputedStyle(root).getPropertyValue('--pj-icon-cancha-dk'));
     } else {
       root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue('--bg-color-lt'));
+      root.style.setProperty('--bg-color-loader', getComputedStyle(root).getPropertyValue('--bg-color-loader-lt'));
+      root.style.setProperty('--pulse-loader', getComputedStyle(root).getPropertyValue('--pulse-loader-lt'));
       root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-lt'));
       root.style.setProperty('--text-effect', getComputedStyle(root).getPropertyValue('--text-bg-effect-lt'));
       root.style.setProperty('--text-color-videos', getComputedStyle(root).getPropertyValue('--text-color-videos-lt'));
@@ -105,14 +109,14 @@ export default function Header() {
                 </div>
 
                 <div className="menu" id="menu">
-                  <button className="btn-header lucidity" onClick={() => {navegar('/plantel'); toggleMenu()}}>Plantel</button>
-                  <button className="btn-header lucidity" onClick={() => {navegar('/fixture'); toggleMenu()}}>Fixture</button>
-                  <button className="btn-header lucidity" onClick={() => {navegar('/historial'); toggleMenu()}}>Historial</button>
-                  <button className="btn-header lucidity" onClick={() => {navegar('/noticias'); toggleMenu()}}>Más Noticias</button>
-                  <button className="btn-header lucidity" onClick={() => {navegar('/quienes-somos'); toggleMenu()}}>Quienes Somos</button>
-                  <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/alta-jugador'); toggleMenu()}}>Alta Jugador</button>
-                  <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/editor'); toggleMenu()}}>Crear Nota</button>
-                  <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/control-notas'); toggleMenu()}}>Edit Notas</button>
+                  <button className="btn-header poppins-black " onClick={() => {navegar('/plantel'); toggleMenu()}}>Plantel</button>
+                  <button className="btn-header poppins-black " onClick={() => {navegar('/fixture'); toggleMenu()}}>Fixture</button>
+                  <button className="btn-header poppins-black " onClick={() => {navegar('/historial'); toggleMenu()}}>Historial</button>
+                  <button className="btn-header poppins-black " onClick={() => {navegar('/noticias'); toggleMenu()}}>Más Noticias</button>
+                  <button className="btn-header poppins-black " onClick={() => {navegar('/quienes-somos'); toggleMenu()}}>Quiénes Somos</button>
+                  <button className={`${'btn-header poppins-black  '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/alta-jugador'); toggleMenu()}}>Alta Jugador</button>
+                  <button className={`${'btn-header poppins-black  '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/editor'); toggleMenu()}}>Crear Nota</button>
+                  <button className={`${'btn-header poppins-black  '}${usuario ? '' : 'hidden'}`} onClick={() => {navegar('/control-notas'); toggleMenu()}}>Edit Notas</button>
                   <div className="btn-theme">
                     <label className="switch">
                         <input type="checkbox" onChange={() => cambiarTema()} checked={temaOscuro} />
@@ -130,17 +134,17 @@ export default function Header() {
                     <span className="slider"></span>
                 </label>
               </div>
-              <button className="btn-header lucidity" onClick={() => navegar('/plantel')}>Plantel</button>
-              <button className="btn-header lucidity" onClick={() => navegar('/historial')}>Historial</button>
-              <button className="btn-header lucidity" onClick={() => navegar('/fixture')}>Fixture</button>
-              <button className="btn-header lucidity" onClick={() => {navegar('/noticias')}}>Más Noticias</button>
-              <button className="btn-header lucidity" onClick={() => navegar('/quienes-somos')}>Quienes Somos</button>
-              <label htmlFor="btns" className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`}>Admin</label>
+              <button className="btn-header poppins-black " onClick={() => navegar('/plantel')}>Plantel</button>
+              <button className="btn-header poppins-black " onClick={() => navegar('/historial')}>Historial</button>
+              <button className="btn-header poppins-black " onClick={() => navegar('/fixture')}>Fixture</button>
+              <button className="btn-header poppins-black " onClick={() => {navegar('/noticias')}}>Más Noticias</button>
+              <button className="btn-header poppins-black " onClick={() => navegar('/quienes-somos')}>Quiénes Somos</button>
+              <label htmlFor="btns" className={`${'btn-header poppins-black  '}${usuario ? '' : 'hidden'}`}>Admin</label>
               <input type="checkbox" id="btns" hidden />
               <div className="btns-admin">
-                <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/alta-jugador')}>Alta Jugador</button>
-                <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/editor')}>Crear Nota</button>
-                <button className={`${'btn-header lucidity '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/control-notas')}>Edit Notas</button>
+                <button className={`${'btn-header poppins-black  '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/alta-jugador')}>Alta Jugador</button>
+                <button className={`${'btn-header poppins-black  '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/editor')}>Crear Nota</button>
+                <button className={`${'btn-header poppins-black  '}${usuario ? '' : 'hidden'}`} onClick={() => navegar('/control-notas')}>Edit Notas</button>
               </div>
             </>
             )

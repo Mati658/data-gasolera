@@ -54,8 +54,11 @@ export default function Equipo() {
     },[])
 
     const parseFecha = (fechaStr:string) => {
-        const [dia, , mesStr, , anio] = fechaStr.toLowerCase().split(" ");
+        const [dia, mesStr, anio] = fechaStr.toLowerCase().split(" ");
         const mes = meses[mesStr];
+        console.log(dia)
+        console.log(mes)
+        console.log(anio)
         return new Date(Number(anio), mes, Number(dia));
     }
 

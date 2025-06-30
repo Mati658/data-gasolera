@@ -46,7 +46,7 @@ export default function Panel() {
             <div className="panel-div1">
                 <div style={{width:'100%', height:'100%'}}>
                     <div className={'righteous-regular titulo-video'}>
-                        <h2>Streams Entrevistas</h2>
+                        <h2 className='poppins-black upper-case'>Streams Entrevistas</h2>
                     </div>
                     <Youtube videoId='PLDg6alCCoFu4z6NSkhhrwWxHgJHPLtOao' playlist={true}></Youtube>
                 </div>
