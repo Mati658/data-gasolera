@@ -3,9 +3,11 @@ import './equipo.css'
 import { useLocation } from 'react-router-dom';
 import { useDatabase } from '../../context/DatabaseContext';
 import InfoPartido from '../../components/infoPartido/InfoPartido';
+import { useLoader } from '../../context/LoaderContext';
 
 export default function Equipo() {
-  const usuario : string | null = localStorage.getItem('usuario')
+    const usuario : string | null = localStorage.getItem('usuario')
+    const { setLoader, getLoader } = useLoader();
     const location = useLocation()
     const idEquipo = Number(location.pathname.split('historial/')[1]);
     const [equipoNombre, setEquipoNombre] = useState<string>('');
@@ -29,15 +31,17 @@ export default function Equipo() {
     };
     useEffect(()=>{
         window.scrollTo(0, 0);
+        setLoader(true)
 
         getInfoEquipo(idEquipo).then((res:any)=>{
-            console.log(res);
+            // console.log(res);
             const partidosOrdenados = res.sort((a:any, b:any) => {
                 return parseFecha(a.fecha).getTime() - parseFecha(b.fecha).getTime();
             });
-
+            
             setEquipoInfo(partidosOrdenados)
             getDatos(partidosOrdenados)
+            setLoader(false)
         })
         getUno('equipos', 'nombre', idEquipo).then((res:any)=>{
             setEquipoNombre(res[0].nombre)
@@ -54,16 +58,25 @@ export default function Equipo() {
     },[])
 
     const parseFecha = (fechaStr:string) => {
-        const [dia, mesStr, anio] = fechaStr.toLowerCase().split(" ");
+
+        if (fechaStr.toLowerCase().split(" ")[0].length >=4) {
+            const anio = fechaStr.toLowerCase().split(" ")[0];
+            return new Date(Number(anio), 1, 1);
+        }
+        
+        const dia = fechaStr.toLowerCase().split(" ")[0];
+        const mesStr = fechaStr.toLowerCase().split(" ")[2];
+        const anio = fechaStr.toLowerCase().split(" ")[4];
+        
+        console.log({dia:dia,mesStr:mesStr,anio:anio})
+
         const mes = meses[mesStr];
-        console.log(dia)
-        console.log(mes)
-        console.log(anio)
+
         return new Date(Number(anio), mes, Number(dia));
     }
 
     const getDatos = async(info:any) => {
-        console.log(info)
+        // console.log(info)
         let amateur = {
             jugados:0,
             ganados:0,
@@ -81,7 +94,7 @@ export default function Equipo() {
 
         for await (const item of info) {
             if (item.equipo_local.nombre == 'Temperley') {    
-                console.log((item.fecha.split('/')[0]).split(' ').pop())
+                // console.log((item.fecha.split('/')[0]).split(' ').pop())
                 
                 if (Number((item.fecha.split('/')[0]).split(' ').pop()) <= 1931) { //amateur
                     amateur = calcularDatosLocales(item, amateur)
@@ -119,7 +132,7 @@ export default function Equipo() {
             amateur
         ]
         setEquipoDatos(datos);
-        console.log(datos);
+        // console.log(datos);
     }
 
     const calcularDatosLocales = (partido:any, nivel:any)=>{
@@ -154,7 +167,7 @@ export default function Equipo() {
 
     const armarObjecto = (partido:any, local:boolean) =>{
         if (local) {
-            console.log(partido)
+            // console.log(partido)
             return {
                 equipo:partido.equipo_local.nombre,
                 url: partido.equipo_local.url,
@@ -194,37 +207,42 @@ export default function Equipo() {
 
   return (
     <div className='container-equipo'>
-        <div className='historial-data'>
-            {equipoDatos && equipoDatos.map((item:any,i=0)=>(
-                <div key={i}>
-                    <h1 className='titulo-data'>{titulos[i]}</h1>
-                    <h4>Jugaron <strong>{item.jugados}</strong> veces</h4>
-                    <h4>Temperley ganó <strong>{item.ganados}</strong> veces</h4>
-                    <h4>{equipoNombre} ganó <strong>{item.perdidos}</strong> veces</h4>
-                    <h4>Empataron <strong>{item.empates}</strong> veces</h4>
-                    <h4>{item.diferencia > 0 ? (
-                        <>Temperley lleva una diferencia de <strong>{item.diferencia}</strong> partidos</>
-                    ): (item.diferencia == 0 ? (
-                        <>El historial esta empatado</>
-                    ) : <>{equipoNombre} lleva una diferencia de <strong>{Math.abs(item.diferencia)}</strong> partidos</>)
-                    }</h4>
-                </div>
-            ))}
-        </div>
+          {!getLoader() && (
+            <>
+            <div className='historial-data'>
+                {equipoDatos && equipoDatos.map((item:any,i=0)=>(
+                    <div key={i}>
+                        <h1 className='titulo-data'>{titulos[i]}</h1>
+                        <h4>Jugaron <strong>{item.jugados}</strong> veces</h4>
+                        <h4>Temperley ganó <strong>{item.ganados}</strong> veces</h4>
+                        <h4>{equipoNombre} ganó <strong>{item.perdidos}</strong> veces</h4>
+                        <h4>Empataron <strong>{item.empates}</strong> veces</h4>
+                        <h4>{item.diferencia > 0 ? (
+                            <>Temperley lleva una diferencia de <strong>{item.diferencia}</strong> partidos</>
+                        ): (item.diferencia == 0 ? (
+                            <>El historial esta empatado</>
+                        ) : <>{equipoNombre} lleva una diferencia de <strong>{Math.abs(item.diferencia)}</strong> partidos</>)
+                        }</h4>
+                    </div>
+                ))}
+            </div>
 
 
-        <div className='historial-info-partido'>
-            <h1 className='titulo-data'>PARTIDOS</h1>
-            {equipoInfo && equipoInfo.map((item:any, i=0)=>(
-                <InfoPartido key={i++} fecha={item.fecha} equipoLocal={armarObjecto(item, true)} equipoContrario={equipoNombre}
-                 equipoVisitante={armarObjecto(item, false)} torneo={item.torneo} id={item.id} idContrario={idEquipo} onEliminarPartido={eliminarPartido}></InfoPartido>
-            ))}
+            <div className='historial-info-partido'>
+                <h1 className='titulo-data'>PARTIDOS</h1>
+                {equipoInfo && equipoInfo.map((item:any, i=0)=>(
+                    <InfoPartido key={i++} fecha={item.fecha} equipoLocal={armarObjecto(item, true)} equipoContrario={equipoNombre}
+                    equipoVisitante={armarObjecto(item, false)} torneo={item.torneo} id={item.id} idContrario={idEquipo} onEliminarPartido={eliminarPartido}></InfoPartido>
+                ))}
 
-            {usuario && (
-                <button type='button' className="submit-alta" onClick={agregarPartido}>Agregar Partido</button>
-            )}
+                {usuario && (
+                    <button type='button' className="submit-alta" onClick={agregarPartido}>Agregar Partido</button>
+                )}
 
-        </div>
+            </div>
+            </>
+          )}
+
 
         <div className='gap'></div>
     </div>
