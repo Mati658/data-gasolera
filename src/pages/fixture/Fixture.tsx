@@ -51,14 +51,16 @@ export default function Fixture() {
                 <div className='table-titulo lucidity'>ZONA A</div>
                 <TablaNacional data={tablaZonaA}></TablaNacional>
                 <div className='gap'></div>
-                <div className='table-titulo lucidity'>ZONA B</div>
-                <TablaNacional data={tablaZonaB}></TablaNacional>
-                <div className='gap'></div>
-              </div>
-              <div className='container-tables'>
+                
                 <div className='table-titulo lucidity'>PRÓXIMOS PARTIDOS</div>
                 <TablaPartidos data={tablaPartidos} columna='Hora'></TablaPartidos>
                 <div className='gap'></div>
+              </div>
+              <div className='container-tables'>
+                <div className='table-titulo lucidity'>ZONA B</div>
+                <TablaNacional data={tablaZonaB}></TablaNacional>
+                <div className='gap'></div>
+                
                 <div className='table-titulo lucidity'>RESULTADOS</div>
                 <TablaPartidos data={tablaResultados} columna='Res'></TablaPartidos>
                 <div className='gap'></div>
