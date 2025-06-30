@@ -17,7 +17,7 @@ export default function Loader() {
     )
   }
   return (
-    <div className={flagLoader ? 'loader' : 'hidden'}>
+    <div className={flagLoader ? 'loader background-loader' : 'hidden'}>
         <div className='conatiner-loader'>
             <img src={'/loader.png'} className="img-loader" />
             <p className='pulse-loader'></p>
