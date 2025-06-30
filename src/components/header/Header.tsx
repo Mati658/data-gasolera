@@ -56,6 +56,7 @@ export default function Header() {
     
     if (nuevoTema) {
       root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue('--bg-color-dk'));
+      root.style.setProperty('--bg-filtro', getComputedStyle(root).getPropertyValue('--bg-filtro-dk'));
       root.style.setProperty('--bg-color-loader', getComputedStyle(root).getPropertyValue('--bg-color-loader-dk'));
       root.style.setProperty('--pulse-loader', getComputedStyle(root).getPropertyValue('--pulse-loader-dk'));
       root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-dk'));
@@ -69,6 +70,7 @@ export default function Header() {
       root.style.setProperty('--pj-icon-cancha', getComputedStyle(root).getPropertyValue('--pj-icon-cancha-dk'));
     } else {
       root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue('--bg-color-lt'));
+      root.style.setProperty('--bg-filtro', getComputedStyle(root).getPropertyValue('--bg-filtro-lt'));
       root.style.setProperty('--bg-color-loader', getComputedStyle(root).getPropertyValue('--bg-color-loader-lt'));
       root.style.setProperty('--pulse-loader', getComputedStyle(root).getPropertyValue('--pulse-loader-lt'));
       root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-lt'));

@@ -5,6 +5,9 @@
   --bg-color-lt: #ffffff;
   --bg-color-dk: #121212;
 
+  --bg-filtro-lt: rgba(116, 116, 116, 0.412);
+  --bg-filtro-dk: rgba(15, 15, 15, 0.851);
+
   --bg-color-loader-lt: #24bcec;
   --bg-color-loader-dk: #121212;
 
@@ -48,6 +51,7 @@
 
   /* variables activas */
   --bg-color: var(--bg-color-lt);
+  --bg-filtro: var(--bg-filtro-lt);
   --bg-color-loader: var(--bg-color-loader-lt);
   --pulse-loader: var(--pulse-loader-lt);
   --header-color: var(--header-color-lt);
