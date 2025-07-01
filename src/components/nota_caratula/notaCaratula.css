@@ -19,7 +19,8 @@
   display: block;
 }
 
-.titulo-nota {
+.titulo-nota,
+.titulo-nota-2 {
   position: absolute;
   max-width: 36vh;
   top: 40%;
@@ -27,6 +28,13 @@
   display: inline-block;
   color: var(--text-color);
   line-height: 1.45;
+}
+
+.titulo-nota-2 {
+  top: 60%;
+  position: relative;
+  margin: 0;
+  max-width: fit-content;
 }
 
 @media (max-width: 600px) {
