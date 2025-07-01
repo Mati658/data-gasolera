@@ -32,6 +32,7 @@ export default function Nota() {
     },[])
 
   return (
+    <>
         <div className='container-nota'>
             
             <Link
@@ -51,9 +52,11 @@ export default function Nota() {
                     </div>
                 ))} 
             </div>
-
             <div className='gap'></div>
+
         </div>
+        <div className='gap'></div>
+    </>
 
 
   )
