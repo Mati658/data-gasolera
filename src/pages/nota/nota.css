@@ -94,7 +94,7 @@
 
   .container-nota {
     /* background-color: aliceblue; */
-    display: initial;
+    display: block;
     flex-direction: row;
     /* align-items: center; */
     justify-self: center;
@@ -112,5 +112,11 @@
     h3 {
       color: #24bcec;
     }
+  }
+}
+
+@media (max-width: 450px) {
+  span {
+    font-size: clamp(1rem, 5vw, 3rem) !important;
   }
 }
