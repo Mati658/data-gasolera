@@ -67,7 +67,6 @@ function App() {
             <Route path="/perfil/:nombre" element={<Perfil />} />
             <Route path="/nota/:id/:titulo" element={<Nota />} />
             <Route path="/editor" element={<CrearNota />} />
-            <Route path="/nota" element={<Nota />} />
             <Route path="/control-notas" element={<ControlNotas />} />
             <Route path="/noticias" element={<Noticas />} />
             <Route path="/plantel" element={<PlantelPage />} />
