@@ -26,7 +26,7 @@
   width: 100%;
   min-height: 100%;
   z-index: -1;
-  background: url(/bg_plantel.jpg);
+  background: url(/bg_plantel.webp);
 
   background-attachment: fixed;
   background-position: center;
@@ -57,7 +57,7 @@
     width: 100%;
     min-height: 100%;
     z-index: -1;
-    background: url(/bg_plantel_cel.jpg);
+    background: url(/bg_plantel_cel.webp);
 
     background-attachment: fixed;
     background-position: center;
