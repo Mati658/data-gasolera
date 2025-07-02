@@ -26,29 +26,40 @@ function App() {
   const Home = lazy(()=>import('./pages/home/Home'));
   const CrearNota = lazy(()=>import('./pages/editor/CrearNota'));
 
-  useEffect(()=>{
+  useEffect(() => {
     const root = document.documentElement;
+    const match = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (localStorage.getItem('theme') == null) { 
-      localStorage.setItem('theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? '1' : '')
-    }
+    const applyTheme = (isDark: boolean) => {
+      const theme = isDark ? '1' : '';
+      localStorage.setItem('theme', theme);
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
 
-    if (Boolean(localStorage.getItem('theme'))) { 
-      root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue('--bg-color-dk'));
-      root.style.setProperty('--bg-filtro', getComputedStyle(root).getPropertyValue('--bg-filtro-dk'));
-      root.style.setProperty('--bg-color-loader', getComputedStyle(root).getPropertyValue('--bg-color-loader-dk'));
-      root.style.setProperty('--pulse-loader', getComputedStyle(root).getPropertyValue('--pulse-loader-dk'));
-      root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue('--text-color-dk'));
-      root.style.setProperty('--text-effect', getComputedStyle(root).getPropertyValue('--text-bg-effect-dk'));
-      root.style.setProperty('--text-color-videos', getComputedStyle(root).getPropertyValue('--text-color-videos-dk'));
-      root.style.setProperty('--bg-video', getComputedStyle(root).getPropertyValue('--bg-video-dk'));
-      root.style.setProperty('--text-th', getComputedStyle(root).getPropertyValue('--text-th-dk'));
-      root.style.setProperty('--bg-fila-liga', getComputedStyle(root).getPropertyValue('--bg-fila-dk-dk'));
-      root.style.setProperty('--bg-fila-liga2', getComputedStyle(root).getPropertyValue('--bg-fila-dk-lt'));
-      root.style.setProperty('--bg-temperley-fila', getComputedStyle(root).getPropertyValue('--bg-temperley-dk'));
-      root.style.setProperty('--pj-icon-cancha', getComputedStyle(root).getPropertyValue('--pj-icon-cancha-dk'));
-    }
-  },[])
+      root.style.setProperty('--bg-color', getComputedStyle(root).getPropertyValue(`--bg-color-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--bg-filtro', getComputedStyle(root).getPropertyValue(`--bg-filtro-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--bg-color-loader', getComputedStyle(root).getPropertyValue(`--bg-color-loader-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--pulse-loader', getComputedStyle(root).getPropertyValue(`--pulse-loader-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--text-color', getComputedStyle(root).getPropertyValue(`--text-color-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--text-effect', getComputedStyle(root).getPropertyValue(`--text-bg-effect-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--text-color-videos', getComputedStyle(root).getPropertyValue(`--text-color-videos-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--bg-video', getComputedStyle(root).getPropertyValue(`--bg-video-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--text-th', getComputedStyle(root).getPropertyValue(`--text-th-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--bg-fila-liga', getComputedStyle(root).getPropertyValue(`--bg-fila-${isDark ? 'dk-dk' : 'lt-dk'}`));
+      root.style.setProperty('--bg-fila-liga2', getComputedStyle(root).getPropertyValue(`--bg-fila-${isDark ? 'dk-lt' : 'lt-lt'}`));
+      root.style.setProperty('--bg-temperley-fila', getComputedStyle(root).getPropertyValue(`--bg-temperley-${isDark ? 'dk' : 'lt'}`));
+      root.style.setProperty('--pj-icon-cancha', getComputedStyle(root).getPropertyValue(`--pj-icon-cancha-${isDark ? 'dk' : 'lt'}`));
+    };
+
+    const themePref = localStorage.getItem('theme');
+    const isDarkInitial = themePref !== null ? Boolean(themePref) : match.matches;
+    applyTheme(isDarkInitial);
+
+    const listener = (e: MediaQueryListEvent) => applyTheme(e.matches);
+    match.addEventListener('change', listener);
+
+    return () => match.removeEventListener('change', listener);
+  }, []);
+
 
   return (
     <>

@@ -43,20 +43,21 @@
   margin-left: 2%;
 }
 
+.img {
+  display: flex;
+  position: absolute;
+  width: fit-content;
+  height: 54px !important;
+  width: 110px !important;
+  cursor: pointer;
+  /* left: 2%; */
+}
+
 .titulo {
   /* align-self: center; */
   color: white;
   display: flex;
   position: relative;
-}
-
-.img {
-  display: flex;
-  position: absolute;
-  width: fit-content;
-  height: 7vh;
-  cursor: pointer;
-  /* left: 2%; */
 }
 
 .container-right {

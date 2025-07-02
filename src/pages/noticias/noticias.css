@@ -46,8 +46,6 @@
   .nota-primeria {
     max-width: 48.5%;
     min-width: 48.5%;
-    max-height: 600px;
-    min-height: 600px;
   }
 
   .nota-secundaria {
@@ -60,8 +58,8 @@
     .nota-primeria {
       max-width: 100%;
       min-width: 100%;
-      max-height: 600px;
-      min-height: 600px;
+      max-height: 200px;
+      min-height: 200px;
     }
 
     .nota-secundaria {

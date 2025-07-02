@@ -9,7 +9,7 @@
 }
 
 .container-liga-scroll {
-  max-height: 530px;
+  max-height: fit-content;
   overflow-y: hidden;
 }
 
