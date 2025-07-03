@@ -1,4 +1,15 @@
-[[headers]]
-  for = "/sitemap.xml"
-  [headers.values]
-    Content-Type = "application/xml"
+[build]
+  publish = "dist" # o "build" según tu proyecto
+
+[site]
+  name = "data-gasolera"
+
+[headers]
+  [[headers]]
+    for = "/*"
+    [headers.values]
+      X-Robots-Tag = "all"
+
+    for = "/sitemap.xml"
+    [headers.values]
+      Content-Type = "application/xml"
